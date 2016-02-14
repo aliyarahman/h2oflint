@@ -55,7 +55,7 @@ ROOT_URLCONF = 'h2oflint.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR + '/app/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'h2oflint.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-{
+	'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'h2oflint',
             'USER': 'h2oflint',

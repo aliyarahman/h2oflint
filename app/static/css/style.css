@@ -1,0 +1,65 @@
+body,table,td {
+  margin: 0 0 0 0;
+  font-family: Arial,Verdana,Tahoma, sans-serif;
+  color: #000000;
+  font-size: 12px;
+}
+pre {
+  font-family: Arial,Verdana,Tahoma, sans-serif;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 600px), only screen and (max-device-width: 600px) {
+    table[class="table"] {
+        width: 93% !important;
+    }
+
+    table[class="emailBg"]{
+        width:100% !important;
+    }
+
+    table[class="emailBody"]{
+        width:100% !important;
+        min-width:0 !important;
+    }
+
+    table[class="column_table"] {
+        width:100% !important;
+        text-align:center !important;
+        padding:0 !important;
+        margin:0 0 6px 0 !important;
+    }
+
+    table[class="column_table_no_text_align"] {
+        width:100% !important;
+        padding:0 !important;
+        margin:0 0 6px 0 !important;
+    }
+
+    table[class="mediaRowTable"]{
+        width:100% !important;
+        padding:0 !important;
+        margin:0 0 6px 0 !important;
+        height: auto !important;
+    }
+
+    span[class="responsive_header_footer_font"]{
+        font-size:15px !important;
+    }
+
+    a[class="responsive_header_footer_font"]{
+        font-size:15px !important;
+    }
+
+    img[class="mediaImg"]{
+        max-width:100% !important;
+        height:auto !important;
+    }
+
+    div[class="mediaRowDiv"]{
+        max-width:100% !important;
+        height:auto !important;
+        width: auto !important;
+    }
+
+}

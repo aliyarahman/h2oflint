@@ -1,104 +1,36 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+	<head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <!-- OpenGraph Tags -->
-    <meta property="og:title" content="FNT.H2o Crisis - Easy Online Forms and Information" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://s3.amazonaws.com/bbemail/PROD/email_thumbs/3a0d0270-d55a-77cb-bf96-da662b5b0952.jpg?r=12833" />
-    <meta property="og:url" content="http://bbemaildelivery.com/bbext/index.php?p=email&id=3a0d0270-d55a-77cb-bf96-da662b5b0952" />
-    <meta property="og:site_name" content="BombBomb" />
+	    <!-- OpenGraph Tags -->
+	    <meta property="og:title" content="FNT.H2o Crisis - Easy Online Forms and Information" />
+	    <meta property="og:type" content="website" />
+	    <meta property="og:image" content="https://s3.amazonaws.com/bbemail/PROD/email_thumbs/3a0d0270-d55a-77cb-bf96-da662b5b0952.jpg?r=12833" />
+	    <meta property="og:url" content="http://bbemaildelivery.com/bbext/index.php?p=email&id=3a0d0270-d55a-77cb-bf96-da662b5b0952" />
+	    <meta property="og:site_name" content="BombBomb" />
 
-	<!-- swf object -->
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+		<!-- swf object -->
+	    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 
-   <!-- application javacript functions -->
-   <script type="text/javascript" src="include/javascript/functions.js"></script>
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-   <script type="text/javascript" src="/app/include/javascript/landingPage.js"></script>
+	    <!-- application javacript functions -->
+	    <script type="text/javascript" src="include/javascript/functions.js"></script>
+	    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	    <script type="text/javascript" src="/app/include/javascript/landingPage.js"></script>
 
-<title>FNT.H2o Crisis - Easy Online Forms and Information</title>
+	    <title>FNT.H2o Crisis - Easy Online Forms and Information</title>
 
-<meta name="title" content="FNT.H2o Crisis - Easy Online Forms and Information"/>
-<link rel="image_src" href="https://s3.amazonaws.com/bbemail/PROD/email_thumbs/3a0d0270-d55a-77cb-bf96-da662b5b0952.jpg?r=12833" />
+	    <meta name="title" content="FNT.H2o Crisis - Easy Online Forms and Information"/>
+	    <link rel="image_src" href="https://s3.amazonaws.com/bbemail/PROD/email_thumbs/3a0d0270-d55a-77cb-bf96-da662b5b0952.jpg?r=12833" />
+	    
+	    {% load staticfiles %}
+	    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-
-<style type="text/css">
-body,table,td {
-  margin: 0 0 0 0;
-  font-family: Arial,Verdana,Tahoma, sans-serif;
-  color: #000000;
-  font-size: 12px;
-}
-pre {
-  font-family: Arial,Verdana,Tahoma, sans-serif;
-  font-size: 12px;
-}
-
-@media screen and (max-width: 600px), only screen and (max-device-width: 600px) {
-    table[class="table"] {
-        width: 93% !important;
-    }
-
-    table[class="emailBg"]{
-        width:100% !important;
-    }
-
-    table[class="emailBody"]{
-        width:100% !important;
-        min-width:0 !important;
-    }
-
-    table[class="column_table"] {
-        width:100% !important;
-        text-align:center !important;
-        padding:0 !important;
-        margin:0 0 6px 0 !important;
-    }
-
-    table[class="column_table_no_text_align"] {
-        width:100% !important;
-        padding:0 !important;
-        margin:0 0 6px 0 !important;
-    }
-
-    table[class="mediaRowTable"]{
-        width:100% !important;
-        padding:0 !important;
-        margin:0 0 6px 0 !important;
-        height: auto !important;
-    }
-
-    span[class="responsive_header_footer_font"]{
-        font-size:15px !important;
-    }
-
-    a[class="responsive_header_footer_font"]{
-        font-size:15px !important;
-    }
-
-    img[class="mediaImg"]{
-        max-width:100% !important;
-        height:auto !important;
-    }
-
-    div[class="mediaRowDiv"]{
-        max-width:100% !important;
-        height:auto !important;
-        width: auto !important;
-    }
-
-}
-</style>
-
-</head>
+	</head>
 <body>
-
-
 
 <table width='100%' border='0' cellspacing='0' cellpadding='3' style='text-align:center;margin-left:0px;'>
     <tr id='share' style=''>
@@ -174,7 +106,7 @@ pre {
 													<tbody>
 														<tr>
 															<td>
-															<p style="text-align: center;"><a href="north.html" target="_blank"><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/NORTH.jpg" style="border-width: 0px; border-style: solid;" width="300" /></a></p>
+															<p style="text-align: center;"><a href="{% url 'north' %}" target="_blank"><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/NORTH.jpg" style="border-width: 0px; border-style: solid;" width="300" /></a></p>
 															</td>
 															<td style="text-align: center;">
 															<p><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/EAST.jpg" style="border-width: 0px; border-style: solid;" width="300" /></p>
