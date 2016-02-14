@@ -1,0 +1,187 @@
+
+
+			<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+			<html>
+				<head>
+				    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+					<title>Flint Water Donation Form</title>
+					<style type='text/css'>
+					    
+body { background:#7FA3BD; color:#404040; }
+.form_container { border-radius:8px; background:#FFF; border:3px solid #698CA5; font:12px Arial, Helvetica, sans-serif; margin:0px auto; padding:14px 40px; width:550px; }
+.field_container { clear:both; padding:8px 0px; width:100%; }
+.field_label { float:left; margin-right:10px; padding:2px 0px; text-align:right; width:25%; }
+.field_input { float:left; width:70%;}
+.field_foot { clear:both;height:1px;width:100%; }
+.field_label_text { color:#222; font-size:13px; font-weight:bold; }
+.field_label_hint { color:#3A7197; font-size:11px; }
+.field_required { color:#339EE9; font-size:10px; padding-top:4px; content:"*required"; }
+.field_required:before {content:"*required"; }
+.textbox, .textarea, .select { background:#E9F1FB; border:1px solid #D1E0EB; border-radius:2px; }
+.textbox { font-size:12px; padding:10px; width:95%; }
+.textarea { font-size:12px; height:100px; padding:10px; width:95%; }
+.select { padding:2px; }
+h1 { color:#3A7197; font-size:25px; }
+p { line-height:18px; margin:0px; padding:7px 0px; }
+.form_submit_button { cursor:pointer;background:#698CA5; border:2px solid #3A7197; border-radius:5px; color:#FFF; display:block; font-size:14px; margin:0px auto; padding:4px 12px; }
+.form_submit_button:hover, .form_submit_button:active { background:#339EE9; color:#E9F1FB; }
+.form_message { text-align:center; color:red;}
+
+@media (max-width: 660px) {
+
+    .form_container, .form_container *{
+        -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+    }
+    .form_container{width:95%;padding:14px 5%;}
+
+    .field_input{width:100%;}
+    .field_label{float:none;text-align:left;width:100%;}
+    .field_required{float:none;}
+    .textbox{width:100%;}
+}
+						
+
+            .progress_container {
+                width: 100%;
+                height: 32px;
+                border: solid 1px silver;
+                text-align: left;
+                display: none;
+            }
+
+            .progress {
+                width: 0%;
+                height: 32px;
+                background: red;
+                float: left;
+            }
+					</style>
+
+                
+					<script type='text/javascript' src='/app/include/javascript/jquery-1.6.4.min.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/functions.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms_video.js'></script>
+
+					<script type='text/javascript'>
+						var bb_form_id = '50291f2b-9049-5348-d2e0-2721fc706d13';
+						var bb_form_name = "Flint Water Donation Form";
+						var bb_form_success_action = 'm';
+						var bb_form_redir = '';
+						var bb_required_field_ids = ["email"];
+						var bb_form_user_id = 'be668896-28cd-6c42-3d5a-1e739a65d11a';
+						form_arrival();
+					</script>
+
+					
+				</head>
+				<body>
+				    
+					<div id='thankyou_msg' style='display:none;'><h1>Thank You!</h1>
+
+<p>We appreciate your kind support during this time of great challenge.</p>
+</div>
+					<div class='form_container'>
+				<div class='field_container' field_id=''><h1 style="text-align:center;"><span style="font-size:28px;"><span style="color:rgb(0,0,255);"><strong>Flint Water Donation Form</strong></span></span></h1>
+
+<hr /><p style="text-align:center;"><span style="font-size:20px;">To help us keep track of water donations, please complete this easy online form below. </span></p>
+
+<p style="text-align:center;"><span style="font-size:20px;">Thank you so much for you kindness and support!</span></p>
+
+<p style="text-align:center;"> </p>
+
+<hr /><p style="text-align:center;"><span style="font-size:18px;"><strong>Organization Name</strong></span></p>
+
+<p style="text-align:center;">Address</p>
+
+<p style="text-align:center;">Contact</p>
+
+<hr /><p style="text-align:center;"> </p>
+</div><div class='field_container' field_id='business_name'>
+<div class='field_label'>
+								<div class='field_label_text'>Organization Name</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='business_name' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='name_of_contact_person'>
+<div class='field_label'>
+								<div class='field_label_text'>Name of Contact Person</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='name_of_contact_person' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='email'>
+<div class='field_label'>
+								<div class='field_label_text'>Email Address</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='email' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='phone_number'>
+<div class='field_label'>
+								<div class='field_label_text'>Phone Number</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='phone_number' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='address_line_1'>
+<div class='field_label'>
+								<div class='field_label_text'>Address Line</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='address_line_1' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='city_1'>
+<div class='field_label'>
+								<div class='field_label_text'>City</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='city_1' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='state_1'>
+<div class='field_label'>
+								<div class='field_label_text'>State</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='state_1' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='postal_code'>
+<div class='field_label'>
+								<div class='field_label_text'>Postal Code</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='postal_code' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='number_of_pallets'>
+<div class='field_label'>
+								<div class='field_label_text'>Number of Pallets</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='number_of_pallets' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='number_of_cases'>
+<div class='field_label'>
+								<div class='field_label_text'>Number of Cases</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='number_of_cases' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='date_'>
+<div class='field_label'>
+								<div class='field_label_text'>Date of Donation </div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='date_' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div>	<div class='field_container'>
+						<div class='form_message'></div>
+					</div>	<a id='redirLink' href='' target='_self'></a>	<div class='field_container'>
+						<input type='button' value='Submit' class='form_submit_button' onclick='submit_bb_form()' />
+					</div><div style='color:#B0B0B0;font-size:11px;text-align:center;' class='form-footer'>Danell Ishmel,  | 414 West Ridgeway Avenue, Flint, MI 48505<br>darnell.ishmel@gmail.com | <br> By completing this form, you're agreeing to receive commercial electronic messages.  You'll have the option to unsubscribe at any point in the future.</div>
+					</div>
+				</body>
+			</html>
+				
