@@ -5,6 +5,10 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from geopy.geocoders import GoogleV3
 
+
+WaterDistributionLocation.objects.all().delete()
+
+
 # Add basic info
 antioch = WaterDistributionLocation(name = "Antioch Missionary Baptists Church", address = "1401 E Stewart Ave", zipcode = "48505", phone = "810 785-4060", limits = "4 cases per person", region = "North", tuesday_dist = "10am-2pm", friday_dist = "10am-2pm")
 azusa = WaterDistributionLocation(name = "Greater Friendship Azusa Ministries COGIC", address = "Detroit Street", zipcode = "48505", phone = "810 785-6000", limits = "Take what you need", region = "North")
@@ -23,9 +27,9 @@ holy.save()
 locations = WaterDistributionLocation.objects.all()
 
 for location in locations:
-    address = location.address + ", " + location.city + ", " + location.state + " "+ location.zipcode
+    address_to_code = location.address + ", " + location.city + ", " + location.state + " "+ location.zipcode
     geolocator = GoogleV3()
-    address, (location.latitude, location.longitude) = geolocator.geocode(searched_location)
+    address, (location.latitude, location.longitude) = geolocator.geocode(address_to_code)
     print location.latitude
     location.save()
 
