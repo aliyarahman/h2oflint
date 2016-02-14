@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from geopy.distance import vincenty
+from geopy.geocoders import GoogleV3
 
 
 def index(request):
