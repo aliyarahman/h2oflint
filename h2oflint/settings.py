@@ -78,7 +78,7 @@ DATABASES = {
 	'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'h2oflint',
-            'USER': 'h2oflint',
+            'USER': 'flint',
             'PASSWORD': 'waterisahumanright',
             'HOST': 'localhost',
             'PORT': '',
