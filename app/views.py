@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from geopy.distance import vincenty
 from geopy.geocoders import GoogleV3
+from app.models import WaterDistributionLocation
 
 
 def index(request):
-    return render(request, "index.html")
+    locations = WaterDistributionLocation.objects.all()
+    return render(request, "index.html", {'locations' : locations})
 
 def north(request):
     return render(request, "north.html")

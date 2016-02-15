@@ -34,10 +34,18 @@ a:hover {text-decoration: none;}
     width: 100%;
 }
 
+
+.search-headline {
+    margin-bottom: 1em;
+}
+
+.map-panel {
+    margin-bottom: 5em;
+}
+
 #map-canvas {
     margin: 2em 0em;
     height: 50em;
-
 }
 
 .schedule-header {
