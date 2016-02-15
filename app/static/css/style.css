@@ -22,7 +22,7 @@ a:hover {text-decoration: none;}
 .holder {
     border: 1px solid #d3d3d3;
     box-shadow: 0 15px 10px #777;
-    padding: 30px;
+    padding: 15px 30px 30px 30px;
     margin-bottom: 40px;
 }
 
@@ -37,6 +37,10 @@ a:hover {text-decoration: none;}
 
 .search-headline {
     margin-bottom: 1em;
+}
+
+.search-bar input, .search-bar button {
+    margin-top: 1em;
 }
 
 .map-panel {
