@@ -1,0 +1,240 @@
+
+
+			<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+			<html>
+				<head>
+				    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+					<title>Questionnaire</title>
+					<style type='text/css'>
+					    
+body {
+	background: #f6b100; /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  #f6b100 0%, #f7b125 42%, #ff5000 55%, #ff5000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#f6b100), color-stop(42%,#f7b125), color-stop(55%,#ff5000), color-stop(100%,#ff5000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  #f6b100 0%,#f7b125 42%,#ff5000 55%,#ff5000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  #f6b100 0%,#f7b125 42%,#ff5000 55%,#ff5000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  #f6b100 0%,#f7b125 42%,#ff5000 55%,#ff5000 100%); /* IE10+ */
+	background: linear-gradient(-45deg,  #f6b100 0%,#f7b125 42%,#ff5000 55%,#ff5000 100%); /* W3C */
+	progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6b100', endColorstr='#ff5000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	color:#000;
+	padding:5px;
+}
+.form_container {
+	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, 0.5);
+	border:1px solid #FFF;
+	font:13px Arial, Helvetica, sans-serif;
+	margin:0px auto;
+	padding:14px 28px;
+	width:540px;
+}
+.field_container { clear:both; margin:5px 0px; width:100%; }
+.field_label { padding:10px 0 4px 4px; width:95%; }
+.field_input { width:100%;}
+.field_foot { clear:both; height:3px; width:100%; }
+.field_label_text { display:inline; font-size:13px; font-weight:bold; }
+.field_label_hint { color:#77470E; display:inline; float:right; font-size:11px; }
+.field_required { color:#CC3300; display:inline-block; font-size:11px; padding-top:-5px; content:"(required)"; }
+.field_required:before {content:"(required)"; }
+.textbox, .textarea, .select { border:1px solid #FCC538; border-radius:4px; }
+.textbox { margin:0 auto; padding:9px; width:95%; }
+.textarea { height:100px; padding:9px; width:95%; }
+.select { padding:4px; }
+h1 { font-size:29px; font-weight:normal; }
+p { margin:0px; padding:7px 0px; }
+.form_submit_button { cursor:pointer;background-color:#ECECEC; border-radius:4px; color:#FF5000; display:block; font-size:14px; margin:0px auto; padding:5px 10px; }
+.form_submit_button:hover, .form_submit_button:active { background-color:#FF5000; color:#FFF; }
+.form_message { text-align:center; color:red;}
+
+@media (max-width: 660px) {
+
+    .form_container, .form_container *{
+        -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+    }
+    .form_container{width:95%;padding:14px 5%;}
+
+    .field_input{width:100%;}
+    .field_label{width:100%;}
+    .textbox{width:100%;}
+}
+						
+
+            .progress_container {
+                width: 100%;
+                height: 32px;
+                border: solid 1px silver;
+                text-align: left;
+                display: none;
+            }
+
+            .progress {
+                width: 0%;
+                height: 32px;
+                background: red;
+                float: left;
+            }
+					</style>
+
+                
+					<script type='text/javascript' src='/app/include/javascript/jquery-1.6.4.min.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/functions.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms_video.js'></script>
+
+					<script type='text/javascript'>
+						var bb_form_id = '955884b8-9823-46ea-3b2b-eac90de881e3';
+						var bb_form_name = "Questionnaire";
+						var bb_form_success_action = 'm';
+						var bb_form_redir = '';
+						var bb_required_field_ids = ["email"];
+						var bb_form_user_id = 'be668896-28cd-6c42-3d5a-1e739a65d11a';
+						form_arrival();
+					</script>
+
+					
+				</head>
+				<body>
+				    
+					<div id='thankyou_msg' style='display:none;'><h1>Thank You!</h1>
+
+<p>We appreciate your submission.</p>
+</div>
+					<div class='form_container'>
+				<div class='field_container' field_id=''><h1 style="text-align:center;"><strong>Water Service Questionnaire</strong></h1>
+
+<hr /><p><span style="font-size:16px;">Please help us to improve the quality of water distribution service. We want to serve you better. </span></p>
+
+<p> </p>
+
+<p><span style="font-size:16px;">FlintH2o</span></p>
+
+<hr /><p> </p>
+</div><div class='field_container' field_id='postal_code'>
+<div class='field_label'>
+								<div class='field_label_text'>Postal Code</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='postal_code' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='is_this_your_first_time_'>
+<div class='field_label'>
+								<div class='field_label_text'>Is this your first time coming to get water? </div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input id='chk_for_2B4F4B7CC8E968FEE0530100007F40AF_1' name='chk_for_is_this_your_first_time_' class='bb_radio' type='checkbox' value='' data-option-value='Yes' onchange='toggleCheckboxOrRadioButtonValue(this); bb_field_changed()' field_id='is_this_your_first_time_'  /> <label for='chk_for_2B4F4B7CC8E968FEE0530100007F40AF_1'>Yes</label><br /><input id='chk_for_2B4F4B7CC8E968FEE0530100007F40AF_2' name='chk_for_is_this_your_first_time_' class='bb_radio' type='checkbox' value='' data-option-value='No' onchange='toggleCheckboxOrRadioButtonValue(this); bb_field_changed()' field_id='is_this_your_first_time_'  /> <label for='chk_for_2B4F4B7CC8E968FEE0530100007F40AF_2'>No</label><br /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='how_often_do_you_have_to_'>
+<div class='field_label'>
+								<div class='field_label_text'>How often do you have to get water? </div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input id='chk_for_2B4F4BBCC24F6946E0530100007F5089_1' name='chk_for_how_often_do_you_have_to_' class='bb_radio' type='checkbox' value='' data-option-value='1-2 times a week' onchange='toggleCheckboxOrRadioButtonValue(this); bb_field_changed()' field_id='how_often_do_you_have_to_'  /> <label for='chk_for_2B4F4BBCC24F6946E0530100007F5089_1'>1-2 times a week</label><br /><input id='chk_for_2B4F4BBCC24F6946E0530100007F5089_2' name='chk_for_how_often_do_you_have_to_' class='bb_radio' type='checkbox' value='' data-option-value='3-4 times a week' onchange='toggleCheckboxOrRadioButtonValue(this); bb_field_changed()' field_id='how_often_do_you_have_to_'  /> <label for='chk_for_2B4F4BBCC24F6946E0530100007F5089_2'>3-4 times a week</label><br /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='how_many_cases_of_water_d'>
+<div class='field_label'>
+								<div class='field_label_text'>How many cases of water do you estimate as your weekly household need? </div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input id='chk_for_2B4F59F4543E6FF1E0530100007F99F1_1' name='chk_for_how_many_cases_of_water_d' class='bb_radio' type='checkbox' value='' data-option-value='2 cases per week' onchange='toggleCheckboxOrRadioButtonValue(this); bb_field_changed()' field_id='how_many_cases_of_water_d'  /> <label for='chk_for_2B4F59F4543E6FF1E0530100007F99F1_1'>2 cases per week</label><br /><input id='chk_for_2B4F59F4543E6FF1E0530100007F99F1_2' name='chk_for_how_many_cases_of_water_d' class='bb_radio' type='checkbox' value='' data-option-value='6 cases per week' onchange='toggleCheckboxOrRadioButtonValue(this); bb_field_changed()' field_id='how_many_cases_of_water_d'  /> <label for='chk_for_2B4F59F4543E6FF1E0530100007F99F1_2'>6 cases per week</label><br /><input id='chk_for_2B4F59F4543E6FF1E0530100007F99F1_3' name='chk_for_how_many_cases_of_water_d' class='bb_radio' type='checkbox' value='' data-option-value='10 cases per week' onchange='toggleCheckboxOrRadioButtonValue(this); bb_field_changed()' field_id='how_many_cases_of_water_d'  /> <label for='chk_for_2B4F59F4543E6FF1E0530100007F99F1_3'>10 cases per week</label><br /><input id='chk_for_2B4F59F4543E6FF1E0530100007F99F1_4' name='chk_for_how_many_cases_of_water_d' class='bb_radio' type='checkbox' value='' data-option-value='15 cases per week' onchange='toggleCheckboxOrRadioButtonValue(this); bb_field_changed()' field_id='how_many_cases_of_water_d'  /> <label for='chk_for_2B4F59F4543E6FF1E0530100007F99F1_4'>15 cases per week</label><br /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='what_are_the_best_things_'>
+<div class='field_label'>
+								<div class='field_label_text'>What are the best things you've encountered at the water distribution sites?</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='what_are_the_best_things_' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='what_are_the_worst_things'>
+<div class='field_label'>
+								<div class='field_label_text'>What are the worst things you've encountered at the water distribution site?</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='what_are_the_worst_things' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='how_long_do_you_typically'>
+<div class='field_label'>
+								<div class='field_label_text'>How long do you typically have to wait in line to get water? </div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='how_long_do_you_typically' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='do_you_know_of_any_person'>
+<div class='field_label'>
+								<div class='field_label_text'>Do you know of any person or family who is unable to get out and get water? If so, what is their condition? </div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='do_you_know_of_any_person' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='if_this_is_to_be_a_longt'>
+<div class='field_label'>
+								<div class='field_label_text'>If this is to be a long-term situation, what things do you hope are put in place to better support your need for water? </div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='if_this_is_to_be_a_longt' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='__vidRecorder'>
+<div class='field_label'>
+								<div class='field_label_text'>Tell us about your water distribution experience. Record a video we can share!</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'>            <div style="position: relative" class="bb-video-recorder-container">
+            <iframe class='recorder-frame' id='bafd0122-b732-5d31-1350-d5ff50497f65' height="240" width="320"
+            style="border: none; margin: 0; padding: 0; overflow: hidden" scrolling="no"
+            src="https://app.bombbomb.com/app/api/api.php?method=GetEmbeddedRecorderForIFrame&vguid=bafd0122-b732-5d31-1350-d5ff50497f65&popup=1&nohtml=1&api_key=74df4cd4-26cf-3526-5e4c-595e08d3979f&redirectToEditPage=0&videoSettings=%7B%22frame%22%3A%7B%22width%22%3A320%2C%22height%22%3A240%7D%2C%22video%22%3A%7B%22width%22%3A320%2C%22height%22%3A240%7D%2C%22quality%22%3A90%2C%22frameRate%22%3A30%2C%22overrideFrameDimensions%22%3Anull%7D"></iframe>
+            </div>
+                <script type="text/javascript">
+                window.addEventListener('message', function(event) {
+                    if (~event.origin.indexOf('app.bombbomb.com')) {
+                        if (event.data.action == 'reportVideoRecorded') {
+                            window.reportVideoRecorded(event.data.flname, event.data.log);
+                        } else if (event.data.action == 'iframeResize') {
+                            var frame = document.getElementById('bafd0122-b732-5d31-1350-d5ff50497f65');
+                            var fw = parseInt(frame.width, 10);
+                            var fsw = parseInt(frame.style.width, 10);
+
+                            if (fsw) {
+                                frame.style.height = (fsw * event.data.ratio) + "px";
+                            } else if (fw) {
+                                frame.height = (fw * event.data.ratio);
+                            }
+                        }
+                    } else {
+                        return;
+                    }
+                });
+                </script>
+            <div class='progress_container'>
+                <div class='progress'></div>
+            </div>
+
+            <script type='text/javascript'>
+            	var vidId = 'bafd0122-b732-5d31-1350-d5ff50497f65';
+			</script>
+
+        </div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='any_dditional_information'>
+<div class='field_label'>
+								<div class='field_label_text'>Any additional information information you wish to add?</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='any_dditional_information' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='email'>
+<div class='field_label'>
+								<div class='field_label_text'>Email Address</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'></div>
+	<div class='field_foot'></div></div>	<div class='field_container'>
+						<div class='form_message'></div>
+					</div>	<a id='redirLink' href='' target='_self'></a>	<div class='field_container'>
+						<input type='button' value='Submit' class='form_submit_button' onclick='submit_bb_form()' />
+					</div><div style='color:#B0B0B0;font-size:11px;text-align:center;' class='form-footer'>darnellishmelmedia llc,  | 414 West Ridgeway Avenue, Flint, MI 48505<br>darnell.ishmel@gmail.com | <br> By completing this form, you're agreeing to receive commercial electronic messages.  You'll have the option to unsubscribe at any point in the future.</div>
+					</div>
+				</body>
+			</html>
+				

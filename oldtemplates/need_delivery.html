@@ -1,0 +1,228 @@
+
+
+			<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+			<html>
+				<head>
+				    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+					<title>Flint Mobile Water Distribution </title>
+					<style type='text/css'>
+					    
+body { background:#889668; color:#404040; }
+.form_container { border-radius:8px; background:#FFF; border:3px solid #A1AC88; font:12px Arial, Helvetica, sans-serif; margin:0px auto; padding:14px 40px; width:550px; }
+.field_container { clear:both; padding:8px 0px; width:100%; }
+.field_label { float:left; margin-right:10px; padding:2px 0px; text-align:right; width:25%; }
+.field_input { float:left; width:70%;}
+.field_foot { clear:both;height:1px;width:100%; }
+.field_label_text { color:#222; font-size:13px; font-weight:bold; }
+.field_label_hint { color:#8EA15F; font-size:11px; }
+.field_required { color:#86C023; font-size:10px; padding-top:4px; content:"*required"; }
+.field_required:before {content:"*required"; }
+.textbox, .textarea, .select { background:#E1F5AB; border:1px solid #BBDC59; border-radius:2px; }
+.textbox { font-size:12px; padding:10px; width:95%; }
+.textarea { font-size:12px; height:100px; padding:10px; width:95%; }
+.select { padding:2px; }
+h1 { color:#86C023; font-size:25px; }
+p { line-height:18px; margin:0px; padding:7px 0px; }
+.form_submit_button { cursor:pointer;background:#A1AC88; border:2px solid #8EA15F; border-radius:5px; color:#FFF; display:block; font-size:14px; margin:0px auto; padding:4px 12px; }
+.form_submit_button:hover, .form_submit_button:active { background:#86C023; color:#E1F5AB; }
+.form_message { text-align:center; color:red;}
+
+@media (max-width: 660px) {
+
+    .form_container, .form_container *{
+        -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+    }
+    .form_container{width:95%;padding:14px 5%;}
+
+    .field_input{width:100%;}
+    .field_label{float:none;text-align:left;width:100%;}
+    .field_required{float:none;}
+    .textbox{width:100%;}
+}
+						
+
+            .progress_container {
+                width: 100%;
+                height: 32px;
+                border: solid 1px silver;
+                text-align: left;
+                display: none;
+            }
+
+            .progress {
+                width: 0%;
+                height: 32px;
+                background: red;
+                float: left;
+            }
+					</style>
+
+                
+					<script type='text/javascript' src='/app/include/javascript/jquery-1.6.4.min.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/functions.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms_video.js'></script>
+
+					<script type='text/javascript'>
+						var bb_form_id = '763d7f83-e3b0-e89a-fbd6-66bdfd5194b3';
+						var bb_form_name = "Flint Mobile Water Distribution ";
+						var bb_form_success_action = 'm';
+						var bb_form_redir = '';
+						var bb_required_field_ids = ["postal_code","email","phone_number","last_name","first_name","address_line_1","home_delivery_day","delivery_time","number_of_persons_in_hous"];
+						var bb_form_user_id = 'be668896-28cd-6c42-3d5a-1e739a65d11a';
+						form_arrival();
+					</script>
+
+					
+				</head>
+				<body>
+				    
+					<div id='thankyou_msg' style='display:none;'><h1>Thank You!</h1>
+
+<p>We appreciate your submission. Please let us know if there is anything else we may be able to do to help you and your family through this time of challenge.</p>
+</div>
+					<div class='form_container'>
+				<div class='field_container' field_id=''><h1 style="text-align:center;"><strong>"I Need Water Delivered to My Home."</strong></h1>
+
+<h1 style="text-align:center;"><em><span style="color:#FF0000;"><span style="font-size:20px;">Flint Water Distribution</span></span></em></h1>
+
+<hr /><p style="text-align:center;">February 2, 2016</p>
+
+<p>Dear Flint Resident,</p>
+
+<p>We realize that many of our neighbors are unable to travel to various locations around the city in search of water. Until this crisis is over, we want to make sure all of our residents are receiving water and as much as they need.</p>
+
+<p>We soon will be able to provide on a regular basis a mobile-water at-home delivery service for our seniors and others most challenged by this crisis. Once the system is ready for service an announcement will be posted on this site.</p>
+
+<p>Until then, please let us know if there is anything else we can do to be helpful to you during this time of unprecedented challenge.</p>
+
+<p>Thank you,</p>
+
+<p> </p>
+
+<p>FNT.H2o</p>
+
+<p> </p>
+
+<hr /><p><span style="font-size:14px;"><span style="color:rgb(255,0,0);">NOTE: When filling out the form, if you do not have an email address feel free to use ours <strong>northflintwater@gmail.com </strong>.</span></span></p>
+
+<hr /><p style="text-align:center;"><span style="font-size:28px;"><strong>At-home Delivery Request Form</strong></span></p>
+
+<p style="text-align:center;"><span style="font-size:24px;"><span style="color:rgb(255,0,0);">**SERVICE COMING SOON!**</span></span></p>
+
+<p> </p>
+</div><div class='field_container' field_id='postal_code'>
+<div class='field_label'>
+								<div class='field_label_text'>Postal Code</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='postal_code' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='email'>
+<div class='field_label'>
+								<div class='field_label_text'>Email Address</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='email' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='phone_number'>
+<div class='field_label'>
+								<div class='field_label_text'>Phone Number</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='phone_number' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='last_name'>
+<div class='field_label'>
+								<div class='field_label_text'>Last Name</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='last_name' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='first_name'>
+<div class='field_label'>
+								<div class='field_label_text'>First Name</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='first_name' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='address_line_1'>
+<div class='field_label'>
+								<div class='field_label_text'>Address Line 1</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='address_line_1' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='home_delivery_day'>
+<div class='field_label'>
+								<div class='field_label_text'>Home Delivery Day</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='home_delivery_day' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='delivery_time'>
+<div class='field_label'>
+								<div class='field_label_text'>Delivery Time</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='delivery_time' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='number_of_persons_in_hous'>
+<div class='field_label'>
+								<div class='field_label_text'>Number of persons in household</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='number_of_persons_in_hous' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='__vidRecorder'>
+<div class='field_label'>
+								<div class='field_label_text'>Record a Video!</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'>            <div style="position: relative" class="bb-video-recorder-container">
+            <iframe class='recorder-frame' id='184fd339-1e69-6981-eae9-49b20f097cc9' height="240" width="320"
+            style="border: none; margin: 0; padding: 0; overflow: hidden" scrolling="no"
+            src="https://app.bombbomb.com/app/api/api.php?method=GetEmbeddedRecorderForIFrame&vguid=184fd339-1e69-6981-eae9-49b20f097cc9&popup=1&nohtml=1&api_key=74df4cd4-26cf-3526-5e4c-595e08d3979f&redirectToEditPage=0&videoSettings=%7B%22frame%22%3A%7B%22width%22%3A320%2C%22height%22%3A240%7D%2C%22video%22%3A%7B%22width%22%3A320%2C%22height%22%3A240%7D%2C%22quality%22%3A90%2C%22frameRate%22%3A30%2C%22overrideFrameDimensions%22%3Anull%7D"></iframe>
+            </div>
+                <script type="text/javascript">
+                window.addEventListener('message', function(event) {
+                    if (~event.origin.indexOf('app.bombbomb.com')) {
+                        if (event.data.action == 'reportVideoRecorded') {
+                            window.reportVideoRecorded(event.data.flname, event.data.log);
+                        } else if (event.data.action == 'iframeResize') {
+                            var frame = document.getElementById('184fd339-1e69-6981-eae9-49b20f097cc9');
+                            var fw = parseInt(frame.width, 10);
+                            var fsw = parseInt(frame.style.width, 10);
+
+                            if (fsw) {
+                                frame.style.height = (fsw * event.data.ratio) + "px";
+                            } else if (fw) {
+                                frame.height = (fw * event.data.ratio);
+                            }
+                        }
+                    } else {
+                        return;
+                    }
+                });
+                </script>
+            <div class='progress_container'>
+                <div class='progress'></div>
+            </div>
+
+            <script type='text/javascript'>
+            	var vidId = '184fd339-1e69-6981-eae9-49b20f097cc9';
+			</script>
+
+        </div>
+	<div class='field_foot'></div></div>	<div class='field_container'>
+						<div class='form_message'></div>
+					</div>	<a id='redirLink' href='' target='_self'></a>	<div class='field_container'>
+						<input type='button' value='Submit' class='form_submit_button' onclick='submit_bb_form()' />
+					</div><div style='color:#B0B0B0;font-size:11px;text-align:center;' class='form-footer'>darnellishmelmedia llc,  | 414 West Ridgeway Avenue, Flint, MI 48505<br>darnell.ishmel@gmail.com | <br> By completing this form, you're agreeing to receive commercial electronic messages.  You'll have the option to unsubscribe at any point in the future.</div>
+					</div>
+				</body>
+			</html>
+				

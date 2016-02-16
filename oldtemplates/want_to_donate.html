@@ -1,0 +1,240 @@
+
+
+			<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+			<html>
+				<head>
+				    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+					<title>I want to donate water</title>
+					<style type='text/css'>
+					    
+body { background:#dad4bb; color:#535148; }
+.form_container { font:13px Trebuchet MS, Arial, Helvetica, sans-serif; margin:0px auto; width:600px; }
+.field_container { clear:both; padding:8px 0px; width:100%; }
+.field_label { float:left; margin-right:10px; padding:2px 0px; text-align:right; width:45%; }
+.field_input { float:left; width:50%;}
+.field_foot { clear:both;height:1px;width:100%; }
+.field_label_text { color:#000; font-size:14px; font-weight:bold; }
+.field_label_hint { color:#797666; font-size:11px; }
+.field_required { color:#FF5000; font-size:10px; font-style:italic; content:"(required)"; }
+.field_required:before {content:"(required)"; }
+.textbox, .textarea, .select { background:#ECEBE9; border:2px solid #cdc7b0; border-radius:5px; }
+.textbox { font-size:14px; padding:7px; width:95%; }
+.textarea { font-size:14px; height:100px; padding:7px; width:95%; }
+.select { border-width:1px; border-radius:3px; padding:3px; }
+h1 { color:#000; font-size:25px; }
+p { line-height:18px; margin:0px; padding:7px 0px; }
+.form_submit_button { cursor:pointer;background:#ECEBE9; border:2px solid #cdc7b0; border-radius:5px; color:#535148; display:block; font-size:14px; font-weight:bold; margin:0px auto; padding:5px 9px; }
+.form_submit_button:hover, .form_submit_button:active { background:#535148; border-color:#797666; color:#FFF; }
+.form_message { text-align:center; color:red;}
+
+@media (max-width: 600px) {
+    .form_container{width:100%;}
+
+    .field_input{width:100%;}
+    .field_label{float:none;text-align:left;width:100%;}
+    .field_required{float:none;}
+}
+						
+
+            .progress_container {
+                width: 100%;
+                height: 32px;
+                border: solid 1px silver;
+                text-align: left;
+                display: none;
+            }
+
+            .progress {
+                width: 0%;
+                height: 32px;
+                background: red;
+                float: left;
+            }
+					</style>
+
+                
+					<script type='text/javascript' src='/app/include/javascript/jquery-1.6.4.min.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/functions.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms_video.js'></script>
+
+					<script type='text/javascript'>
+						var bb_form_id = 'd6076172-65a5-deca-0961-7ad8077b976c';
+						var bb_form_name = "I want to donate water";
+						var bb_form_success_action = 'm';
+						var bb_form_redir = '';
+						var bb_required_field_ids = ["email"];
+						var bb_form_user_id = 'be668896-28cd-6c42-3d5a-1e739a65d11a';
+						form_arrival();
+					</script>
+
+					
+				</head>
+				<body>
+				    
+					<div id='thankyou_msg' style='display:none;'><h1>Thank You!</h1>
+
+<p>We appreciate your kind support during this time of great challenge.</p>
+</div>
+					<div class='form_container'>
+				<div class='field_container' field_id=''><h1 style="text-align:center;"><span style="color:#FF0000;"><span style="font-size:28px;"><strong>"WANT TO DONATE WATER?"</strong></span></span></h1>
+
+<hr /><p style="text-align:center;"><span style="font-size:20px;">To help us keep track of water donations, please complete this easy online form below. </span></p>
+
+<p style="text-align:center;"><span style="font-size:20px;">Thank you so much for you kindness and support!</span></p>
+
+<hr /></div><div class='field_container' field_id='business_name'>
+<div class='field_label'>
+								<div class='field_label_text'>Organization Name</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='business_name' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='name_of_contact_person'>
+<div class='field_label'>
+								<div class='field_label_text'>Name of Contact Person</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='name_of_contact_person' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='email'>
+<div class='field_label'>
+								<div class='field_label_text'>Email Address</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='email' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='phone_number'>
+<div class='field_label'>
+								<div class='field_label_text'>Phone Number</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='phone_number' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='address_line_1'>
+<div class='field_label'>
+								<div class='field_label_text'>Address Line</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='address_line_1' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='city_1'>
+<div class='field_label'>
+								<div class='field_label_text'>City</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='city_1' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='state_1'>
+<div class='field_label'>
+								<div class='field_label_text'>State</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='state_1' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='postal_code'>
+<div class='field_label'>
+								<div class='field_label_text'>Postal Code</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='postal_code' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='number_of_pallets'>
+<div class='field_label'>
+								<div class='field_label_text'>Number of Pallets</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='number_of_pallets' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='number_of_cases'>
+<div class='field_label'>
+								<div class='field_label_text'>Number of Cases and or Gallons</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='number_of_cases' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='other_items_to_be_donated'>
+<div class='field_label'>
+								<div class='field_label_text'>Other items to be donated</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='other_items_to_be_donated' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='date_to_be_delivered'>
+<div class='field_label'>
+								<div class='field_label_text'>Date to be delivered</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='date_to_be_delivered' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='time_to_be_delivered'>
+<div class='field_label'>
+								<div class='field_label_text'>Time to be delivered</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='time_to_be_delivered' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='any_special_assistance_ne'>
+<div class='field_label'>
+								<div class='field_label_text'>Any special assistance needed for delivery?</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='any_special_assistance_ne' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='notes'>
+<div class='field_label'>
+								<div class='field_label_text'>Notes:</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='notes' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='__vidRecorder'>
+<div class='field_label'>
+								<div class='field_label_text'>Want to record a video we can share about why you are donating?</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'>            <div style="position: relative" class="bb-video-recorder-container">
+            <iframe class='recorder-frame' id='c71a32f0-68b6-a582-8010-ec12f936fd48' height="240" width="320"
+            style="border: none; margin: 0; padding: 0; overflow: hidden" scrolling="no"
+            src="https://app.bombbomb.com/app/api/api.php?method=GetEmbeddedRecorderForIFrame&vguid=c71a32f0-68b6-a582-8010-ec12f936fd48&popup=1&nohtml=1&api_key=74df4cd4-26cf-3526-5e4c-595e08d3979f&redirectToEditPage=0&videoSettings=%7B%22frame%22%3A%7B%22width%22%3A320%2C%22height%22%3A240%7D%2C%22video%22%3A%7B%22width%22%3A320%2C%22height%22%3A240%7D%2C%22quality%22%3A90%2C%22frameRate%22%3A30%2C%22overrideFrameDimensions%22%3Anull%7D"></iframe>
+            </div>
+                <script type="text/javascript">
+                window.addEventListener('message', function(event) {
+                    if (~event.origin.indexOf('app.bombbomb.com')) {
+                        if (event.data.action == 'reportVideoRecorded') {
+                            window.reportVideoRecorded(event.data.flname, event.data.log);
+                        } else if (event.data.action == 'iframeResize') {
+                            var frame = document.getElementById('c71a32f0-68b6-a582-8010-ec12f936fd48');
+                            var fw = parseInt(frame.width, 10);
+                            var fsw = parseInt(frame.style.width, 10);
+
+                            if (fsw) {
+                                frame.style.height = (fsw * event.data.ratio) + "px";
+                            } else if (fw) {
+                                frame.height = (fw * event.data.ratio);
+                            }
+                        }
+                    } else {
+                        return;
+                    }
+                });
+                </script>
+            <div class='progress_container'>
+                <div class='progress'></div>
+            </div>
+
+            <script type='text/javascript'>
+            	var vidId = 'c71a32f0-68b6-a582-8010-ec12f936fd48';
+			</script>
+
+        </div>
+	<div class='field_foot'></div></div>	<div class='field_container'>
+						<div class='form_message'></div>
+					</div>	<a id='redirLink' href='' target='_self'></a>	<div class='field_container'>
+						<input type='button' value='Submit' class='form_submit_button' onclick='submit_bb_form()' />
+					</div>
+					</div>
+				</body>
+			</html>
+				

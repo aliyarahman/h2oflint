@@ -1,0 +1,240 @@
+
+
+			<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+			<html>
+				<head>
+				    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+					<title>New Form</title>
+					<style type='text/css'>
+					    
+body { background:#665265; color:#404040; }
+.form_container { border-radius:8px; background:#FFF; border:3px solid #482447; font:12px Arial, Helvetica, sans-serif; margin:0px auto; padding:14px 40px; width:550px; }
+.field_container { clear:both; padding:8px 0px; width:100%; }
+.field_label { float:left; margin-right:10px; padding:2px 0px; text-align:right; width:25%; }
+.field_input { float:left; width:70%;}
+.field_foot { clear:both;height:1px;width:100%; }
+.field_label_text { color:#222; font-size:13px; font-weight:bold; }
+.field_label_hint { color:#440C2A; font-size:11px; }
+.field_required { color:#C147B7; font-size:10px; padding-top:4px; content:"*required"; }
+.field_required:before {content:"*required"; }
+.textbox, .textarea, .select { background:#F5EFF6; border:1px solid #E3D7E4; border-radius:2px; }
+.textbox { font-size:12px; padding:10px; width:95%; }
+.textarea { font-size:12px; height:100px; padding:10px; width:95%; }
+.select { padding:2px; }
+h1 { color:#440C2A; font-size:25px; }
+p { line-height:18px; margin:0px; padding:7px 0px; }
+.form_submit_button { cursor:pointer;background:#482447; border:2px solid #440C2A; border-radius:5px; color:#FFF; display:block; font-size:14px; margin:0px auto; padding:4px 12px; }
+.form_submit_button:hover, .form_submit_button:active { background:#C147B7; color:#F5EFF6; }
+.form_message { text-align:center; color:red;}
+
+@media (max-width: 660px) {
+
+    .form_container, .form_container *{
+        -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+    }
+    .form_container{width:95%;padding:14px 5%;}
+
+    .field_input{width:100%;}
+    .field_label{float:none;text-align:left;width:100%;}
+    .field_required{float:none;}
+    .textbox{width:100%;}
+}
+						
+
+            .progress_container {
+                width: 100%;
+                height: 32px;
+                border: solid 1px silver;
+                text-align: left;
+                display: none;
+            }
+
+            .progress {
+                width: 0%;
+                height: 32px;
+                background: red;
+                float: left;
+            }
+					</style>
+
+                
+					<script type='text/javascript' src='/app/include/javascript/jquery-1.6.4.min.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/functions.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms.js'></script>
+					<script type='text/javascript' src='/app/include/javascript/bb_forms_video.js'></script>
+
+					<script type='text/javascript'>
+						var bb_form_id = 'f086fc41-b73b-dbd6-8c1b-981cc7169d00';
+						var bb_form_name = "New Form";
+						var bb_form_success_action = 'm';
+						var bb_form_redir = '';
+						var bb_required_field_ids = ["name_of_organization","address_line_1","postal_code","email","phone_number_for_contact","total_number_of_","cases_allowed_per_house"];
+						var bb_form_user_id = 'be668896-28cd-6c42-3d5a-1e739a65d11a';
+						form_arrival();
+					</script>
+
+					
+				</head>
+				<body>
+				    
+					<div id='thankyou_msg' style='display:none;'><h1>Thank You!</h1>We appreciate your submission.</div>
+					<div class='form_container'>
+				<div class='field_container' field_id=''><h1 style="text-align:center;"><span style="font-size:28px;"><span style="color:rgb(165,42,42);">"We Will Distribute Water!"</span></span></h1>
+
+<hr /><p><span style="font-size:16px;">Thank you for your commitment to serving the needs of the people of Flint during this time of unprecedented challenge.<br /><br />
+Please complete this form and submit a digital flyer about your water distribution.  Send digital flyer to the following email address <a href="mailto:northflintwater@gmail.com">northflintwater@gmail.com</a> . </span></p>
+
+<p><span style="font-size:16px;">We will list you on this site so that people may have more coordinated information on where and when to go for water.</span></p>
+
+<p><span style="font-size:16px;">Thank you for your assistance!</span></p>
+
+<p> </p>
+
+<p><span style="font-size:16px;">FlintH2o</span></p>
+
+<p><img alt="12670613_10106139836994263_2624827985501" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/12670613_10106139836994263_2624827985501968942_n.jpg" style="border-width:0px;border-style:solid;width:250px;height:250px;" /></p>
+
+<p> </p>
+</div><div class='field_container' field_id='name_of_organization'>
+<div class='field_label'>
+								<div class='field_label_text'>Name of Organization</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='name_of_organization' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='address_line_1'>
+<div class='field_label'>
+								<div class='field_label_text'>Address Line 1</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='address_line_1' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='postal_code'>
+<div class='field_label'>
+								<div class='field_label_text'>Postal Code</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='postal_code' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='email'>
+<div class='field_label'>
+								<div class='field_label_text'>Email Address</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='email' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='phone_number'>
+<div class='field_label'>
+								<div class='field_label_text'>Phone Number</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='phone_number' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='name_of_contact_person'>
+<div class='field_label'>
+								<div class='field_label_text'>Name of Contact Person</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='name_of_contact_person' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='phone_number_for_contact'>
+<div class='field_label'>
+								<div class='field_label_text'>Phone Number for Contact Person</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='phone_number_for_contact' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='daytime_of_distribution'>
+<div class='field_label'>
+								<div class='field_label_text'>Day/Time of Distribution</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='daytime_of_distribution' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='total_number_of_'>
+<div class='field_label'>
+								<div class='field_label_text'>Total number of cases available </div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='total_number_of_' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='cases_allowed_per_house'>
+<div class='field_label'>
+								<div class='field_label_text'>Number of cases allowed per household</div>
+								<div class='field_label_hint'></div>
+								<div class='field_required'></div>
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='cases_allowed_per_house' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='_volunteers_requested'>
+<div class='field_label'>
+								<div class='field_label_text'>Number of volunteers requested</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='_volunteers_requested' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='other_services_offered'>
+<div class='field_label'>
+								<div class='field_label_text'>Other items or services offered during distribution</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='other_services_offered' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='any_dditional_information'>
+<div class='field_label'>
+								<div class='field_label_text'>Any additional information</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'><input type='text' class='form_field textbox' id='any_dditional_information' maxlength='3000' onchange='bb_field_changed()' value='' /></div>
+	<div class='field_foot'></div></div><div class='field_container' field_id='__vidRecorder'>
+<div class='field_label'>
+								<div class='field_label_text'>Record a video we can share about your experiences, challenges, and triumphs in serving the needs of people of Flint during this time of crisis.</div>
+								<div class='field_label_hint'></div>
+								
+							</div>
+	<div class='field_input'>            <div style="position: relative" class="bb-video-recorder-container">
+            <iframe class='recorder-frame' id='4b62c92b-ed13-fa95-fe41-b056eeae0f02' height="240" width="320"
+            style="border: none; margin: 0; padding: 0; overflow: hidden" scrolling="no"
+            src="https://app.bombbomb.com/app/api/api.php?method=GetEmbeddedRecorderForIFrame&vguid=4b62c92b-ed13-fa95-fe41-b056eeae0f02&popup=1&nohtml=1&api_key=74df4cd4-26cf-3526-5e4c-595e08d3979f&redirectToEditPage=0&videoSettings=%7B%22frame%22%3A%7B%22width%22%3A320%2C%22height%22%3A240%7D%2C%22video%22%3A%7B%22width%22%3A320%2C%22height%22%3A240%7D%2C%22quality%22%3A90%2C%22frameRate%22%3A30%2C%22overrideFrameDimensions%22%3Anull%7D"></iframe>
+            </div>
+                <script type="text/javascript">
+                window.addEventListener('message', function(event) {
+                    if (~event.origin.indexOf('app.bombbomb.com')) {
+                        if (event.data.action == 'reportVideoRecorded') {
+                            window.reportVideoRecorded(event.data.flname, event.data.log);
+                        } else if (event.data.action == 'iframeResize') {
+                            var frame = document.getElementById('4b62c92b-ed13-fa95-fe41-b056eeae0f02');
+                            var fw = parseInt(frame.width, 10);
+                            var fsw = parseInt(frame.style.width, 10);
+
+                            if (fsw) {
+                                frame.style.height = (fsw * event.data.ratio) + "px";
+                            } else if (fw) {
+                                frame.height = (fw * event.data.ratio);
+                            }
+                        }
+                    } else {
+                        return;
+                    }
+                });
+                </script>
+            <div class='progress_container'>
+                <div class='progress'></div>
+            </div>
+
+            <script type='text/javascript'>
+            	var vidId = '4b62c92b-ed13-fa95-fe41-b056eeae0f02';
+			</script>
+
+        </div>
+	<div class='field_foot'></div></div>	<div class='field_container'>
+						<div class='form_message'></div>
+					</div>	<a id='redirLink' href='' target='_SELF'></a>	<div class='field_container'>
+						<input type='button' value='Submit' class='form_submit_button' onclick='submit_bb_form()' />
+					</div><div style='color:#B0B0B0;font-size:11px;text-align:center;' class='form-footer'>Flint H2o,  | 2505 North Chevrolet Avenue, Flint, MI 48504<br>northflintwater@gmail.com | <br> By completing this form, you're agreeing to receive commercial electronic messages.  You'll have the option to unsubscribe at any point in the future.</div>
+					</div>
+				</body>
+			</html>
+				
