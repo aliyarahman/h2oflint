@@ -8,6 +8,10 @@ def index(request):
     locations = WaterDistributionLocation.objects.all()
     return render(request, "index.html", {'locations' : locations})
 
+def option2(request):
+    locations = WaterDistributionLocation.objects.all()
+    return render(request, "option2.html", {'locations' : locations})
+
 def north(request):
     return render(request, "north.html")
 

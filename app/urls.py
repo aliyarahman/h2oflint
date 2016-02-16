@@ -5,6 +5,7 @@ from app import views
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
 	url(r'^index/$', views.index, name='index'),
+	url(r'^option2/$', views.option2, name='option2'),
 	url(r'^north/$', views.north, name='north'),
 	url(r'^need_delivery/$', views.need_delivery, name='need_delivery'),
 	url(r'^i_donated/$', views.i_donated, name='i_donated'),
