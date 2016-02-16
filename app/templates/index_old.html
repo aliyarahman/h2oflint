@@ -1,151 +1,175 @@
-{% extends 'base.html' %}
+{% extends 'base_old.html' %}
 {% block content %}
+{% load staticfiles %}
 
-<table width='100%' border='0' cellspacing='0' cellpadding='3' style='text-align:center;margin-left:0px;'>
-    <tr id='share' style=''>
-        <td style='border:none; text-align:center;' align='right'>
-            <span style="font-family:Arial, Helvetica, sans-serif; font-size:10pt;font-weight:normal;color:#b7b6b6;">Share to</span>&nbsp;&nbsp;
-            <a id="twit" style='text-decoration:none;border:none;'><img src="http://app.bombbomb.com/templates/css/share-twitter.gif"  style='border:none;' width="18" height="18" alt="Share to Twitter"/></a>&nbsp;&nbsp;
-            <a id="fbook" style='text-decoration:none;border:none;'><img src="http://app.bombbomb.com/templates/css/share-facebook.gif" style='border:none;' alt="Share to Facebook" width="18" height="18" /></a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a href="" style="display:none;color: #b7b6b6;font-size: 10pt;font-family: Arial, Helvetica, sans-serif; text-decoration: none;"><span style="color:#b7b6b6;">Reply with Video</span></a>
-        </td>
-    </tr>
-    <tr><td style='border:none;' align='center'><style type="text/css">#outlook a {padding:0;}
-        .mobiletxt a {color:#909090;}
-        .ExternalClass {width:100%;}
-        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height:normal;}
-        table td {border-collapse:collapse;}
-        img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;}
-        a img {border:none;}
-        
-        @media screen and (max-device-width: 600px), screen and (max-width: 600px) {
-            table[class="outertable"] { width:100% !important; }
-            img[class="responsive_image"] { min-width:10px !important; max-width:100% !important; height:auto !important; }
-            table[class="hide"], img[class="hide"]{ display:none !important; }
-            video[class="bbHtml5Video"] { width:100% !important; height:auto !important; }
-            img[class="bbImgFallback"] { width:100% !important; height:auto !important; }
-            td[class="video-cell"] img { width:100% !important; height:auto !important; }
-            td[class="video-cell"] { padding:0px !important; }
-            td[class="outer-padding"] { padding:0px !important; }
-            td[class="content-padding"] { padding:10px !important; }
-            td[class="mainBody"]{ padding-left:10px !important; padding-right:10px !important; }
-            td[class="mobiletxt"] { padding-left:10px !important; padding-right:10px !important; }
-            table[class="column_table"] { width:100% !important; }
-            table[class="column_table"] td { height:auto !important; text-align:center !important; padding:3px !important; }
-            table[class="column_table"] table { margin-right:auto !important; margin-left:auto !important; }
-        }
-    </style>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody>
-        <tr>
-            <td align="center" bgcolor="#FFFFFF" valign="top">
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="outertable" width="600"><tbody>
-                <tr>
-                    <td align="center" valign="top">
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody>
-                            <tr>
-                                <td align="left" valign="top" width="20"><img alt="" border="0" height="400" src="http://bbemail.s3-website-us-east-1.amazonaws.com/ART/templates/shadowlft.jpg" style="display:block" width="20" /></td>
-                                <td align="center" class="content-padding" style="border:1px solid #DFDFDF; padding:20px;" valign="top">
-                                <table align="center" border="0" cellpadding="0" cellspacing="0" class="custom-table" data-region="custom" id="sortable" width="100%"><tbody>
-                                    <tr>
-                                        <td align="center" style="padding-bottom:10px;" valign="top">
-                                        <div data-region="richtext" style="color:#000000; font-family:'Times New Roman', Times, serif; font-size:28px;">
-                                        <div style="font-size:5px;"><img border="0" height="81.5" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/cityofflintwateremergencygeneric1-Copy.jpg" width="600" /></div>
+    <div class="row share-buttons">
+        <div class="col-xs-10 col-xs-offset-1 text-center">
+        Share to <span><img src="{% static 'img/facebook.png' %}"> <img src="{% static 'img/twitter.png' %}">
+        </div>
+    </div>
 
-                                        <div style="font-size:5px;">&nbsp;</div>
-                                        </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center" class="video-cell" valign="top">
-                                        <p><strong><span style="font-size:16px;"><span style="color: rgb(255, 0, 0);">FOR MORE INFORMATION ON FLINT WATER RESOURCES AND SERVICES</span></span></strong></p>
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+            <div class="row holder">
+                <div class="row">
+                    <div class="col-xs-12 banner">
+                        <img src="{% static 'img/banner.jpg' %}" alt="Water banner"/>
+                    </div>
+                </div>
 
-                                        <p><em><span style="font-size: 22px;"><strong>Please click linked option panels below</strong></span></em></p>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 text-center">
+                        <h2 class="search-headline"><b>FIND WATER NEAR YOU OR OFFER HELP</b></h2>
+                    </div>
+                </div>
 
-                                        <p><img border="0" height="135.33333333333331" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/WaterDistributionSchedule2.jpg" width="600" /></p>
+                <div class="row search-bar">
+                    <div class="col-xs-12 col-md-8 col-md-offset-1">
+                        <input type="text" class="form-control input-lg" placeholder="Enter your address or zip code">
+                    </div>
+                    <div class="col-xs-12 col-md-2 text-center">
+                        <button type-"button" class="btn btn-lg btn-primary">Find water</button>
+                    </div>
+                </div>
 
-                                        <table border="1" cellpadding="1" cellspacing="1" height="117" width="601"><tbody>
-                                            <tr>
-                                                <td>
-                                                <p style="text-align: center;"><a href="{% url 'north' %}" target="_blank"><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/NORTH.jpg" style="border-width: 0px; border-style: solid;" width="300" /></a></p>
-                                                </td>
-                                                <td style="text-align: center;">
-                                                <p><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/EAST.jpg" style="border-width: 0px; border-style: solid;" width="300" /></p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center;">
-                                                <p><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/SOUTH.jpg" style="border-width: 0px; border-style: solid;" width="300" /></p>
-                                                </td>
-                                                <td style="text-align: center;">
-                                                <p><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/WEST.jpg" style="border-width: 0px; border-style: solid;" width="300" /></p>
-                                                </td>
-                                            </tr>
-                                        </tbody></table>
 
-                                        <hr />
-                                        <p><em><strong><span style="font-size:20px;">Tweet live updates on water resources and services available</span> <span style="font-size:26px;"><span class="DashboardProfileCard-screenname u-inlineBlock u-dir" dir="ltr"><a class="DashboardProfileCard-screennameLink u-linkComplex u-linkClean" href="https://twitter.com/flint_h2o">@<span class="u-linkComplex-target">flint_h2o</span></a></span></span></strong></em></p>
+                <div class="row">
+                    <div class="col-xs-12 map-panel">
+                        <div id="map-canvas" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="red-text"><b>FOR MORE INFORMATION ON FLINT WATER AND SERVICES</b></div>
+                        <h3><i><b>Please click linked option panels below</b></i></h3>
+                        <div class="lt-orange-bg schedule-header"><h1>Water Distribution Schedule</h1></div>
+                    </div>
+                </div>
 
-                                        <p><a href="https://twitter.com/flint_h2o" target="_blank"><img alt="" height="61" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/Twitter-icon.jpg" style="border-width: 0px; border-style: solid;" width="200" /></a></p>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <a href=""><div class="white-text maroon-bg">
+                                    <h1>NORTH</h1>
+                                </div></a>
+                            </div>
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <div class="white-text green-bg">
+                                    <h1>EAST</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <div class="white-text teal-bg">
+                                    <h1>SOUTH</h1>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <div class="white-text purple-bg">
+                                    <h1>WEST</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-10 col-xs-offset-1 text-center">
+                                <p><br><h4><i><b>Tweet live updates on water resources and services available</b></i></h4></p>
+                                <p><a class="blue-text" href="http://www.twitter.com/flint_h2o"><i><u><h2><b>@flint_h20</b></h2></u></i></a></p>
+                                <p class="twitter-icon"><a href="https://twitter.com/flint_h2o"><img src="{% static 'img/twitter-icon.jpg' %}"/></a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <a href="{% url 'request_delivery' %}"><div class="lt-green-bg">
+                                    <h2>"I Need Water<br>Delivered<br>to My Home"</h2>
+                                </div></a>
+                            </div>
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <a href=""><div class="lt-purple-bg">
+                                    <h2>"I Received <br>Water"<br><br></h2>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <a href=""><div class="orange-bg">
+                                    <h2>"Water Service<br>Questionnaire"<br><br></h2>
+                                </div></a>
+                            </div>
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <div class="blue-bg">
+                                    <h2>"Other Related Services<br>and Information"<br><br></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a href="{% url 'organization_offer' %}"><div class="dk-purple-bg white-text distribute-header text-center">
+                                <h2><b>"We Will Distribute Water!"</b></h2>
+                            </div></a>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <a href="{% url 'individual_offer' %}"><div class="yellow-bg">
+                                    <h2>"I Want to Donate<br>Water"</h2>
+                                </div></a>
+                            </div>
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <a href="{% url 'individual_offer' %}"><div class="salmon-bg">
+                                    <h2>"I Want to<br>Volunteer"</h2>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <div class="extra-lt-purple-bg">
+                                    <h2>"I Want to Make a<br>Gift"</h2>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 region-button text-center">
+                                <a href=""><div class="lt-blue-bg">
+                                    <h2>"I Donated<br>Water"</h2>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h3><b>Keyword Text</b>: "FlintH2o" to "24587"</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                        <hr />
-                                        <table border="1" cellpadding="1" cellspacing="1" style="width: 600px;"><tbody>
-                                                <tr>
-                                                    <td><a href="{% url 'need_delivery' %}" target="_blank"><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/need.jpg" style="border-width: 0px; border-style: solid;" width="300" /></a></td>
-                                                    <td><a href="{% url 'received_water' %}" target="_blank"><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/received.jpg" style="border-width: 0px; border-style: solid;" width="300" /></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><a href="{% url 'service' %}" target="_blank"><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/Questionnaire.jpg" style="border-width: 0px; border-style: solid;" width="300" /></a></td>
-                                                    <td><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/OtherRelatedServices.jpg" style="border-width: 0px; border-style: solid;" width="300" /></td>
-                                                </tr>
-                                        </tbody></table>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7cQS9WA8nCS92ofzoQ0UtrKA6drw6fOI">
+    </script>
 
-                                        <p><a href="{% url 'we_will_distribute' %}" target="_blank"><img alt="" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/wewilldist.jpg" style="border-width: 0px; border-style: solid;" width="600" /></a></p>
+    <script type="text/javascript">
+        function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(43.0125274, -83.6874562),
+                zoom: 12
+            };
+            var map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+            
+            {% for location in locations %}
+            var marker1 = new google.maps.Marker({
+                position: new google.maps.LatLng({{location.latitude}}, {{location.longitude}}),
+                map: map,
+                title: "{{location.name}}"
+            });
+            {% endfor %}
 
-                                        <table border="1" cellpadding="1" cellspacing="1" style="width: 600px;"><tbody>
-                                            <tr>
-                                                <td><a href="{% url 'want_to_donate' %}" target="_blank"><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/don.jpg" style="border-width: 0px; border-style: solid;" width="300" /></a></td>
-                                                <td><a href="{% url 'want_to_volunteer' %}" target="_blank"><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/vol.jpg" style="border-width: 0px; border-style: solid;" width="300" /></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/gift.jpg" style="border-width: 0px; border-style: solid;" width="300" /></td>
-                                                <td><a href="{% url 'i_donated' %}" target="_blank"><img alt="" height="150" src="https://s3.amazonaws.com/bbemail/PROD/ulib/cehrs/img/donated.jpg" style="border-width: 0px; border-style: solid;" width="300" /></a></td>
-                                            </tr>
-                                        </tbody></table>
+            }
+          google.maps.event.addDomListener(window, 'load', initialize);
+    
+            
 
-                                        <hr />
-                                        <p><span style="font-size:24px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>Keyword Text:</strong> &quot;FlintH2o&quot; to &quot;24587&quot;</span></span></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center" class="video-cell" valign="top">&nbsp;</td>
-                                    </tr>
-                                </tbody></table>
-                                </td>
-                                <td align="right" valign="top" width="20"><img alt="" border="0" height="400" src="http://bbemail.s3-website-us-east-1.amazonaws.com/ART/templates/shadowrt.jpg" style="display:block" width="20" /></td>
-                            </tr>
-                            <tr>
-                                <td width="20">&nbsp;</td>
-                                <td valign="top"><img alt="" border="0" class="responsive_image" height="30" src="http://bbemail.s3-website-us-east-1.amazonaws.com/ART/templates/Default/Default_002_footer.png" style="display:block" width="600" /></td>
-                                <td width="20">&nbsp;</td>
-                            </tr>
-                        </tbody></table>
-                        </td>
-                    </tr>
-                </tbody></table>
-            </td>
-        </tr>
-    </tbody></table>
-    </td></tr>
-    <tr><td style='border:none;' align='center'></td></tr>
-</table>
+    </script>
 
-<input type="hidden" id="twitterclickurl" value="http://bbemaildelivery.com/bbext/index.php?p=click&eid=3a0d0270-d55a-77cb-bf96-da662b5b0952&url=Twitter">
-<input type="hidden" id="facebookclickurl" value="http://bbemaildelivery.com/bbext/index.php?p=click&eid=3a0d0270-d55a-77cb-bf96-da662b5b0952&url=Facebook">
-<input type="hidden" id="twittershareurl" value="http://bbemaildelivery.com/bbext/index.php?p=email&id=3a0d0270-d55a-77cb-bf96-da662b5b0952&share=t">
-<input type="hidden" id="facebookshareurl" value="http://bbemaildelivery.com/bbext/index.php?p=email&id=3a0d0270-d55a-77cb-bf96-da662b5b0952&share=f">
 
 {% endblock %}

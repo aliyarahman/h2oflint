@@ -5,13 +5,8 @@ from app import views
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
 	url(r'^index/$', views.index, name='index'),
-	url(r'^option2/$', views.option2, name='option2'),
-	url(r'^north/$', views.north, name='north'),
-	url(r'^need_delivery/$', views.need_delivery, name='need_delivery'),
-	url(r'^i_donated/$', views.i_donated, name='i_donated'),
-	url(r'^received_water/$', views.received_water, name='received_water'),
-	url(r'^service/$', views.service, name='service'),
-	url(r'^want_to_donate/$', views.want_to_donate, name='want_to_donate'),
-	url(r'^want_to_volunteer/$', views.want_to_volunteer, name='want_to_volunteer'),
-	url(r'^we_will_distribute/$', views.we_will_distribute, name='we_will_distribute')
+	url(r'^request_delivery/$', views.request_delivery, name='request_delivery'),
+	url(r'^organization_offer/$', views.organization_offer, name='organization_offer'),
+	url(r'^individual_offer/$', views.individual_offer, name='individual_offer'),
+	url(r'^index_old/$', views.index_old, name='index_old'),
 ]
