@@ -38,12 +38,52 @@ a:hover {text-decoration: none;}
 }
 
 .map-panel {
-    margin-bottom: 5em;
+    margin-bottom: 1em;
 }
 
 #map-canvas {
     margin: 2em 0em;
     height: 50em;
+}
+
+.user-button-holder {
+  margin-top: 6em;
+}
+
+.user-button {
+  font-size: 1.5em;
+  margin-left: 2em;
+  margin-bottom: 2em;
+  border: 2px #b3b3b3 solid;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  cursor: hand;
+  margin-right: 5px;
+}
+
+
+/* Search results style */
+
+.location-results {
+  border: 1px solid #b3b3b3;
+  margin-bottom: 2em;
+}
+
+.location-results h2 {
+  color: #286090;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.location-result {
+  background-color: #F2F2F2;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.location-name {
+  color: #1d4568;
 }
 
 .schedule-header {
@@ -158,6 +198,10 @@ a:hover {text-decoration: none;}
 
 .blue-bg {
     background-color: #00A2FF;
+}
+
+.dk-blue-bg {
+    background-color: #1d4568;
 }
 
 .lt-blue-bg {
