@@ -35,18 +35,18 @@
                     {% for location in locations %}
                         <div class="row">
                             <div class="col-xs-10 col-xs-offset-1 location-result">
-                                <p><h3 class="location-name">{{location.name}}<span class="glyphicon glyphicon-tint pull-right"></span><span class="glyphicon glyphicon-filter pull-right"></span></h3>
+                                <p><h3 class="location-name">{{location.org_name}}<span class="glyphicon glyphicon-tint pull-right"></span><span class="glyphicon glyphicon-filter pull-right"></span></h3>
                                     <br>{{location.address}}
                                     <br>Phone: {{location.phone}}
                                 </p>
                                 <ul>
-                                    {% if location.monday_dist %}<li><b>Monday distribution hours: </b>{{location.monday_dist}}</li>{% endif %}
-                                    {% if location.tuesday_dist %}<li><b>Tuesday distribution hours: </b>{{location.tuesday_dist}}</li>{% endif %}
-                                    {% if location.wednesday_dist %}<li><b>Wednesday distribution hours: </b>{{location.wednesday_dist}}</li>{% endif %}
-                                    {% if location.thursday_dist %}<li><b>Thursday distribution hours: </b>{{location.thursday_dist}}</li>{% endif %}
-                                    {% if location.friday_dist %}<li><b>Friday distribution hours: </b>{{location.friday_dist}}</li>{% endif %}
-                                    {% if location.saturday_dist %}<li><b>Saturday distribution hours: </b>{{location.saturday_dist}}</li>{% endif %}
-                                    {% if location.sunday_dist %}<b>Sunday distribution hours: </b>{{location.sunday_dist}}</li>{% endif %}
+                                    {% if location.monday_dist_start %}<li><b>Monday distribution hours: </b>{{location.monday_dist_start}}-{{location.monday_dist_end}}</li>{% endif %}
+                                    {% if location.tuesday_dist_start %}<li><b>Tuesday distribution hours: </b>{{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}</li>{% endif %}
+                                    {% if location.wednesday_dist_start %}<li><b>Wednesday distribution hours: </b>{{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}</li>{% endif %}
+                                    {% if location.thursday_dist_start %}<li><b>Thursday distribution hours: </b>{{location.thursday_dist_start}}-{{location.thursday_dist_end}}</li>{% endif %}
+                                    {% if location.friday_dist_start %}<li><b>Friday distribution hours: </b>{{location.friday_dist_start}}-{{location.friday_dist_end}}</li>{% endif %}
+                                    {% if location.saturday_dist_start %}<li><b>Saturday distribution hours: </b>{{location.saturday_dist_start}}-{{location.saturday_dist_end}}</li>{% endif %}
+                                    {% if location.sunday_dist_start %}<b>Sunday distribution hours: </b>{{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>{% endif %}
                             </div>
                             
                         </div>

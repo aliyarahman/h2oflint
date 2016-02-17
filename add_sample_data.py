@@ -4,32 +4,89 @@ from app.models import *
 from django.contrib.auth.models import User
 from django.utils import timezone
 from geopy.geocoders import GoogleV3
+import csv
 
 
-WaterDistributionLocation.objects.all().delete()
+# Pull up users since these will be needed to create
+try:
+    dev = User.objects.create_superuser(username="dev@h2oflint.com", email = "dev@h2oflint.com", password = "waterisahumanright", first_name = "Aliya", last_name = "Rahman")
+    dev.save()
+except:
+    pass
+dev = User.objects.filter(username="dev@h2oflint.com").first()
+
+try:
+    darnell = User.objects.create_superuser(username="darnell@h2oflint.com", email = "darnell@h2oflint.com", password = "parney37", first_name = "Darnell", last_name = "Ishmel")
+    darnell.save()
+except:
+    pass
+darnell = User.objects.filter(username="darnell@h2oflint.com").first()
 
 
-# Add basic info
-antioch = WaterDistributionLocation(name = "Antioch Missionary Baptist Church", address = "1401 E Stewart Ave", zipcode = "48505", phone = "810 785-4060", limits = "4 cases per person", region = "North", tuesday_dist = "10am-2pm", friday_dist = "10am-2pm")
-azusa = WaterDistributionLocation(name = "Greater Friendship Azusa Ministries COGIC", address = "Detroit Street", zipcode = "48505", phone = "810 785-6000", limits = "Take what you need", region = "North")
-bethel = WaterDistributionLocation(name = "Bethel United Methodist Church", address = "1309 N Ballenger Hwy", zipcode = "48504", phone = "810 238-3843", region = "North")
-joy = WaterDistributionLocation(name = "Joy Tabernacle Church", address = "2505 N Chevrolet Ave", zipcode = "48504", phone = "810 234-8790", region = "North", limits = "Take what you need", saturday_dist = "Feb 13, 11am-4pm")
-holy = WaterDistributionLocation(name = "Greater Holy Temple", address = "6702 N Dort Hwy", zipcode = "48505", region = "North")
-
-antioch.save()
-azusa.save()
-bethel.save()
-joy.save()
-holy.save()
 
 
-# Add geocode
-locations = WaterDistributionLocation.objects.all()
+# Add organizations with their regular distribution schedules
 
-for location in locations:
-    address_to_code = location.address + ", " + location.city + ", " + location.state + " "+ location.zipcode
-    geolocator = GoogleV3()
-    address, (location.latitude, location.longitude) = geolocator.geocode(address_to_code)
-    print location.latitude
-    location.save()
+Organization.objects.all().delete()
 
+with open('distributions.csv', 'rbU') as csvfile:
+    organizations = csv.DictReader(csvfile, delimiter=',', quotechar='"')
+
+    for index, row in enumerate(organizations):
+        print row
+
+        name = row['name'].strip()
+        address = row['address'].strip()
+        city = row['city'].strip()
+        state = row['state'].strip()
+        zipcode = row['zipcode'].strip()
+        phone = row['phone'].strip()
+        website = row['website'].strip()
+        email = row['email'].strip()
+        limits = row['limits'].strip()
+        mon_dist_start = row['monday_dist'].split("-")[0]
+        try:
+            mon_dist_end = row['monday_dist'].split("-")[1]
+        except: 
+            mon_dist_end = ""
+        tue_dist_start = row['tuesday_dist'].split("-")[0]
+        try:
+            tue_dist_end = row['tuesday_dist'].split("-")[1]
+        except: 
+            tue_dist_end = ""
+        wed_dist_start = row['wednesday_dist'].split("-")[0]
+        try:
+            wed_dist_end = row['wednesday_dist'].split("-")[1]
+        except: 
+            wed_dist_end = ""
+        thu_dist_start = row['thursday_dist'].split("-")[0]
+        try:
+            thu_dist_end = row['thursday_dist'].split("-")[1]
+        except: 
+            thu_dist_end = ""
+        fri_dist_start = row['friday_dist'].split("-")[0]
+        try:
+            fri_dist_end = row['friday_dist'].split("-")[1]
+        except: 
+            fri_dist_end = ""
+        sat_dist_start = row['saturday_dist'].split("-")[0]
+        try:
+            sat_dist_end = row['saturday_dist'].split("-")[1]
+        except: 
+            sat_dist_end = ""
+        sun_dist_start = row['sunday_dist'].split("-")[0]
+        try:
+            sun_dist_end = row['sunday_dist'].split("-")[1]
+        except: 
+            sun_dist_end = ""
+        
+
+
+        address_to_code = address + ", " + city + ", " + state + " "+ zipcode
+        geolocator = GoogleV3()
+        address, (latitude, longitude) = geolocator.geocode(address_to_code)
+
+        o = Organization(contact = dev, org_name = name, address=address, city=city, state=state, zipcode=zipcode, phone=phone, website=website, email=email, latitude=latitude, longitude=longitude, has_water=True, monday_dist_start = mon_dist_start, monday_dist_end = mon_dist_end, tuesday_dist_start = tue_dist_start, tuesday_dist_end = tue_dist_end, wednesday_dist_start = wed_dist_start, wednesday_dist_end = wed_dist_end, thursday_dist_start = thu_dist_start, thursday_dist_end = thu_dist_end, friday_dist_start = fri_dist_start, friday_dist_end = fri_dist_end, saturday_dist_start = sat_dist_start, saturday_dist_end = sat_dist_end, sunday_dist_start = sun_dist_start, sunday_dist_end = sun_dist_end, date_created=timezone.now())
+
+
+        o.save()
