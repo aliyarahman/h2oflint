@@ -30,6 +30,9 @@ class H2OFlintDeliveryDate(models.Model):
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
+    def __unicode__(self):
+        return self.weekday+" "+self.month + " "+self.date+", "+self.start_time+"-"+self.end_time+" delivery run"
+
 
 class DeliveryRequest(models.Model):
     delivery_date = models.ForeignKey(H2OFlintDeliveryDate)
@@ -50,6 +53,9 @@ class DeliveryRequest(models.Model):
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
+    def __unicode__(self):
+        return self.recipient_first+" "+self.recipient_last + ", "+self.recipient_address+" for "+unicode(self.delivery_date)
+
 
 class IndividualHelper(models.Model):
     user = models.ForeignKey(User)
@@ -64,8 +70,12 @@ class IndividualHelper(models.Model):
     latitude = models.FloatField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
+    def __unicode__(self):
+        return self.user.first_name+" "+self.user.last_name
+
 
 class IndividualHelpOffer(models.Model):
+    individual_helper = models.ForeignKey(IndividualHelper, null=True, blank=True)
     wants_to_volunteer = models.BooleanField(default=False)
     group_size = models.IntegerField(null=True, blank=True)
     will_unload = models.BooleanField(default=False)
@@ -105,11 +115,13 @@ class IndividualHelpOffer(models.Model):
     park_and_serve_month = models.CharField(max_length=9, null=True, blank=True)
     park_and_serve_date = models.CharField(max_length=2, null=True, blank=True)
     park_and_serve_year = models.CharField(max_length=4, default="2016")
-    park_and_serve_start_time = models.CharField(max_length=8)
-    park_and_serve_end_time = models.CharField(max_length=8)
+    park_and_serve_start_time = models.CharField(max_length=8, null=True, blank=True)
+    park_and_serve_end_time = models.CharField(max_length=8, null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
+    def __unicode__(self):
+        return unicode(self.individual_helper) +" "+unicode(self.date_created)
 
 
 class Organization(models.Model):
@@ -156,10 +168,15 @@ class Organization(models.Model):
     sunday_dist_end = models.CharField(max_length=8, null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
+    def __unicode__(self):
+        return self.org_name
+
+
 
 class DistributionEvent(models.Model):
-    weekday = models.CharField(max_length=9, null=True, blank=True)
     organization = models.ForeignKey(Organization)
+    event_name = models.CharField(max_length=45, default="Distribution Event")
+    weekday = models.CharField(max_length=9, null=True, blank=True)
     month = models.CharField(max_length=9, null=True, blank=True)    
     date = models.CharField(max_length=2, null=True, blank=True)
     time_start = models.CharField(max_length=8, null=True, blank=True)
@@ -191,29 +208,5 @@ class DistributionEvent(models.Model):
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
-
-########Phasing out############################
-
-
-'''
-class WaterDistributionLocation(models.Model):
-    name = models.CharField(max_length=200, null=True, blank=True)
-    address = models.CharField(max_length=200, null=True, blank=True)
-    city = models.CharField(max_length=45, default = "Flint")
-    state = models.CharField(max_length=4, default = "MI")
-    zipcode = models.CharField(max_length=10, null=True, blank=True)
-    phone = models.CharField(max_length=20, null=True, blank=True)
-    region = models.CharField(max_length=20, null=True, blank=True)
-    longitude = models.FloatField(default = -83.6874562)
-    latitude = models.FloatField(default = 43.0125274)
-    monday_dist = models.CharField(max_length=200, null=True, blank=True)
-    tuesday_dist = models.CharField(max_length=200, null=True, blank=True)
-    wednesday_dist = models.CharField(max_length=200, null=True, blank=True)
-    thursday_dist = models.CharField(max_length=200, null=True, blank=True)
-    friday_dist = models.CharField(max_length=200, null=True, blank=True)
-    saturday_dist = models.CharField(max_length=200, null=True, blank=True)
-    sunday_dist = models.CharField(max_length=200, null=True, blank=True)
-    limits = models.CharField(max_length=200, null=True, blank=True)
-    date_added = models.CharField('date added', null=True, blank=True)
-    notes = models.TextField(null=True, blank=True)
-'''
+    def __unicode__(self):
+        return self.organization.org_name +" "+ self.event_name+", " + self.weekday+" "+self.month + " "+self.date

@@ -13,6 +13,12 @@ a:hover {text-decoration: none;}
     vertical-align: middle;
 }
 
+video {
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
 .share-buttons img {
     height: 2em;
 }
@@ -29,8 +35,21 @@ a:hover {text-decoration: none;}
     width: 100%;
 }
 
+.search-head-wrapper {
+    width: 100%;
+    margin-top: -20em;
+    position: absolute;
+    background-color: rgba(54,54,66,0.65);
+    padding: 0.25em 1em 1em 1em;
+}
+
 .search-headline {
-    margin-bottom: 1em;
+    color: #fff;
+    font-size: 5em;
+}
+
+.search-subheadline {
+    color: #fff;
 }
 
 .search-bar input, .search-bar button {
@@ -217,6 +236,7 @@ a:hover {text-decoration: none;}
 .navbar-default {
   background-color: #286090;
   border-color: #223490;
+  margin-bottom: 0px;
 }
 .navbar-default .navbar-brand {
   color: #f8feff;
@@ -284,6 +304,16 @@ a:hover {text-decoration: none;}
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #d3d8f0;
     background-color: #1d4568;
+  }
+
+  .search-head-wrapper {
+    margin-top: -15.5em;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .search-headline {
+    font-size: 3em;
   }
 }
 

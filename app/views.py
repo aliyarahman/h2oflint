@@ -25,6 +25,9 @@ def individual_offer(request):
     return render(request, "individual_offer.html", {'form' : form})
 
 
-def index_old(request):
-    locations = WaterDistributionLocation.objects.all()
-    return render(request, "index_old.html", {'locations' : locations})
+def about(request):
+    return render(request, "about.html")
+
+
+def faq(request):
+    return render(request, "faq.html")
