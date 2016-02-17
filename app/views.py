@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from geopy.distance import vincenty
 from geopy.geocoders import GoogleV3
-from app.models import WaterDistributionLocation
-from app.forms import RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm
+from app.models import *
+from app.forms import AddDeliveryDateForm, RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm
 
 def index(request):
-    locations = WaterDistributionLocation.objects.all()
+    locations = Organization.objects.all()
+    events = DistributionEvent.objects.all()
     return render(request, "index.html", {'locations' : locations})
 
 
