@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <video autoplay loop poster="">
+            <video autoplay loop poster="{% static 'img/banner_poster.jpg' %}">
                 <source src="{% static 'img/banner_video.mp4' %}" type="video/mp4" />
                 <source src="{% static 'img/banner_video.webm' %}" type="video/webm">
             </video>
@@ -15,12 +15,10 @@
     <div class="row container-fluid">
         <div class="col-xs-12">
             <div class="row">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="search-head-wrapper">
+                <div class="row search-head-wrapper">
+                    <div class="col-xs-12 ">
                             <h1 class="search-headline text-center"><b>FIND OR OFFER HELP</b></h1>
-                            <h2 class="search-subheadline text-center"><b>Through Flint community members</b></h2>
-                        </div>
+                            <h2 class="search-subheadline text-center"><b>Through Flint community 
                     </div>
                 </div>
 
