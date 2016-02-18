@@ -23,6 +23,13 @@ except:
 darnell = User.objects.filter(username="darnell@h2oflint.com").first()
 
 
+try:
+    sam = User.objects.create_superuser(username="sam@h2oflint.com", email = "sam@h2oflint.com", password = "waterisahumanright", first_name = "Samantha", last_name = "Parsons")
+    sam.save()
+except:
+    pass
+sam = User.objects.filter(username="sam@h2oflint.com").first()
+
 
 
 # Add organizations with their regular distribution schedules
