@@ -46,6 +46,9 @@ def search(request):
 def about(request):
     return render(request, "about.html")
 
+def data(request):
+    return render(request, "data.html")
+
 
 def faq(request):
     return render(request, "faq.html")

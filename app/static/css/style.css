@@ -6,6 +6,10 @@ body {
 
 a:hover {text-decoration: none;}
 
+.logo img {
+  height: 100%;
+}
+
 .share-buttons {
     color: #939393;
     margin-top: 20px;
