@@ -122,3 +122,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Email settings
+
+DEFAULT_FROM_EMAIL = 'northflintwater@gmail.com'
+SERVER_EMAIL = 'northflintwater@gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'northflintwater@gmail.com'
+EMAIL_HOST_PASSWORD = 'parney38'
