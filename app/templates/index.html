@@ -12,75 +12,97 @@
         </div>
     </div>
 
-    <div class="row container-fluid">
-        <div class="col-xs-12">
-            <div class="row">
-                <div class="row search-head-wrapper">
-                    <div class="col-xs-12 ">
-                            <h1 class="search-headline text-center"><b>FIND OR OFFER HELP</b></h1>
-                            <h2 class="search-subheadline text-center"><b>Through Flint community 
-                    </div>
-                </div>
-
-                <div class="row search-bar">
-                    <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-1">
-                        <input type="text" class="form-control input-lg" placeholder="Enter your address or zip code">
-                    </div>
-                    <div class="col-xs-12 col-md-2 text-center">
-                        <button type-"button" class="btn btn-lg btn-primary">Find water</button>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-xs-12 col-md-10 col-md-offset-1 map-panel">
-                        <div id="map-canvas" class="img-responsive">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-8 location-results"><h2>Search Results Near You</h2>
-                    {% for location in locations %}
-                        <div class="row">
-                            <div class="col-xs-10 col-xs-offset-1 location-result">
-                                <p><h3 class="location-name">{{location.org_name}}<span class="glyphicon glyphicon-tint pull-right"></span><span class="glyphicon glyphicon-filter pull-right"></span></h3>
-                                    <br>{{location.address}}
-                                    <br>Phone: {{location.phone}}
-                                </p>
-                                <ul>
-                                    {% if location.monday_dist_start %}<li><b>Monday distribution hours: </b>{{location.monday_dist_start}}-{{location.monday_dist_end}}</li>{% endif %}
-                                    {% if location.tuesday_dist_start %}<li><b>Tuesday distribution hours: </b>{{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}</li>{% endif %}
-                                    {% if location.wednesday_dist_start %}<li><b>Wednesday distribution hours: </b>{{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}</li>{% endif %}
-                                    {% if location.thursday_dist_start %}<li><b>Thursday distribution hours: </b>{{location.thursday_dist_start}}-{{location.thursday_dist_end}}</li>{% endif %}
-                                    {% if location.friday_dist_start %}<li><b>Friday distribution hours: </b>{{location.friday_dist_start}}-{{location.friday_dist_end}}</li>{% endif %}
-                                    {% if location.saturday_dist_start %}<li><b>Saturday distribution hours: </b>{{location.saturday_dist_start}}-{{location.saturday_dist_end}}</li>{% endif %}
-                                    {% if location.sunday_dist_start %}<b>Sunday distribution hours: </b>{{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>{% endif %}
-                            </div>
-                            
-                        </div>
-                    {% endfor %}
-                    </div>
-                    <div class="col-xs-4 user-button-holder">
-                        <div class="user-button text-center dk-blue-bg white-text">I need water delivered to my home</div>
-                        <div class="user-button text-center dk-blue-bg white-text">I need another kind of assistance</div>
-                        <div class="user-button text-center dk-blue-bg white-text">I want to give feedback about a distribution center experience</div>
-                        <div class="user-button text-center dk-blue-bg white-text">I received water or other help and want to leave a message about it</div>
-                        
-                        <br><br><br>
-
-                        <div class="user-button text-center purple-bg white-text">I want to volunteer</div>
-                        <div class="user-button text-center purple-bg white-text">I want to donate water, supplies, or money</div>
-
-                        <br><br><br>
-                        <div class="user-button text-center extra-lt-purple-bg white-text">My organization can distribute water or supplies</div>
-                        <div class="user-button text-center extra-lt-purple-bg white-text">My organization can help another way</div>
-                    </div>
-                </div>
-
+    <div class="row">
+        <div class="container-fluid">
+            <div class="col-xs-12 search-head-wrapper">
+                    <h1 class="search-headline text-center"><b>FIND OR OFFER HELP</b></h1>
+                    <h2 class="search-subheadline text-center"><b>Through Flint community members</b>
             </div>
         </div>
     </div>
+
+    <div class="container-fluid">
+        <div class="row search-bar text-center">
+            <div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-3">
+                <input type="text" class="form-control input-lg" placeholder="Enter your address or zip code">
+            </div>
+            <div class="col-xs-12 col-md-2 text-center">
+                <button type-"button" class="btn btn-lg btn-primary">Find resources</button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1 map-panel">
+                <div id="map-canvas" class="img-responsive">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 location-results"><h2>Search Results Near You</h2>
+            {% for location in locations %}
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1 location-result">
+                        <h3 class="location-name"><b>{{location.org_name}}</b><span class="glyphicon glyphicon-tint pull-right"></span><span class="glyphicon glyphicon-filter pull-right"></span></h3>
+                        <p>
+                            {{location.address}}
+                            <br>Phone: {{location.phone}}
+                        </p>
+                        
+                        Distribution hours:
+                        <ul>
+
+                            {% if location.monday_dist_start %}
+                            <li><b>Monday:</b> {{location.monday_dist_start}}-{{location.monday_dist_end}}</li>
+                            {% endif %}
+
+                            {% if location.tuesday_dist_start %}
+                            <li><b>Tuesday:</b> {{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}</li>
+                            {% endif %}
+
+                            {% if location.wednesday_dist_start %}
+                            <li><b>Wednesday:</b> {{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}</li>
+                            {% endif %}
+
+                            {% if location.thursday_dist_start %}
+                            <li><b>Thursday:</b> {{location.thursday_dist_start}}-{{location.thursday_dist_end}}</li>{% endif %}
+
+                            {% if location.friday_dist_start %}
+                            <li><b>Friday:</b> {{location.friday_dist_start}}-{{location.friday_dist_end}}</li>
+                            {% endif %}
+
+                            {% if location.saturday_dist_start %}
+                            <li><b>Saturday:</b> {{location.saturday_dist_start}}-{{location.saturday_dist_end}}</li>
+                            {% endif %}
+
+                            {% if location.sunday_dist_start %}
+                            <b>Sunday:</b> {{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>
+                            {% endif %}
+                    </div>
+                    
+                </div>
+            {% endfor %}
+            </div>
+            <div class="col-xs-12 user-button-holder">
+                <div class="user-button text-center dk-blue-bg white-text">I need water delivered to my home</div>
+                <div class="user-button text-center dk-blue-bg white-text">I need another kind of assistance</div>
+                <div class="user-button text-center dk-blue-bg white-text">I want to give feedback about a distribution center experience</div>
+                <div class="user-button text-center dk-blue-bg white-text">I received water or other help and want to leave a message about it</div>
+                
+                <br><br><br>
+
+                <div class="user-button text-center purple-bg white-text">I want to volunteer</div>
+                <div class="user-button text-center purple-bg white-text">I want to donate water, supplies, or money</div>
+
+                <br><br><br>
+                <div class="user-button text-center extra-lt-purple-bg white-text">My organization can distribute water or supplies</div>
+                <div class="user-button text-center extra-lt-purple-bg white-text">My organization can help another way</div>
+            </div>
+        </div>
+    </div>
+
+
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7cQS9WA8nCS92ofzoQ0UtrKA6drw6fOI">
     </script>
