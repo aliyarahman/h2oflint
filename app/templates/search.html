@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-11 col-xs-offset-1">
+            <h1 class='blue-text'><br><b>Search distribution sites</b></h1>
+            <table class="table table-striped table-hover table-responsive locations-table">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Has<br>Water</th>
+                    <th>Has<br>Filters</th>
+                    <th>Has<br>Baby supplies</th>
+                    <th>Needs<br>Volunteers</th>
+                    <th>Monday<br>schedule</th>
+                    <th>Tuesday<br>schedule</th>
+                    <th>Wednesday<br>schedule</th>
+                    <th>Thursday<br>schedule</th>
+                    <th>Friday<br>schedule</th>
+                    <th>Saturday<br>schedule</th>
+                    <th>Sunday<br>schedule</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for location in locations %}
+                <tr>
+                    <td>
+                        <div class="blue-text"><b>{{ location.org_name }}</b></div>
+                        <div>{{location.address}}</div>
+                    </td>
+
+                    <td>{{ location.has_water }}</td>
+                    <td>{{ location.has_filters }}</td>
+                    <td>{{ location.other_supplies_on_hand }}</td>
+                    <td>{{ location.needs_volunteers}}</td>
+                    <td>{% if location.monday_dist_start != '' %}{{location.monday_dist_start}}-{{location.monday_dist_end}}{% endif%}</td>
+                    <td>{% if location.tuesday_dist_start != '' %}{{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}{% endif%}</td>
+                    <td>{% if location.wednesday_dist_start != '' %}{{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}{% endif%}</td>
+                    <td>{% if location.thursday_dist_start != '' %}{{location.thursday_dist_start}}-{{location.thursday_dist_end}}{% endif%}</td>
+                    <td>{% if location.friday_dist_start != '' %}{{location.friday_dist_start}}-{{location.friday_dist_end}}{% endif%}</td>
+                    <td>{% if location.saturday_dist_start != '' %}{{location.saturday_dist_start}}-{{location.saturday_dist_end}}{% endif %}</td>
+                    <td>{% if location.sunday_dist_start != '' %}{{location.sunday_dist_start}}-{{location.sunday_dist_end}}{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

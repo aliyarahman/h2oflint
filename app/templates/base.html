@@ -1,3 +1,5 @@
+
+
 {% load staticfiles %}
 
 <!DOCTYPE html>
@@ -52,7 +54,9 @@
             </div>
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
-                    <a class="navbar-brand" href="{% url 'index' %}"><span class="glyphicon glyphicon-map-marker"></span>h2oflint</a>
+                    <li><a class="navbar-brand" href="{% url 'index' %}"><span class="glyphicon glyphicon-map-marker"></span>h2oflint</a></li>
+                    <li><a class="navbar-brand" href="{% url 'about' %}">About</a></li>
+                    <li><a class="navbar-brand" href="{% url 'faq' %}">FAQ</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'request_delivery' %}">I'm looking for help</a></li>
@@ -60,6 +64,7 @@
                 <li><a href="{% url 'organization_offer' %}">My organization can help</a></li>
                 <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.h2oflint.com&t=Find+Or+Offer+Help+In+Flint"><span class="share-buttons"><img src="{% static 'img/facebook.png' %}"></a></li>
                 <li><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.h2oflint.com&text=Find%20Or%20Offer%20Help%20In%20Flint%20%21"><span class="share-buttons"><img src="{% static 'img/twitter.png' %}"></a></li>
+                <li><a href="https://www.instagram.com/flint_h20/"><span class="share-buttons"><img src="{% static 'img/instagram.png' %}"></a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
@@ -73,23 +78,23 @@
         {% endblock %}
 
         <footer>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-12 text-center">
-                            <h3><b>Keyword Text</b>: "FlintH2o" to "24587"</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <h3><b>Keyword Text</b>: "FlintH2o" to "24587"</h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-10 col-xs-offset-1 text-center">
-                            <h3>Tweet live updates on water resources and services available: <a href="http://www.twitter.com/flint_h2o" class="white-text"><b><u>@flint_h20</u></b></a></h3>
-                            <p class="twitter-icon"><a href="https://twitter.com/flint_h2o"><img src="{% static 'img/twitter-icon.jpg' %}"/></a></p>
+                        <div class="row">
+                            <div class="col-xs-10 col-xs-offset-1 text-center">
+                                <h3>Tweet live updates on water resources and services available: <a href="http://www.twitter.com/flint_h2o" class="white-text"><b><u>@flint_h20</u></b></a></h3>
+                                <p class="twitter-icon"><a href="https://twitter.com/flint_h2o"><img src="{% static 'img/twitter-icon.jpg' %}"/></a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </footer>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

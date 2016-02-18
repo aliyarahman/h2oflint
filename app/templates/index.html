@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% block content %}
 {% load staticfiles %}
@@ -22,32 +23,28 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row search-bar text-center">
-            <div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-3">
-                <input type="text" class="form-control input-lg" placeholder="Enter your address or zip code">
-            </div>
-            <div class="col-xs-12 col-md-2 text-center">
-                <button type-"button" class="btn btn-lg btn-primary">Find resources</button>
-            </div>
-        </div>
-
-
+       
         <div class="row">
-            <div class="col-xs-12 col-md-10 col-md-offset-1 map-panel">
-                <div id="map-canvas" class="img-responsive">
+            <div class="col-xs-10 col-xs-offset-1 col-md-5 todays-locations">
+                <h2 class="blue-text">Distribution Centers Open Today</h2>
+
+                <div class="results-legend">
+                    <span class="results-legend-item"><span class="glyphicon glyphicon-tint blue-text"></span> = Has water</span>
+                    <span class="results-legend-item"><span class="glyphicon glyphicon-filter blue-text"></span> = Has filters</span>
+                    <span class="results-legend-item"><span class="glyphicon glyphicon-bold blue-text"></span> = Has baby supplies</span>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 location-results"><h2>Search Results Near You</h2>
+
             {% for location in locations %}
                 <div class="row">
                     <div class="col-xs-10 col-xs-offset-1 location-result">
-                        <h3 class="location-name"><b>{{location.org_name}}</b><span class="glyphicon glyphicon-tint pull-right"></span><span class="glyphicon glyphicon-filter pull-right"></span></h3>
+                        <div class="col-xs-10">
+                        <h3 class="location-name"><b>{{location.org_name}}</b></h3>
                         <p>
                             {{location.address}}
-                            <br>Phone: {{location.phone}}
+                            {% if location.phone != '' %}<br><b>Phone</b>: {{location.phone}}{% endif %}
+                            {% if location.website != '' %}<br><b>Website</b>: <a href="{{location.website}}">{{location.website}}</a>{% endif %}
+                            {% if location.email != '' %}<br><b>Email</b>: {{location.email}}{% endif %}
                         </p>
                         
                         Distribution hours:
@@ -79,25 +76,65 @@
                             {% if location.sunday_dist_start %}
                             <b>Sunday:</b> {{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>
                             {% endif %}
+                        </div>
+                        <div class="col-xs-2 icon-holder">  <h3 class="blue-text">
+                            {% if location.has_water == True %}
+                                <span class="glyphicon glyphicon-tint pull-right"></span>
+                            {% endif %}
+                            {% if location.has_filters == True %}
+                                <span class="glyphicon glyphicon-filter pull-right"></span>
+                            {% endif %}
+                            </h3>
+                        </div>
                     </div>
-                    
                 </div>
+
             {% endfor %}
             </div>
-            <div class="col-xs-12 user-button-holder">
-                <div class="user-button text-center dk-blue-bg white-text">I need water delivered to my home</div>
-                <div class="user-button text-center dk-blue-bg white-text">I need another kind of assistance</div>
-                <div class="user-button text-center dk-blue-bg white-text">I want to give feedback about a distribution center experience</div>
-                <div class="user-button text-center dk-blue-bg white-text">I received water or other help and want to leave a message about it</div>
+
+            <div class="col-xs-12 col-md-6 map-panel">
                 
-                <br><br><br>
+                <div class="row search-bar text-center">
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control input-lg" placeholder="Enter your address or zip code to zoom to your area">
+                    </div>
+                    <div class="col-xs-12 col-md-2 text-center">
+                        <button type-"button" class="btn btn-lg btn-primary">Zoom in</button>
+                    </div>
 
-                <div class="user-button text-center purple-bg white-text">I want to volunteer</div>
-                <div class="user-button text-center purple-bg white-text">I want to donate water, supplies, or money</div>
+                </div>
 
-                <br><br><br>
-                <div class="user-button text-center extra-lt-purple-bg white-text">My organization can distribute water or supplies</div>
-                <div class="user-button text-center extra-lt-purple-bg white-text">My organization can help another way</div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="pull-right search-list-button">or <button onClick='location.href="{% url 'search' %}"' class="btn btn-lg info">Search all sites
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div id="map-canvas" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row text-center">
+            <div class="col-xs-12 col-md-3 col-md-offset-1 user-button-holder text-center">
+                <h2>I'm a Flint resident looking for assistance</h2>
+                <div onClick='location.href="{% url 'request_delivery' %}"' class="user-button text-center dk-blue-bg white-text">I need water or supplies delivered to my home</div>
+                <!--<div class="user-button text-center dk-blue-bg white-text">I want to give feedback about a distribution center experience</div>-->
+            </div>
+                
+            <div class="col-xs-12 col-md-3 user-button-holder">
+                <h2>I'm an individual who wants to help</h2>
+                <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center purple-bg white-text">I want to volunteer</div>
+                <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center purple-bg white-text">I want to donate water, supplies, or money</div>
+            </div>
+
+            <div class="col-xs-12 col-md-3 user-button-holder">
+                <h2>My organization needs or can offer help</h2>
+                <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center extra-lt-purple-bg white-text">We can provide volunteers or distribute water or supplies</div>
+                <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center extra-lt-purple-bg white-text">We need volunteers or help distributing</div>
             </div>
         </div>
     </div>

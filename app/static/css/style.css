@@ -52,11 +52,15 @@ video {
 }
 
 .search-bar {
-  margin-top: 2em;
+  margin-top: 8em;
 }
 
-.search-bar input, .search-bar button {
-    margin-top: 1em;
+.search-list-button {
+  margin-top: 1em;
+}
+
+.search-list-button button {
+  margin-left: 1em;
 }
 
 .map-panel {
@@ -69,13 +73,13 @@ video {
 }
 
 .user-button-holder {
-  margin-top: 6em;
+  margin-top: 2em;
+  margin-bottom: 6em;
 }
 
 .user-button {
   font-size: 1.5em;
-  margin-left: 2em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   border: 2px #b3b3b3 solid;
   border-radius: 5px;
   padding: 10px;
@@ -87,88 +91,78 @@ video {
 
 /* Search results style */
 
-.location-results {
+.results-legend {
   margin-bottom: 2em;
 }
 
-.location-results h2 {
-  color: #286090;
+.results-legend span {
+  margin-left: 1em;
+}
+
+.todays-locations {
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+.todays-locations h2 {
   font-weight: bold;
   margin-bottom: 1em;
 }
 
 .location-result {
   background-color: #F2F2F2;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 1em;
+  margin-bottom: 2em;
 }
 
 .location-name {
   color: #1d4568;
-}
-
-.schedule-header {
-    padding-top: 2em;
-    padding-bottom: 2em;
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
-
-.schedule-header h1 {
-    font-weight: bold;
-    color: black;
-}
-
-.region-button {
-    margin: 0em 0em;
-    border: 3px double;
-    cursor: pointer;
-    cursor: hand;
-}
-
-.region-button a {
-    color: black;
-}
-
-.region-button h1 {
-    font-weight: bold;
-    font-size: 4.5em;
-    padding-top: 0.75em;
-    padding-bottom: 0.75em;
-}
-
-.region-button h2 {
-    padding-top: 0.75em;
-    padding-bottom: 0.75em;
+  margin-top: 0.5em;
 }
 
 
-.distribute-header {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    margin: 1em 0em;
+.locations-table .schedule-entry  {
+  padding: auto 0em;
 }
 
-.distribute-header h2 {
-    font-size: 2.75em;
+.photo-wrapper img {
+  width: 100%;
 }
 
-.twitter-icon img{
-    margin-top: 1em;
-    height: 4em;
+.form-header {
+  font-weight: bold;
+  margin: 1em auto 2em auto;
 }
+
+.about-header {
+  font-weight: bold;
+  margin: 1em auto 1em auto;
+}
+
+.submit-button-wrapper {
+  margin: 2em auto;
+}
+
+label {
+  margin-left: 2em;
+}
+
+.caption {
+  margin-top: 1em;
+  text-align: justify;
+}
+
 
 .white-text {
     color: #ffffff;
 }
 
-.red-text {
-    color: red;
+.blue-text {
+    color: #286090
 }
 
-.blue-text {
-    color: #0000FF
-}
+
+
 
 .yellow-bg {
     background-color: #FCF978;
@@ -326,6 +320,12 @@ video {
 /* Footer style */
 
 footer {
+  margin-top: 2em;
   background-color: #286090;
   color: white;
+}
+
+.twitter-icon img{
+    margin-top: 1em;
+    height: 4em;
 }

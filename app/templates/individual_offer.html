@@ -3,11 +3,30 @@
 {% load staticfiles %}
 
 
+<div class="container-fluid">
     <div class="row">
-
-        Donate resources or volunteer your time
-
+        <div class="col-xs-12 col-md-10 col-md-offset-2">
+            <h1 class="form-header blue-text">Donate resources or volunteer your time</h1>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-2">
+            {{ form.as_p }}
+            <div class="submit-button-wrapper text-center">
+                <button type="submit" class="btn btn-lg btn-success">Send this request</button> <button class="btn btn-lg btn-default">Cancel</button>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-4 col-md-offset-1">
+            <div class="photo-wrapper">
+                <img src="{% static 'img/pallettes_and_jugs_and_volunteers_portrait.jpg' %}">
+            </div>
+            <div class="caption">
+                <p><b>Taking care of our own</b>: Morbi et risus ultricies, aliquet metus et, dignissim odio. Sed venenatis mauris nec neque posuere, eget accumsan erat fringilla. Aliquam ut aliquam ipsum. Vestibulum vulputate sit amet erat in dignissim. In eu facilisis enim, id tempus ligula. Mauris ac nunc orci. Maecenas sodales porta ligula quis sollicitudin. Pellentesque sed neque gravida magna consectetur bibendum sit amet et quam.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
