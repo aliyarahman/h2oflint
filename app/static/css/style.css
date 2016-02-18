@@ -13,6 +13,7 @@ a:hover {text-decoration: none;}
     vertical-align: middle;
 }
 
+
 video {
   width: 100%;
   position: relative;
@@ -328,6 +329,9 @@ footer {
   color: white;
 }
 
+.copyright {
+  margin-top: 1em;
+}
 .twitter-icon img{
     margin-top: 1em;
     height: 4em;

@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>FNT.H2o Crisis - Easy Online Forms and Information</title>
+        <title>H2OFlint - Find or offer help through Flint community members</title>
         <meta name="title" content="H2oFlint - Easy Online Forms and Information"/>
 
         <!-- Bootstrap -->
@@ -20,10 +20,10 @@
         <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
         <!-- OpenGraph tags for social media sharing -->
-        <meta property="og:title" content="H2oFlint - Easy Online Forms and Information" />
+        <meta property="og:title" content="H2OFlint - Find or offer help through Flint community members" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://52.34.192.147" />
-        <meta property="og:site_name" content="H2oFlint" />
+        <meta property="og:url" content="http://www.h2oflint.com" />
+        <meta property="og:site_name" content="H2OFlint" />
         <meta property="og:image" content="{% static 'img/opengraph_image.jpg' %}" />
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -34,6 +34,18 @@
         <![endif]-->
         <!-- swf object -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+        <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-74043800-1', 'auto');
+              ga('send', 'pageview');
+
+        </script>
+
     </head>
 
     <body>
@@ -63,13 +75,13 @@
                 <li><a href="{% url 'individual_offer' %}">I can help</a></li>
                 <li><a href="{% url 'organization_offer' %}">My organization can help</a></li>
                 <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.h2oflint.com&t=Find+Or+Offer+Help+In+Flint"><span class="share-buttons"><img src="{% static 'img/facebook.png' %}"></a></li>
-                <li><a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.h2oflint.com&text=Find%20Or%20Offer%20Help%20In%20Flint%20%21"><span class="share-buttons"><img src="{% static 'img/twitter.png' %}"></a></li>
+                <li>
+                <a href="http://twitter.com/share?url=http%3A%2F%2Fwww.h2oflint.com&text=H2O%20Flint%20lets%20folks%20find%20or%20share%20help%20through%20Flint%20community%20members&via=flint_h2o" target="_blank"><span class="share-buttons"><img src="{% static 'img/twitter.png' %}"></a></li>
                 <li><a href="https://www.instagram.com/flint_h20/"><span class="share-buttons"><img src="{% static 'img/instagram.png' %}"></a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
         </nav>
-
         
 
 
@@ -82,14 +94,20 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="row">
-                            <div class="col-xs-12 text-center">
-                                <h3><b>Keyword Text</b>: "FlintH2o" to "24587"</h3>
+                            <div class="col-xs-12">
+                                <h3><b>Text "FlintH2o" to "24587"</b> to receive up-to-date distribution information by SMS or phone </h3>
+                                <h3>Got a live update from a water distribution site to add to this page? Tweet it to <a href="http://www.twitter.com/flint_h2o" class="white-text"><b><u>@flint_h2O</u></b></a></h3>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-10 col-xs-offset-1 text-center">
-                                <h3>Tweet live updates on water resources and services available: <a href="http://www.twitter.com/flint_h2o" class="white-text"><b><u>@flint_h20</u></b></a></h3>
-                                <p class="twitter-icon"><a href="https://twitter.com/flint_h2o"><img src="{% static 'img/twitter-icon.jpg' %}"/></a></p>
+                            <div class="col-xs-12">
+                                <h4 class="white-text">For press inquiries, please email <b>press@h2oflint.com</b></h4>
+                                <h4 class="white-text">For other non-emergency help, please email <b>help@h2oflint.com</b></h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-center white-text copyright">
+                                Copyright © 2016 H2OFlint. All Rights Reserved.
                             </div>
                         </div>
                     </div>
