@@ -120,6 +120,9 @@ video {
   margin-top: 0.5em;
 }
 
+.icon-holder .glyphicon {
+  margin-bottom: 5px;
+}
 
 .locations-table .schedule-entry  {
   padding: auto 0em;
