@@ -21,6 +21,11 @@
                     <p><i>*Required field</i></p>
                 </div>
 
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>
+                    {% render_field form.on_behalf %}I am completing this form on behalf of someone else</label>
+                </div>
+
                 <div class="form-group">
                     <label>Delivery date*</label>
                     <p>To make the most of our volunteers' time, we schedule deliveries on set dates. If this is an emergency, please contact emergency services.</p>
@@ -28,47 +33,47 @@
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>First name*</label>
+                    <label>Recipient's first name*</label>
                     {% render_field form.recipient_first class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Last name*</label>
+                    <label>Recipient's last name*</label>
                     {% render_field form.recipient_last class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Street Address*</label>
-                    {% render_field form.recipient_address class+="form-control" type="email" required="true" placeholder="name@example.com" %}
+                    <label>Delivery address in Flint, MI*</label>
+                    {% render_field form.recipient_address class+="form-control" required="true" placeholder="name@example.com" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Zipcode*</label>
+                    <label>Delivery zipcode*</label>
                     <p>Please note that at this time, we only schedule delivery runs within Flint.</p>
                     {% render_field form.zipcode class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Phone*</label>
+                    <label>Recipient's phone*</label>
                     {% render_field form.recipient_phone class+="form-control" required="true" %}
                 </div>
                 
                 <div class="form-group">
-                    <label>How many people are in your household?*
+                    <label>How many people are in this household?*
                     {% render_field form.persons_in_household class+="form-control" required="true"  %}</label>
                 </div>
 
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Contact email address</label>
+                    <p>If you are completing this form for someone else, please enter an address where you can receive a confirmation email for this delivery request.</p>
+                    {% render_field form.email class+="form-control" %}
+                </div>
+
                 <div class="form-group">
-                    <label>How many cases of water do you need?*
+                    <label>How many cases of water are you requesting?*
                     {% render_field form.cases_requested class+="form-control" required="true"  %}</label>
                 </div>
             
-                
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>
-                    {% render_field form.on_behalf %}I am completing this form on behalf of someone else</label>
-                </div>
-
                 <hr>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
@@ -86,10 +91,6 @@
                     {% render_field form.contact_phone class+="form-control" %}
                 </div>
 
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Email address for person completing this form</label>
-                    {% render_field form.email class+="form-control" %}
-                </div>
 
 
                 <div class="form-group">
