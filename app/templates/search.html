@@ -32,10 +32,10 @@
                         <div>{{location.address}}</div>
                     </td>
 
-                    <td>{{ location.has_water }}</td>
-                    <td>{{ location.has_filters }}</td>
-                    <td>{{ location.other_supplies_on_hand }}</td>
-                    <td>{{ location.needs_volunteers}}</td>
+                    <td>{% if location.has_water == True %}Yes{% else %}{% endif %}</td>
+                    <td>{% if location.has_filters == True %}Yes{% else %}{% endif %}</td>
+                    <td>{% if location.has_wipes == True %}Yes{% else %}{% endif %}</td>
+                    <td>{% if location.needs_volunteers == True %}Yes{% else %}{% endif %}</td>
                     <td>{% if location.monday_dist_start != '' %}{{location.monday_dist_start}}-{{location.monday_dist_end}}{% endif%}</td>
                     <td>{% if location.tuesday_dist_start != '' %}{{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}{% endif%}</td>
                     <td>{% if location.wednesday_dist_start != '' %}{{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}{% endif%}</td>
