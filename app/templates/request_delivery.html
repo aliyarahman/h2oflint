@@ -6,24 +6,117 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-md-10 col-md-offset-2">
-            <h1 class="form-header blue-text">Request a home delivery</h1>
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+            <h1 class="form-header blue-text">Request a Home Delivery</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-md-4 col-md-offset-2">
-            {{ form.as_p }}
-            <div class="submit-button-wrapper text-center">
-                <button type="submit" class="btn btn-lg btn-success">Send this request</button> <button class="btn btn-lg btn-default">Cancel</button>
-            </div>
+            <form class="form-horizontal" role="form" action='.' method='post'>
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                <div class="form-subhead">
+                    <h3 class="blue-text">Your information</h3>
+                    <p><i>*Required field</i></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Delivery date*</label>
+                    <p>To make the most of our volunteers' time, we schedule deliveries on set dates. If this is an emergency, please contact emergency services.</p>
+                    {% render_field form.delivery_date class+="form-control" required="true"  %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>First name*</label>
+                    {% render_field form.recipient_first class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Last name*</label>
+                    {% render_field form.recipient_last class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Street Address*</label>
+                    {% render_field form.recipient_address class+="form-control" type="email" required="true" placeholder="name@example.com" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Zipcode*</label>
+                    <p>Please note that at this time, we only schedule delivery runs within Flint.</p>
+                    {% render_field form.zipcode class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Phone*</label>
+                    {% render_field form.recipient_phone class+="form-control" required="true" %}
+                </div>
+                
+                <div class="form-group">
+                    <label>How many people are in your household?*
+                    {% render_field form.persons_in_household class+="form-control" required="true"  %}</label>
+                </div>
+
+                <div class="form-group">
+                    <label>How many cases of water do you need?*
+                    {% render_field form.cases_requested class+="form-control" required="true"  %}</label>
+                </div>
+            
+                
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>
+                    {% render_field form.on_behalf %}I am completing this form on behalf of someone else</label>
+                </div>
+
+                <hr>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>First name of the person completing this form</label>
+                    {% render_field form.contact_first_name class+="form-control" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Last name of the person completing this form</label>
+                    {% render_field form.contact_last_name class+="form-control" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Phone number for person completing this form</label>
+                    {% render_field form.contact_phone class+="form-control" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Email address for person completing this form</label>
+                    {% render_field form.email class+="form-control" %}
+                </div>
+
+
+                <div class="form-group">
+                    <label>Additional notes or special instructions for us
+                    {% render_field form.notes class+="form-control" %}</label>
+                </div>
+
+
+
+
+
+                <div class="col-xs-12 text-right">
+                    <div class="submit-button-wrapper">
+                        <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">Cancel</button>
+                        <button type="submit" value="Submit" class="btn btn-lg btn-success">Send this request</button>
+                    </div>
+                </div>
+            </form>
+
         </div>
 
         <div class="col-xs-12 col-md-4 col-md-offset-1">
             <div class="photo-wrapper">
-                <img src="https://s3.amazonaws.com/h2oflint/volunteers_distributing_supplies_indoors_landscape.jpg">
+                <img src="https://s3.amazonaws.com/h2oflint/church_outdoors_with_volunteer_lines_landscape.jpg">
             </div>
             <div class="caption">
-                <p><b>Helping the helpers</b>: Morbi et risus ultricies, aliquet metus et, dignissim odio. Sed venenatis mauris nec neque posuere, eget accumsan erat fringilla. Aliquam ut aliquam ipsum. Vestibulum vulputate sit amet erat in dignissim. In eu facilisis enim, id tempus ligula. Mauris ac nunc orci. Maecenas sodales porta ligula quis sollicitudin. Pellentesque sed neque gravida magna consectetur bibendum sit amet et quam.</p>
+                <p><b>A rock in the heart of the community</b>: Morbi et risus ultricies, aliquet metus et, dignissim odio. Sed venenatis mauris nec neque posuere, eget accumsan erat fringilla. Aliquam ut aliquam ipsum. Vestibulum vulputate sit amet erat in dignissim. In eu facilisis enim, id tempus ligula. Mauris ac nunc orci. Maecenas sodales porta ligula quis sollicitudin. Pellentesque sed neque gravida magna consectetur bibendum sit amet et quam.</p>
             </div>
         </div>
     </div>

@@ -218,7 +218,7 @@ class AddDeliveryDateForm(forms.Form):
     other_supplies_needed = forms.CharField(widget=forms.Textarea)
 
 
-class H2OFlintDeliveryDate(forms.Form):
+class H2OFlintDeliveryDateForm(forms.Form):
     month = forms.CharField(max_length=20, )
     date = forms.CharField(max_length=20, )
     year = forms.CharField(max_length=4, initial="2016")
@@ -239,11 +239,20 @@ class H2OFlintDeliveryDate(forms.Form):
     other_supplies_needed = forms.CharField(widget=forms.Textarea)
 
 class RequestDeliveryForm(forms.Form):
-    first_name = forms.CharField(max_length=45)
-    last_name = forms.CharField(max_length=45)
-    email = forms.CharField(max_length=45)
-    phone = forms.CharField(max_length=14)
-
+    delivery_date = forms.ModelChoiceField(queryset= H2OFlintDeliveryDate.objects.all())
+    recipient_first = forms.CharField(max_length=45)
+    recipient_last = forms.CharField(max_length=45)
+    recipient_address = forms.CharField(max_length=200)
+    recipient_phone = forms.CharField(max_length=20)
+    zipcode = forms.CharField(max_length=10)
+    persons_in_household = forms.IntegerField()
+    cases_requested = forms.IntegerField()
+    on_behalf = forms.BooleanField()
+    contact_first_name = forms.CharField(max_length=45)
+    contact_last_name = forms.CharField(max_length=45)
+    contact_email = forms.CharField(max_length=200)
+    contact_phone = forms.CharField(max_length=20)
+    notes = forms.CharField(widget=forms.Textarea)
 
 
 class DeliveryRequest(forms.Form):

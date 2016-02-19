@@ -44,7 +44,7 @@
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>Street address*</label>
-                    {% render_field form.retype_password class+="form-control" required="true" %}
+                    {% render_field form.address class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
@@ -111,46 +111,30 @@
                                 <span>Mondays</span>
                             </div>
                             <div class="col-xs-4">
-                                {% render_field form.monday_dist_start class+="form-control" %}
+                                {% render_field form.mon_availability_start_time class+="form-control" %}
                             </div>
                             <div class="col-xs-1">
                                 <span>to</span>
                             </div>
                             <div clas
                             <div class="col-xs-4">
-                                {% render_field form.monday_dist_end class+="form-control"%}
+                                {% render_field form.mon_availability_end_time class+="form-control"%}
                             </div>
                         </div>
                         <div class="row schedule-select">
 
-                            <div class="col-xs-3">
-                                <span>Mondays</span>
-                            </div>
-                            <div class="col-xs-4">
-                                {% render_field form.monday_dist_start class+="form-control" %}
-                            </div>
-                            <div class="col-xs-1">
-                                <span>to</span>
-                            </div>
-                            <div clas
-                            <div class="col-xs-4">
-                                {% render_field form.monday_dist_end class+="form-control"%}
-                            </div>
-                        </div>
-
-                        <div class="row schedule-select">
                             <div class="col-xs-3">
                                 <span>Tuesdays</span>
                             </div>
                             <div class="col-xs-4">
-                                {% render_field form.tuesday_dist_start class+="form-control" %}
+                                {% render_field form.tue_availability_start_time class+="form-control" %}
                             </div>
                             <div class="col-xs-1">
                                 <span>to</span>
                             </div>
                             <div clas
                             <div class="col-xs-4">
-                                {% render_field form.tuesday_dist_end class+="form-control"%}
+                                {% render_field form.tue_availability_end_time class+="form-control"%}
                             </div>
                         </div>
 
@@ -159,14 +143,14 @@
                                 <span>Wednesdays</span>
                             </div>
                             <div class="col-xs-4">
-                                {% render_field form.wednesday_dist_start class+="form-control" %}
+                                {% render_field form.wed_availability_start_time class+="form-control" %}
                             </div>
                             <div class="col-xs-1">
                                 <span>to</span>
                             </div>
                             <div clas
                             <div class="col-xs-4">
-                                {% render_field form.wednesday_dist_end class+="form-control"%}
+                                {% render_field form.wed_availability_end_time class+="form-control"%}
                             </div>
                         </div>
 
@@ -175,64 +159,98 @@
                                 <span>Thursdays</span>
                             </div>
                             <div class="col-xs-4">
-                                {% render_field form.thursday_dist_start class+="form-control" %}
+                                {% render_field form.thu_availability_start_time class+="form-control" %}
                             </div>
                             <div class="col-xs-1">
                                 <span>to</span>
                             </div>
                             <div clas
                             <div class="col-xs-4">
-                                {% render_field form.thursday_dist_end class+="form-control"%}
-                            </div>
-                        </div>
-                        <div class="row schedule-select">
-                            <div class="col-xs-3">
-                                <span>Fridays</span>
-                            </div>
-                            <div class="col-xs-4">
-                                {% render_field form.friday_dist_start class+="form-control" %}
-                            </div>
-                            <div class="col-xs-1">
-                                <span>to</span>
-                            </div>
-                            <div clas
-                            <div class="col-xs-4">
-                                {% render_field form.friday_dist_end class+="form-control"%}
+                                {% render_field form.thu_availability_end_time class+="form-control"%}
                             </div>
                         </div>
 
                         <div class="row schedule-select">
                             <div class="col-xs-3">
-                                <span>Saturdays</span>
+                                <span>Fridays</span>
                             </div>
                             <div class="col-xs-4">
-                                {% render_field form.saturday_dist_start class+="form-control" %}
+                                {% render_field form.fri_availability_start_time class+="form-control" %}
                             </div>
                             <div class="col-xs-1">
                                 <span>to</span>
                             </div>
                             <div clas
                             <div class="col-xs-4">
-                                {% render_field form.saturday_dist_end class+="form-control"%}
+                                {% render_field form.fri_availability_end_time class+="form-control"%}
                             </div>
                         </div>
+                        <div class="row schedule-select">
+                            <div class="col-xs-3">
+                                <span>Saturdays</span>
+                            </div>
+                            <div class="col-xs-4">
+                                {% render_field form.sat_availability_start_time class+="form-control" %}
+                            </div>
+                            <div class="col-xs-1">
+                                <span>to</span>
+                            </div>
+                            <div clas
+                            <div class="col-xs-4">
+                                {% render_field form.sat_availability_end_time class+="form-control"%}
+                            </div>
+                        </div>
+
                         <div class="row schedule-select">
                             <div class="col-xs-3">
                                 <span>Sundays</span>
                             </div>
                             <div class="col-xs-4">
-                                {% render_field form.sunday_dist_start class+="form-control" %}
+                                {% render_field form.sun_availability_start_time class+="form-control" %}
                             </div>
                             <div class="col-xs-1">
                                 <span>to</span>
                             </div>
                             <div clas
                             <div class="col-xs-4">
-                                {% render_field form.sunday_dist_end class+="form-control"%}
+                                {% render_field form.sun_availability_end_time class+="form-control"%}
                             </div>
+                        </div>
+
+                    <br>                 
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>If you are available in a specific date range, please enter the first and last dates here.</label> 
+                            <br>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                    First day available
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    Month: {% render_field form.availability_start_month class+="form-control" %}
+                                </div>
+                                <div class="col-xs-2">
+                                     Date: {% render_field form.availability_start_date class+="form-control" %}
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 last-date">
+                                    Last day available
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    Month: {% render_field form.availability_end_month class+="form-control" %}
+                                </div>
+                                <div class="col-xs-2">
+                                     Date: {% render_field form.availability_end_date class+="form-control" %}
+                                </div>
+                            </div>
+                            <br>
                         </div>
                     </div>
                 </div>
+
 
                 <hr>
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
@@ -353,7 +371,7 @@
                 <div class="col-xs-12 text-right">
                     <div class="submit-button-wrapper">
                         <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">Cancel</button>
-                        <button type="submit" value="Submit" class="btn btn-lg btn-success">Send this request</button>
+                        <button type="submit" value="Submit" class="btn btn-lg btn-success">Submit</button>
                     </div>
                 </div>
             </form>

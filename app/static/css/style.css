@@ -260,7 +260,9 @@ video {
   display: inline-block;
 }
 
-
+.last-date {
+  margin-top: 1em;
+}
 
 /* Bootstrap navbar overrides */
 
