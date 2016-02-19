@@ -80,6 +80,7 @@ class IndividualHelpOffer(models.Model):
     group_size = models.IntegerField(null=True, blank=True)
     will_unload = models.BooleanField(default=False)
     will_deliver_with_vehicle = models.BooleanField(default=False)
+    will_do_admin = models.BooleanField(default=False)
     mon_availability_start_time = models.CharField(max_length=8, null=True, blank=True)
     mon_availability_end_time = models.CharField(max_length=8, null=True, blank=True)
     tue_availability_start_time = models.CharField(max_length=8, null=True, blank=True)
@@ -108,17 +109,21 @@ class IndividualHelpOffer(models.Model):
     wipes_count = models.IntegerField(null=True, blank=True)
     dollar_donation_amount = models.FloatField(null=True, blank=True)
     total_amount = models.FloatField(null=True, blank=True)
+    doing_park_and_serve = models.BooleanField(default = False)
     park_and_serve_address = models.CharField(max_length=200, null=True, blank=True)
     park_and_serve_city = models.CharField(max_length=45, null=True, blank=True)
     park_and_serve_state = models.CharField(max_length=4, null=True, blank=True)
     park_and_serve_zipcode = models.CharField(max_length=10, null=True, blank=True)
     park_and_serve_month = models.CharField(max_length=9, null=True, blank=True)
+    park_and_serve_weekday = models.CharField(max_length=9, null=True, blank=True)
     park_and_serve_date = models.CharField(max_length=2, null=True, blank=True)
+    park_and_serve_items = models.CharField(max_length=140, null=True, blank=True)
     park_and_serve_year = models.CharField(max_length=4, default="2016")
     park_and_serve_start_time = models.CharField(max_length=8, null=True, blank=True)
     park_and_serve_end_time = models.CharField(max_length=8, null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
+    note_for_recipient = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
         return unicode(self.individual_helper) +" "+unicode(self.date_created)
@@ -126,6 +131,7 @@ class IndividualHelpOffer(models.Model):
 
 class Organization(models.Model):
     contact = models.ForeignKey(User)
+    approved = models.BooleanField(default=False)
     org_name = models.CharField(max_length=200, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
     city = models.CharField(max_length=45, default = "Flint")
@@ -141,6 +147,8 @@ class Organization(models.Model):
     has_vehicles_or_drivers = models.BooleanField(default=False)
     has_testers = models.BooleanField(default=False)
     has_filters = models.BooleanField(default=False)
+    has_wipes = models.BooleanField(default=False)
+    has_vaseline = models.BooleanField(default=False)
     has_lifting_supplies = models.BooleanField(default=False)
     has_other_supplies = models.BooleanField(default=False)
     other_supplies_on_hand = models.TextField(null=True, blank=True)
@@ -149,6 +157,8 @@ class Organization(models.Model):
     needs_vehicles_or_drivers = models.BooleanField(default=False)
     needs_testers = models.BooleanField(default=False)
     needs_filters = models.BooleanField(default=False)
+    needs_wipes = models.BooleanField(default=False)
+    needs_vaseline = models.BooleanField(default=False)
     needs_lifting_supplies = models.BooleanField(default=False)
     needs_other_supplies = models.BooleanField(default=False)
     other_supplies_needed = models.TextField(null=True, blank=True)
@@ -166,7 +176,10 @@ class Organization(models.Model):
     saturday_dist_end = models.CharField(max_length=8, null=True, blank=True)
     sunday_dist_start = models.CharField(max_length=8, null=True, blank=True)
     sunday_dist_end = models.CharField(max_length=8, null=True, blank=True)
+    limits = models.CharField(max_length=140, null=True, blank=True)
+    pickup_requirements = models.CharField(max_length=140, null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
+    notes = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
         return self.org_name

@@ -1,3 +1,6 @@
+
+/* General page style */
+
 body {
     font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size:14px;
@@ -5,6 +8,50 @@ body {
 }
 
 a:hover {text-decoration: none;}
+
+hr {
+border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    margin: 4em auto;
+}
+
+
+
+
+}
+
+.photo-wrapper img {
+  width: 100%;
+}
+
+.form-header {
+  font-weight: bold;
+  margin: 1em auto 2em auto;
+}
+
+.about-header {
+  font-weight: bold;
+  margin: 1em auto 1em auto;
+}
+
+.caption {
+  margin-top: 1em;
+  text-align: justify;
+}
+
+
+.white-text {
+    color: #ffffff;
+}
+
+.blue-text {
+    color: #286090
+}
+
+
+/* Header style */
 
 .logo img {
   height: 100%;
@@ -15,13 +62,6 @@ a:hover {text-decoration: none;}
     margin-top: 20px;
     margin-bottom: 20px;
     vertical-align: middle;
-}
-
-
-video {
-  width: 100%;
-  position: relative;
-  z-index: 0;
 }
 
 .share-buttons img {
@@ -38,6 +78,19 @@ video {
 
 .banner img {
     width: 100%;
+}
+
+
+
+
+
+
+/* Landing page style */
+
+video {
+  width: 100%;
+  position: relative;
+  z-index: 0;
 }
 
 .search-head-wrapper {
@@ -62,10 +115,11 @@ video {
 
 .search-list-button {
   margin-top: 1em;
+  vertical-align: middle;
 }
 
 .search-list-button button {
-  margin-left: 1em;
+  margin: 0.25em 1em;
 }
 
 .map-panel {
@@ -94,8 +148,6 @@ video {
 }
 
 
-/* Search results style */
-
 .results-legend {
   margin-bottom: 2em;
 }
@@ -106,10 +158,10 @@ video {
 
 .todays-locations {
   margin-bottom: 2em;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
-.todays-locations h2 {
+.todays-locations h3 {
   font-weight: bold;
   margin-bottom: 1em;
 }
@@ -123,108 +175,48 @@ video {
 .location-name {
   color: #1d4568;
   margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+
+.location-address {
+  color: #1d4568;
+}
+
+.icon-holder {
+  margin-top: -1em;
 }
 
 .icon-holder .glyphicon {
   margin-bottom: 5px;
+  margin-right: 0.5em;
 }
 
-.locations-table .schedule-entry  {
-  padding: auto 0em;
+.result-details {
+  margin-top: 0.5em;
 }
 
-.photo-wrapper img {
-  width: 100%;
+.result-details ul {
+  list-style-type: none;
 }
 
-.form-header {
-  font-weight: bold;
-  margin: 1em auto 2em auto;
+.result-details li {
+  margin-left: -2em;
 }
-
-.about-header {
-  font-weight: bold;
-  margin: 1em auto 1em auto;
-}
-
-.submit-button-wrapper {
-  margin: 2em auto;
-}
-
-label {
-  margin-left: 2em;
-}
-
-.caption {
-  margin-top: 1em;
-  text-align: justify;
-}
-
-
-.white-text {
-    color: #ffffff;
-}
-
-.blue-text {
-    color: #286090
-}
-
-
-
 
 .yellow-bg {
     background-color: #FCF978;
-}
-
-.lt-orange-bg {
-    background-color: #FBCB77;
-}
-
-.orange-bg {
-    background-color: #FF5A00;
-}
-
-.green-bg {
-    background-color: #097C21;
 }
 
 .lt-green-bg {
     background-color: #79FB77;
 }
 
-.teal-bg {
-    background-color: #096a7d;
-}
-
-.extra-lt-purple-bg {
-    background-color: #AE96AC;
-}
-
-.lt-purple-bg {
-    background-color: #B38CF6;
-}
-
-.purple-bg {
-    background-color: #7C086D;
-}
-
 .dk-purple-bg {
     background-color: #57087D;
-}
-.maroon-bg {
-    background-color: #7d0818;
 }
 
 .salmon-bg {
     background-color: #FC7778;
-}
-
-.blue-bg {
-    background-color: #00A2FF;
-}
-
-.dk-blue-bg {
-    background-color: #1d4568;
 }
 
 .lt-blue-bg {
@@ -232,6 +224,43 @@ label {
 }
 
 
+
+/* Search page style */
+
+.locations-table .schedule-entry  {
+  padding: auto 0em;
+}
+
+
+/* Form style */
+
+.submit-button-wrapper {
+  margin: 2em 0em;
+}
+
+.submit-button-wrapper button {
+  display: inline-block;
+}
+
+.form-subhead {
+  margin: -2em 0em 2em -3em;
+}
+
+.form-group {
+  margin-bottom: 2em;
+}
+
+.form-note {
+  margin-top: 0.5em;
+}
+
+.schedule-select input, .schedule-select span {
+  vertical-align: middle;
+}
+
+.checkbox-field label, .check-box-field input {
+  display: inline-block;
+}
 
 
 

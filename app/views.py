@@ -31,12 +31,12 @@ def request_delivery(request):
 
 
 def organization_offer(request):
-    form = IndividualOfferForm()
+    form = OrganizationForm()
     return render(request, "organization_offer.html", {'form' : form})
 
 
 def individual_offer(request):
-    form = OrganizationForm()
+    form = IndividualOfferForm()
     return render(request, "individual_offer.html", {'form' : form})
 
 def search(request):

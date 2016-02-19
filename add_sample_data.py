@@ -94,7 +94,7 @@ with open('distributions.csv', 'rbU') as csvfile:
         geolocator = GoogleV3('AIzaSyCdQa5vpC7SE5LdZAXXxGNcKJpJGmBYd6E')
         freshaddress, (latitude, longitude) = geolocator.geocode(address_to_code)
 
-        o = Organization(contact = dev, org_name = name, address=address, city=city, state=state, zipcode=zipcode, phone=phone, website=website, email=email, latitude=latitude, longitude=longitude, has_water=True, monday_dist_start = mon_dist_start, monday_dist_end = mon_dist_end, tuesday_dist_start = tue_dist_start, tuesday_dist_end = tue_dist_end, wednesday_dist_start = wed_dist_start, wednesday_dist_end = wed_dist_end, thursday_dist_start = thu_dist_start, thursday_dist_end = thu_dist_end, friday_dist_start = fri_dist_start, friday_dist_end = fri_dist_end, saturday_dist_start = sat_dist_start, saturday_dist_end = sat_dist_end, sunday_dist_start = sun_dist_start, sunday_dist_end = sun_dist_end, date_created=timezone.now())
+        o = Organization(approved = True, contact = dev, org_name = name, address=address, city=city, state=state, zipcode=zipcode, phone=phone, website=website, email=email, latitude=latitude, longitude=longitude, has_water=True, monday_dist_start = mon_dist_start, monday_dist_end = mon_dist_end, tuesday_dist_start = tue_dist_start, tuesday_dist_end = tue_dist_end, wednesday_dist_start = wed_dist_start, wednesday_dist_end = wed_dist_end, thursday_dist_start = thu_dist_start, thursday_dist_end = thu_dist_end, friday_dist_start = fri_dist_start, friday_dist_end = fri_dist_end, saturday_dist_start = sat_dist_start, saturday_dist_end = sat_dist_end, sunday_dist_start = sun_dist_start, sunday_dist_end = sun_dist_end, date_created=timezone.now())
         if 'Fire' in name:
             o.has_filters = True
 

@@ -25,8 +25,8 @@
     <div class="container-fluid">
        
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 col-md-5 todays-locations">
-                <h2 class="blue-text">Community Distribution Centers Open Today</h2>
+            <div class="col-xs-12 col-md-6 col-md-offset-1 todays-locations">
+                <h3 class="blue-text">Community Distribution Centers Open Today</h3>
 
                 <div class="results-legend">
                     <span class="results-legend-item"><span class="glyphicon glyphicon-tint blue-text"></span> = Has water</span>
@@ -38,75 +38,88 @@
             {% for location in locations %}
                 <div class="row">
                     <div class="col-xs-10 col-xs-offset-1 location-result">
-                        <div class="col-xs-10">
-                        <h3 class="location-name"><b>{{location.org_name}}</b></h3>
-                        <p>
-                            {{location.address}}
-                            {% if location.phone != '' %}<br><b>Phone</b>: {{location.phone}}{% endif %}
-                            {% if location.website != '' %}<br><b>Website</b>: <a href="{{location.website}}">{{location.website}}</a>{% endif %}
-                            {% if location.email != '' %}<br><b>Email</b>: {{location.email}}{% endif %}
-                        </p>
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <h4 class="location-name"><b>{{location.org_name}}</b></h4>
+                                <span class="location-address"><b>{{location.address}}</b></span>
+                            </div>
+                            <div class="col-xs-3 icon-holder">  <h3 class="blue-text">
+                                {% if location.has_water == True %}
+                                    <span class="glyphicon glyphicon-tint pull-right"></span>
+                                {% endif %}
+                                {% if location.has_filters == True %}
+                                    <span class="glyphicon glyphicon-filter pull-right"></span>
+                                {% endif %}
+                                </h3>
+                            </div>
+                        </div>
+                        <div clas="row">
+                            <div class="col-xs-6 result-details">
+                                Distribution hours:
+                                <ul>
+
+                                    {% if location.monday_dist_start %}
+                                    <li><b>Monday:</b> {{location.monday_dist_start}}-{{location.monday_dist_end}}</li>
+                                    {% endif %}
+
+                                    {% if location.tuesday_dist_start %}
+                                    <li><b>Tuesday:</b> {{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}</li>
+                                    {% endif %}
+
+                                    {% if location.wednesday_dist_start %}
+                                    <li><b>Wednesday:</b> {{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}</li>
+                                    {% endif %}
+
+                                    {% if location.thursday_dist_start %}
+                                    <li><b>Thursday:</b> {{location.thursday_dist_start}}-{{location.thursday_dist_end}}</li>{% endif %}
+
+                                    {% if location.friday_dist_start %}
+                                    <li><b>Friday:</b> {{location.friday_dist_start}}-{{location.friday_dist_end}}</li>
+                                    {% endif %}
+
+                                    {% if location.saturday_dist_start %}
+                                    <li><b>Saturday:</b> {{location.saturday_dist_start}}-{{location.saturday_dist_end}}</li>
+                                    {% endif %}
+
+                                    {% if location.sunday_dist_start %}
+                                    <li><b>Sunday:</b> {{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col-xs-6">
+                                {% if location.phone != '' %}<br><b>Phone</b>: {{location.phone}}{% endif %}
+                                {% if location.website != '' %}<br><b>Website</b>: <a href="{{location.website}}">{{location.website}}</a>{% endif %}
+                                {% if location.email != '' %}<br><b>Email</b>: {{location.email}}{% endif %}
+                            </div>
+                            
+
+
+                        </div>
                         
-                        Distribution hours:
-                        <ul>
-
-                            {% if location.monday_dist_start %}
-                            <li><b>Monday:</b> {{location.monday_dist_start}}-{{location.monday_dist_end}}</li>
-                            {% endif %}
-
-                            {% if location.tuesday_dist_start %}
-                            <li><b>Tuesday:</b> {{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}</li>
-                            {% endif %}
-
-                            {% if location.wednesday_dist_start %}
-                            <li><b>Wednesday:</b> {{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}</li>
-                            {% endif %}
-
-                            {% if location.thursday_dist_start %}
-                            <li><b>Thursday:</b> {{location.thursday_dist_start}}-{{location.thursday_dist_end}}</li>{% endif %}
-
-                            {% if location.friday_dist_start %}
-                            <li><b>Friday:</b> {{location.friday_dist_start}}-{{location.friday_dist_end}}</li>
-                            {% endif %}
-
-                            {% if location.saturday_dist_start %}
-                            <li><b>Saturday:</b> {{location.saturday_dist_start}}-{{location.saturday_dist_end}}</li>
-                            {% endif %}
-
-                            {% if location.sunday_dist_start %}
-                            <b>Sunday:</b> {{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>
-                            {% endif %}
-                        </div>
-                        <div class="col-xs-2 icon-holder">  <h3 class="blue-text">
-                            {% if location.has_water == True %}
-                                <span class="glyphicon glyphicon-tint pull-right"></span>
-                            {% endif %}
-                            {% if location.has_filters == True %}
-                                <span class="glyphicon glyphicon-filter pull-right"></span>
-                            {% endif %}
-                            </h3>
-                        </div>
                     </div>
                 </div>
 
             {% endfor %}
             </div>
 
-            <div class="col-xs-12 col-md-6 map-panel">
+            <div class="col-xs-12 col-md-5 map-panel">
                 
                 <div class="row search-bar text-center">
-                    <div class="col-xs-10">
-                        <input type="text" class="form-control input-lg" placeholder="Enter your address or zip code to zoom to your area">
+                    <div class="col-xs-12 col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Enter your address or zip code">
                     </div>
                     <div class="col-xs-12 col-md-2 text-center">
-                        <button type-"button" class="btn btn-lg btn-primary">Zoom in</button>
+                        
                     </div>
 
                 </div>
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="pull-right search-list-button">or <button onClick='location.href="{% url 'search' %}"' class="btn btn-lg info">Search all sites
+                        <div class="text-center search-list-button">
+                            <button type-"button" class="btn btn-lg btn-primary zoom-button">Zoom in</button>
+                            or
+                            <button onClick='location.href="{% url 'search' %}"' class="btn btn-lg info ">See all distribution sites
                         </div>
                     </div>
                     <div class="col-xs-12">

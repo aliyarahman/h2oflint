@@ -17,6 +17,26 @@ DAYS_OF_WEEK = (
     ('Sun', 'Sunday'),
 )
 
+YESNO = (
+    (True, 'Yes'),
+    (False, 'No'),
+)
+
+MONTHS = (
+    ('January', 'January'),
+    ('February', 'February'),
+    ('March', 'March'),
+    ('April', 'April'),
+    ('May', 'May'),
+    ('June', 'June'),
+    ('July', 'July'),
+    ('August', 'August'),
+    ('September', 'September'),
+    ('October', 'October'),
+    ('November', 'November'),
+    ('December', 'December'),
+)
+
 RECURRENCE = (
     (0, 'Never'),
     (1, 'Every week'),
@@ -40,6 +60,7 @@ MONTHS = (
 )
 
 TIMES = (
+    ('', ''),
     ('None', 'None yet' ),
     ('12:00am','12:00am' ),
     ('12:30am', '12:30am'),
@@ -62,9 +83,33 @@ TIMES = (
     ('9:00am','9:00am' ),
     ('9:30am', '9:30am'),
     ('10:00am','10:00am' ),
-    ('10:30am', '11:30am'),
-    ('11:00am','12:00am' ),
-    ('11:30am', '12:30am'),
+    ('10:30am', '10:30am'),
+    ('11:00am','11:00am' ),
+    ('11:30am', '11:30am'),
+    ('12:00pm','12:00pm' ),
+    ('12:30pm', '12:30pm'),
+    ('1:00pm','1:00pm' ),
+    ('1:30pm', '1:30pm'),
+    ('2:00pm','2:00pm' ),
+    ('2:30pm', '2:30pm'),
+    ('3:00pm','3:00pm' ),
+    ('3:30pm', '3:30pm'),
+    ('4:00pm','4:00pm' ),
+    ('4:30pm', '4:30pm'),
+    ('5:00pm','5:00pm' ),
+    ('5:30pm', '5:30pm'),
+    ('6:00pm','6:00pm' ),
+    ('6:30pm', '6:30pm'),
+    ('7:00pm','7:00pm' ),
+    ('7:30pm', '7:30pm'),
+    ('8:00pm','8:00pm' ),
+    ('8:30pm', '8:30pm'),
+    ('9:00pm','9:00pm' ),
+    ('9:30pm', '9:30pm'),
+    ('10:00pm','10:00pm' ),
+    ('10:30pm', '10:30pm'),
+    ('11:00pm','11:00pm' ),
+    ('11:30pm', '11:30pm'),
 )
 
 
@@ -72,38 +117,40 @@ TIMES = (
 class OrganizationForm(forms.Form):
     contact_first_name = forms.CharField(max_length=45)
     contact_last_name = forms.CharField(max_length=45)
-    email = forms.CharField(max_length=45)
-    password = forms.CharField(max_length=24)
-    retype_password = forms.CharField(max_length=24)
-    org_name = forms.CharField(max_length=45)
+    contact_email = forms.CharField(max_length=45)
+    password = forms.CharField(widget=forms.PasswordInput())
+    retype_password = forms.CharField(widget=forms.PasswordInput())
+    name = forms.CharField(max_length=45)
     address = forms.CharField(max_length=200)
     city = forms.CharField(max_length=45, initial = "Flint")
     state = forms.CharField(max_length=4, initial = "MI")
     zipcode = forms.CharField(max_length=10)
+    phone = forms.CharField(max_length=14)
+    email = forms.CharField(max_length=200)
+    website = forms.CharField(max_length=200)
     longitude = forms.FloatField()
     latitude = forms.FloatField()
-    phone = forms.CharField(max_length=14)
-    org_email = forms.CharField(max_length=200)
-    website = forms.CharField(max_length=200)
-    monday_start_time = forms.ChoiceField(choices = TIMES)
-    monday_end_time = forms.ChoiceField(choices = TIMES)
-    tuesday_start_time = forms.ChoiceField(choices = TIMES)
-    tuesday_end_time = forms.ChoiceField(choices = TIMES)
-    wednesday_start_time = forms.ChoiceField(choices = TIMES)
-    wednesday_end_time = forms.ChoiceField(choices = TIMES)
-    thursday_start_time = forms.ChoiceField(choices = TIMES)
-    thursday_end_time = forms.ChoiceField(choices = TIMES)
-    friday_start_time = forms.ChoiceField(choices = TIMES)
-    friday_end_time = forms.ChoiceField(choices = TIMES)
-    saturday_start_time = forms.ChoiceField(choices = TIMES)
-    saturday_end_time = forms.ChoiceField(choices = TIMES)
-    sunday_start_time = forms.ChoiceField(choices = TIMES)
-    sunday_end_time = forms.ChoiceField(choices = TIMES)
+    monday_dist_start = forms.ChoiceField(choices = TIMES)
+    monday_dist_end = forms.ChoiceField(choices = TIMES)
+    tuesday_dist_start = forms.ChoiceField(choices = TIMES)
+    tuesday_dist_end = forms.ChoiceField(choices = TIMES)
+    wednesday_dist_start = forms.ChoiceField(choices = TIMES)
+    wednesday_dist_end = forms.ChoiceField(choices = TIMES)
+    thursday_dist_start = forms.ChoiceField(choices = TIMES)
+    thursday_dist_end = forms.ChoiceField(choices = TIMES)
+    friday_dist_start = forms.ChoiceField(choices = TIMES)
+    friday_dist_end = forms.ChoiceField(choices = TIMES)
+    saturday_dist_start = forms.ChoiceField(choices = TIMES)
+    saturday_dist_end = forms.ChoiceField(choices = TIMES)
+    sunday_dist_start = forms.ChoiceField(choices = TIMES)
+    sunday_dist_end = forms.ChoiceField(choices = TIMES)
     has_water = forms.BooleanField()
     has_volunteers = forms.BooleanField()
     has_vehicles_or_drivers = forms.BooleanField()
     has_filters = forms.BooleanField()
     has_testers = forms.BooleanField()
+    has_wipes = forms.BooleanField()
+    has_vaseline = forms.BooleanField()
     has_lifting_supplies = forms.BooleanField()
     has_other_supplies = forms.BooleanField()
     other_supplies_on_hand = forms.CharField(widget=forms.Textarea)
@@ -112,10 +159,14 @@ class OrganizationForm(forms.Form):
     needs_vehicles_or_drivers = forms.BooleanField()
     needs_filters = forms.BooleanField()
     needs_testers = forms.BooleanField()
+    needs_wipes = forms.BooleanField()
+    needs_vaseline = forms.BooleanField()
     needs_lifting_supplies = forms.BooleanField()
     needs_other_supplies = forms.BooleanField()
     other_supplies_needed = forms.CharField(widget=forms.Textarea)
-
+    limits = forms.CharField(max_length=140)
+    pickup_requirements = forms.CharField(max_length=140)
+    notes = forms.CharField(widget=forms.Textarea)
 
 
 # For special events not covered by the regular distribution schedule in organization form
@@ -219,3 +270,53 @@ class IndividualOfferForm(forms.Form):
     last_name = forms.CharField(max_length=45)
     email = forms.CharField(max_length=45)
     phone = forms.CharField(max_length=14)
+    address = forms.CharField(max_length=200)
+    city = forms.CharField(max_length=45, initial = "Flint")
+    state = forms.CharField(max_length=4, initial = "MI")
+    zipcode = forms.CharField(max_length=10)
+    password = forms.CharField(widget=forms.PasswordInput())
+    retype_password = forms.CharField(widget=forms.PasswordInput())
+    wants_to_volunteer = forms.ChoiceField(choices = YESNO)
+    group_size = forms.IntegerField(initial=0)
+    will_unload = forms.BooleanField()
+    will_deliver_with_vehicle = forms.BooleanField()
+    will_do_admin = forms.BooleanField()
+    mon_availability_start_time = forms.ChoiceField(choices = TIMES)
+    mon_availability_end_time = forms.ChoiceField(choices = TIMES)
+    tue_availability_start_time = forms.ChoiceField(choices = TIMES)
+    tue_availability_end_time = forms.ChoiceField(choices = TIMES)
+    wed_availability_start_time = forms.ChoiceField(choices = TIMES)
+    wed_availability_end_time = forms.ChoiceField(choices = TIMES)
+    thu_availability_start_time = forms.ChoiceField(choices = TIMES)
+    thu_availability_end_time = forms.ChoiceField(choices = TIMES)
+    fri_availability_start_time = forms.ChoiceField(choices = TIMES)
+    fri_availability_end_time = forms.ChoiceField(choices = TIMES)
+    sat_availability_start_time = forms.ChoiceField(choices = TIMES)
+    sat_availability_end_time = forms.ChoiceField(choices = TIMES)
+    sun_availability_start_time = forms.ChoiceField(choices = TIMES)
+    sun_availability_end_time = forms.ChoiceField(choices = TIMES)
+    availability_start_date = forms.ChoiceField(choices = TIMES)
+    availability_end_date = forms.ChoiceField(choices = TIMES)
+    availability_start_month = forms.ChoiceField(choices = TIMES)
+    availability_end_month = forms.ChoiceField(choices = TIMES)
+    availability_start_year = forms.ChoiceField(choices = TIMES)
+    availability_end_year = forms.ChoiceField(choices = TIMES)
+    cases_count = forms.IntegerField(initial=0)
+    pallets_count = forms.IntegerField(initial=0)
+    back_braces_count = forms.IntegerField(initial=0)
+    dollies_count = forms.IntegerField(initial=0)
+    vaseline_count = forms.IntegerField(initial=0)
+    wipes_count = forms.IntegerField(initial=0)
+    dollar_donation_amount = forms.IntegerField(initial=0)
+    doing_park_and_serve = forms.ChoiceField(choices = YESNO)
+    park_and_serve_address = forms.CharField(max_length=200)
+    park_and_serve_zipcode = forms.CharField(max_length=10)
+    park_and_serve_month = forms.ChoiceField(choices = MONTHS)
+    park_and_serve_weekday = forms.ChoiceField(choices = DAYS_OF_WEEK)
+    park_and_serve_date = forms.CharField(max_length=2)
+    park_and_serve_start_time = forms.ChoiceField(choices = TIMES)
+    park_and_serve_items = forms.CharField(max_length=140)
+    park_and_serve_end_time = forms.ChoiceField(choices = TIMES)
+    
+    special_instructions = forms.CharField(widget=forms.Textarea, max_length=140)
+    note_for_recipient = forms.CharField(widget=forms.Textarea, max_length=1000)
