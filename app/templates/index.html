@@ -178,7 +178,7 @@
             var marker1 = new google.maps.Marker({
                 position: new google.maps.LatLng({{location.latitude}}, {{location.longitude}}),
                 map: map,
-                title: "{{location.name}}"
+                title: "{{location.org_name}}\n{{location.address}}\nFlint, MI{{location.zipcode}}\n {{location.phone}}"
             });
             {% endfor %}
 
