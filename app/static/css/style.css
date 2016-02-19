@@ -201,6 +201,10 @@ video {
   margin-left: -2em;
 }
 
+.confirmation-body {
+  margin-top: 5em;
+}
+
 .yellow-bg {
     background-color: #FCF978;
 }

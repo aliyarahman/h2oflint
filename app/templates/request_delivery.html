@@ -15,16 +15,17 @@
             <form class="form-horizontal" role="form" action='.' method='post'>
                 {% csrf_token %}
                 {{ form.non_field_errors }}
+                {{form.errors}}
 
                 <div class="form-subhead">
                     <h3 class="blue-text">Your information</h3>
                     <p><i>*Required field</i></p>
                 </div>
 
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                <!--<div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>
                     {% render_field form.on_behalf %}I am completing this form on behalf of someone else</label>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label>Delivery date*</label>
@@ -44,7 +45,7 @@
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>Delivery address in Flint, MI*</label>
-                    {% render_field form.recipient_address class+="form-control" required="true" placeholder="name@example.com" %}
+                    {% render_field form.recipient_address class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
@@ -57,16 +58,16 @@
                     <label>Recipient's phone*</label>
                     {% render_field form.recipient_phone class+="form-control" required="true" %}
                 </div>
-                
-                <div class="form-group">
-                    <label>How many people are in this household?*
-                    {% render_field form.persons_in_household class+="form-control" required="true"  %}</label>
-                </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>Contact email address</label>
                     <p>If you are completing this form for someone else, please enter an address where you can receive a confirmation email for this delivery request.</p>
-                    {% render_field form.email class+="form-control" %}
+                    {% render_field form.contact_email class+="form-control" placeholder="name@example.com" %}
+                </div>
+                
+                <div class="form-group">
+                    <label>How many people are in this household?*
+                    {% render_field form.persons_in_household class+="form-control" required="true"  %}</label>
                 </div>
 
                 <div class="form-group">
@@ -75,6 +76,8 @@
                 </div>
             
                 <hr>
+
+                <h3>If you completed this form for someone else:</h3>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>First name of the person completing this form</label>
@@ -91,7 +94,11 @@
                     {% render_field form.contact_phone class+="form-control" %}
                 </div>
 
-
+                <div class="form-group">
+                    <label>If you need other supplies, please note them here.</label>
+                    <p>We cannot fill all requests, but we will deliver any supplies we have available.</p>
+                    {% render_field form.other_supplies_needed class+="form-control" %}
+                </div>
 
                 <div class="form-group">
                     <label>Additional notes or special instructions for us
@@ -99,13 +106,10 @@
                 </div>
 
 
-
-
-
                 <div class="col-xs-12 text-right">
                     <div class="submit-button-wrapper">
-                        <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">Cancel</button>
                         <button type="submit" value="Submit" class="btn btn-lg btn-success">Send this request</button>
+                        <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">Cancel</button>
                     </div>
                 </div>
             </form>

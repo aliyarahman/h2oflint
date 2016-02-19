@@ -15,6 +15,7 @@
             <form class="form-horizontal" role="form" action='.' method='post'>
                 {% csrf_token %}
                 {{ form.non_field_errors }}
+                {{ form.errors }}
 
                 <div class="form-subhead">
                     <h3 class="blue-text">Your contact information</h3>
@@ -54,13 +55,18 @@
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Name*</label>
-                    {% render_field form.name class+="form-control" required="true" %}
+                    <label>Organization's name*</label>
+                    {% render_field form.org_name class+="form-control" required="true" %}
                 </div>
                 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>Phone*</label>
                     {% render_field form.phone class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Street address*</label>
+                    {% render_field form.address class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
@@ -80,7 +86,7 @@
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>Public email</label>
-                    {% render_field form.email class+="form-control" required="true" %}
+                    {% render_field form.public_email class+="form-control" %}
                 </div>
                 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
@@ -307,8 +313,8 @@
 
                 <div class="col-xs-12 text-right">
                     <div class="submit-button-wrapper">
-                        <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">Cancel</button>
                         <button type="submit" value="Submit" class="btn btn-lg btn-success">Submit</button>
+                        <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">Cancel</button>
                     </div>
                 </div>
             </form>
