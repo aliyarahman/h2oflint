@@ -16,14 +16,46 @@
     <div class="row">
         <div class="container-fluid">
             <div class="col-xs-12 search-head-wrapper">
-                    <h1 class="search-headline text-center"><b>FIND OR OFFER HELP</b></h1>
-                    <h2 class="search-subheadline text-center"><b>Through Flint community members</b>
+                <h1 class="search-headline text-center"><b>FIND OR OFFER HELP</b></h1>
+                <h2 class="search-subheadline text-center"><b>Through Flint community members</b>
             </div>
         </div>
     </div>
 
     <div class="container-fluid">
        
+        <div class="row text-center user-buttons-row">
+            <div class="col-xs-12 col-md-3 col-md-offset-1 user-button-holder text-center">
+                <h3 class="blue-text"><b>I'm a Flint resident looking for assistance</b></h3>
+            </div>
+                
+            <div class="col-xs-12 col-md-3">
+                <h3 class="blue-text"><b>I'm an individual who wants to help</b></h3>
+            </div>
+
+            <div class="col-xs-12 col-md-3">
+                <h3 class="blue-text"><b>My organization needs or can offer help</b></h3>
+            </div>
+        </div>
+        <div class="row text-center user-buttons-row">
+            <div class="col-xs-12 col-md-3 col-md-offset-1 user-button-holder text-center">
+                <div onClick='location.href="{% url 'request_delivery' %}"' class="user-button text-center lt-green-bg black-text">I need water or supplies delivered to my home</div>
+                <!--<div class="user-button text-center dk-blue-bg white-text">I want to give feedback about a distribution center experience</div>-->
+            </div>
+                
+            <div class="col-xs-12 col-md-3 user-button-holder">
+                <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center salmon-bg black-text">I want to volunteer</div>
+                <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center yellow-bg black-text">I want to donate water, supplies, or money</div>
+            </div>
+
+            <div class="col-xs-12 col-md-3 user-button-holder">
+                <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center dk-purple-bg white-text">We can distribute water or other supplies</div>
+                <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center lt-blue-bg black-text">We need volunteers or help distributing</div>
+            </div>
+        </div>
+
+
+
         <div class="row">
             <div class="col-xs-12 col-md-6 col-md-offset-1 todays-locations">
                 <h3 class="blue-text">Community Distribution Centers Open Today</h3>
@@ -89,7 +121,7 @@
                             <div class="col-xs-6">
                                 {% if location.phone != '' %}<br><b>Phone</b>: {{location.phone}}{% endif %}
                                 {% if location.website != '' %}<br><b>Website</b>: <a href="{{location.website}}">{{location.website}}</a>{% endif %}
-                                {% if location.email != '' %}<br><b>Email</b>: {{location.email}}{% endif %}
+                                {% if location.email|length > 1 %}<br><b>Email</b>: {{location.email}}{% endif %}
                             </div>
                             
 
@@ -130,8 +162,8 @@
                 <div class="row">
 
                     <div class="col-xs-12">
-                        <h3 class="blue-text">Recent tweets about #flint</h3>
-                        <a class="twitter-timeline" href="https://twitter.com/hashtag/flint" data-widget-id="700508903453229056">#flint Tweets</a>
+                        <h4 class="blue-text"><b>Tweet us your real-time experiences at distribution centers to have them appear here and inform your neighbors</b></h4>
+                        <a class="twitter-timeline" href="https://twitter.com/flint_h2o" data-widget-id="700715276451459072">Tweets by @flint_h2o</a>
                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     </div>
                 </div>
@@ -139,25 +171,7 @@
 
         </div>
 
-        <div class="row text-center">
-            <div class="col-xs-12 col-md-3 col-md-offset-1 user-button-holder text-center">
-                <h2>I'm a Flint resident looking for assistance</h2>
-                <div onClick='location.href="{% url 'request_delivery' %}"' class="user-button text-center lt-green-bg black-text">I need water or supplies delivered to my home</div>
-                <!--<div class="user-button text-center dk-blue-bg white-text">I want to give feedback about a distribution center experience</div>-->
-            </div>
-                
-            <div class="col-xs-12 col-md-3 user-button-holder">
-                <h2>I'm an individual who wants to help</h2>
-                <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center salmon-bg black-text">I want to volunteer</div>
-                <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center yellow-bg black-text">I want to donate water, supplies, or money</div>
-            </div>
 
-            <div class="col-xs-12 col-md-3 user-button-holder">
-                <h2>My organization needs or can offer help</h2>
-                <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center dk-purple-bg white-text">We can distribute water or other supplies</div>
-                <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center lt-blue-bg black-text">We need volunteers or help distributing</div>
-            </div>
-        </div>
     </div>
 
 

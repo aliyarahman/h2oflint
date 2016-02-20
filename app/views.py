@@ -107,6 +107,8 @@ def organization_offer(request):
             o.has_wipes =  form.cleaned_data.get("has_wipes")
             o.has_vaseline =  form.cleaned_data.get("has_vaseline")
             o.has_lifting_supplies =  form.cleaned_data.get("has_lifting_supplies")
+            o.has_testing_skills =  form.cleaned_data.get("has_testing_skills")
+            o.has_plumbing_skills =  form.cleaned_data.get("has_plumbing_skills")
             o.has_other_supplies =  form.cleaned_data.get("has_other_supplies")
             o.other_supplies_on_hand =  form.cleaned_data.get("other_supplies_on_hand")
             o.needs_water =  form.cleaned_data.get("needs_water")
@@ -203,6 +205,8 @@ def individual_offer(request):
             h.will_unload = form.cleaned_data.get("will_unload")
             h.will_deliver_with_vehicle = form.cleaned_data.get("will_deliver_with_vehicle")
             h.will_do_admin = form.cleaned_data.get("will_do_admin")
+            h.will_do_plumbing = form.cleaned_data.get("will_do_plumbing")
+            h.will_do_testing = form.cleaned_data.get("will_do_testing")
             h.mon_availability_start_time = form.cleaned_data.get("mon_availability_start_time")
             h.mon_availability_end_time = form.cleaned_data.get("mon_availability_end_time")
             h.tue_availability_start_time = form.cleaned_data.get("tue_availability_start_time") 
@@ -236,7 +240,7 @@ def individual_offer(request):
             
             # Build confirmation email
             confirmation_individual_email_subject = "Thanks for signing up to help"
-            confirmation_individual_email_body = "Thanks for registeringm "+u.first_name
+            confirmation_individual_email_body = "Thanks for registering "+u.first_name
             confirmation_individual_email = (confirmation_individual_email_subject, confirmation_individual_email_body, settings.EMAIL_HOST_USER, [email])
     
             # Build admin notification email

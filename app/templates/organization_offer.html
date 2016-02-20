@@ -18,8 +18,12 @@
                 {{ form.errors }}
 
                 <div class="form-subhead">
-                    <h3 class="blue-text">Your contact information</h3>
-                    <p><i>*Required field</i></p>
+                    <div class="row">
+                        <div class="col-xs-12 col-xs-offset-1 col-md-12 col-md-offset-0">
+                            <h3 class="blue-text">Your contact information</h3>
+                            <p><i>*Required field</i></p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
@@ -50,8 +54,12 @@
                 
                 <br><br><br>
                 <div class="form-subhead">
-                    <h3 class="blue-text">Your organization's information</h3>
-                    <p><i>*Required field</i></p>
+                    <div class="row">
+                        <div class="col-xs-12 col-xs-offset-1">
+                            <h3 class="blue-text">Your organization's information</h3>
+                            <p><i>*Required field</i></p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
@@ -229,6 +237,16 @@
                             </div>
                             <div class="checkbox col-xs-4">
                                 <label>{% render_field form.has_lifting_supplies %}Lifting supplies</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.has_testing_skills %} Water testing skills</label>
+                            </div>
+                            <div class="checkbox col-xs-6">
+                                <label>
+                                {% render_field form.has_plumbing_skills %}Plumbing skills</label>
                             </div>
                         </div>
                         <div class="row">
