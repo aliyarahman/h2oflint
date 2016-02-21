@@ -18,18 +18,18 @@ def index(request):
     weekday = calendar.day_name[date.today().weekday()]
     if weekday=='Monday':
         locations = Organization.objects.exclude(monday_dist_start='')
-    if weekday=='Tuesday':
+    elif weekday=='Tuesday':
         locations = Organization.objects.exclude(tuesday_dist_start='')
-    if weekday=='Wednesday':
+    elif weekday=='Wednesday':
         locations = Organization.objects.exclude(wednesday_dist_start='')
-    if weekday=='Thursday':
+    elif weekday=='Thursday':
         locations = Organization.objects.exclude(thursday_dist_start='')
-    if weekday=='Friday':
+    elif weekday=='Friday':
         locations = Organization.objects.exclude(friday_dist_start='')
-    if weekday=='Saturday':
+    elif weekday=='Saturday':
         locations = Organization.objects.exclude(saturday_dist_start='')
-    if weekday=='Sunday':
-        locs = Organization.objects.exclude(sunday_dist_start='')
+    elif weekday=='Sunday':
+        locations = Organization.objects.exclude(sunday_dist_start='')
     return render(request, "index.html", {'locations' : locations})
 
 
