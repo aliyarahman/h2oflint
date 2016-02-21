@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% block content %}
 {% load widget_tweaks %}
@@ -236,7 +237,8 @@
                                 <label> {% render_field form.has_vaseline %}Vaseline</label>
                             </div>
                             <div class="checkbox col-xs-4">
-                                <label>{% render_field form.has_lifting_supplies %}Lifting supplies</label>
+                                <label>
+                                {% render_field form.has_plumbing_skills %}Plumbing skills</label>
                             </div>
                         </div>
                         <br>
@@ -245,17 +247,16 @@
                                 <label>{% render_field form.has_testing_skills %} Water testing skills</label>
                             </div>
                             <div class="checkbox col-xs-6">
-                                <label>
-                                {% render_field form.has_plumbing_skills %}Plumbing skills</label>
+                                <label>{% render_field form.has_vehicles_or_drivers %} Vehicles with drivers</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="checkbox col-xs-4">
-                                <label>{% render_field form.has_vehicles_or_drivers %} Vehicle with drivers</label>
+                                <label>{% render_field form.has_lifting_supplies %}Loading supplies (e.g. back braces or dollies)</label>
                             </div>
                             <div class="checkbox col-xs-6">
                                 <label>
-                                {% render_field form.has_lifting_supplies %}Other supplies (please explain below)</label>
+                                {% render_field form.has_other_supplies %}Other supplies (please explain below)</label>
                             </div>
                         </div>
                         <br>
@@ -289,16 +290,16 @@
                                 <label> {% render_field form.needs_vaseline %}Vaseline</label>
                             </div>
                             <div class="checkbox col-xs-4">
-                                <label>{% render_field form.needs_lifting_supplies %}Lifting supplies</label>
+                                <label>{% render_field form.needs_vehicles_or_drivers %} Vehicles with drivers</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="checkbox col-xs-4">
-                                <label>{% render_field form.needs_vehicles_or_drivers %} Vehicle with drivers</label>
+                                <label>{% render_field form.needs_lifting_supplies %}Loading supplies (e.g. back braces or dollies)</label>
                             </div>
                             <div class="checkbox col-xs-6">
                                 <label>
-                                {% render_field form.needs_lifting_supplies %}Other supplies (please explain below)</label>
+                                {% render_field form.needs_other_supplies %}Other supplies (please explain below)</label>
                             </div>
                         </div>
                         <br>

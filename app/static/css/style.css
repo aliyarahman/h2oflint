@@ -126,23 +126,27 @@ video {
 
 #map-canvas {
     margin: 2em 0em;
-    height: 50em;
+    height: 40em;
 }
 
-.user-buttons-row {
-  margin-left: 10em;
+.user-buttons-holder {
+  margin: 1em 10%;
+}
+
+.user-buttons-holder h3 {
+  font-size: 1.5em;
   margin-top: 1em;
+  min-height: 2.2em;
 }
 
 .user-button {
   font-size: 1.5em;
-  margin-bottom: 1em;
+  margin: 0em 1em 0.8em 1em;
   border: 2px #b3b3b3 solid;
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
   cursor: hand;
-  margin-right: 5px;
 }
 
 
@@ -354,6 +358,11 @@ video {
 
   .search-subheadline {
     font-size: 2em;
+  }
+
+  #map-canvas {
+    margin: 2em 0em;
+    height: 20em;
   }
 }
 
