@@ -33,7 +33,6 @@ sam = User.objects.filter(username="sam@h2oflint.com").first()
 
 
 # Add organizations with their regular distribution schedules
-
 Organization.objects.all().delete()
 
 with open('distributions.csv', 'rbU') as csvfile:
@@ -87,15 +86,19 @@ with open('distributions.csv', 'rbU') as csvfile:
         except: 
             sun_dist_end = ""
         
-
-
-
         address_to_code = address + ", " + city + ", " + state + " "+ zipcode
         geolocator = GoogleV3('AIzaSyCdQa5vpC7SE5LdZAXXxGNcKJpJGmBYd6E')
         freshaddress, (latitude, longitude) = geolocator.geocode(address_to_code)
 
-        o = Organization(approved = True, contact = dev, org_name = name, address=address, city=city, state=state, zipcode=zipcode, phone=phone, website=website, email=email, latitude=latitude, longitude=longitude, has_water=True, monday_dist_start = mon_dist_start, monday_dist_end = mon_dist_end, tuesday_dist_start = tue_dist_start, tuesday_dist_end = tue_dist_end, wednesday_dist_start = wed_dist_start, wednesday_dist_end = wed_dist_end, thursday_dist_start = thu_dist_start, thursday_dist_end = thu_dist_end, friday_dist_start = fri_dist_start, friday_dist_end = fri_dist_end, saturday_dist_start = sat_dist_start, saturday_dist_end = sat_dist_end, sunday_dist_start = sun_dist_start, sunday_dist_end = sun_dist_end, date_created=timezone.now())
+        o = Organization(approved = True, contact = dev, org_name = name, address=address, city=city, state=state, zipcode=zipcode, phone=phone, website=website, public_email=email, latitude=latitude, longitude=longitude, has_water=True, monday_dist_start = mon_dist_start, monday_dist_end = mon_dist_end, tuesday_dist_start = tue_dist_start, tuesday_dist_end = tue_dist_end, wednesday_dist_start = wed_dist_start, wednesday_dist_end = wed_dist_end, thursday_dist_start = thu_dist_start, thursday_dist_end = thu_dist_end, friday_dist_start = fri_dist_start, friday_dist_end = fri_dist_end, saturday_dist_start = sat_dist_start, saturday_dist_end = sat_dist_end, sunday_dist_start = sun_dist_start, sunday_dist_end = sun_dist_end, date_created=timezone.now())
         if 'Fire' in name:
             o.has_filters = True
 
         o.save()
+
+#Add delivery dates
+
+date1 = H2OFlintDeliveryDate(weekday='Friday', month='February', date='26', start_time='12pm', end_time='4pm', volunteers_needed = 12, volunteers_scheduled=0, cases_to_deliver=200, cases_delivered=0, vehicles_needed = 4, vehicles_scheduled=0)
+date2 = H2OFlintDeliveryDate(weekday='Saturday', month='February', date='27', start_time='12pm', end_time='4pm', volunteers_needed = 12, volunteers_scheduled=0, cases_to_deliver=200, cases_delivered=0, vehicles_needed = 4, vehicles_scheduled=0)
+date1.save()
+date2.save()

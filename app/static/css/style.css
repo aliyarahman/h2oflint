@@ -78,6 +78,11 @@ border: 0;
     width: 100%;
 }
 
+.sms-subheader {
+  padding: 1em;
+  text-align: right;
+}
+
 
 
 
@@ -229,6 +234,14 @@ video {
     background-color: #62F0FA;
 }
 
+.blue-bg {
+    background-color: #286090;
+}
+
+.dk-blue-bg {
+  background-color: #173854;
+}
+
 
 
 /* Search page style */
@@ -363,6 +376,10 @@ video {
   #map-canvas {
     margin: 2em 0em;
     height: 20em;
+  }
+
+  .sms-subheader {
+    text-align: center;
   }
 }
 
