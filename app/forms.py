@@ -247,12 +247,12 @@ class RequestDeliveryForm(forms.Form):
     zipcode = forms.CharField(max_length=10)
     persons_in_household = forms.IntegerField()
     cases_requested = forms.IntegerField()
-    contact_first_name = forms.CharField(max_length=45)
-    contact_last_name = forms.CharField(max_length=45)
+    contact_first_name = forms.CharField(max_length=45, required=False)
+    contact_last_name = forms.CharField(max_length=45, required=False)
     contact_email = forms.CharField(max_length=200)
-    contact_phone = forms.CharField(max_length=20)
-    other_supplies_needed = forms.CharField(widget=forms.Textarea)
-    notes = forms.CharField(widget=forms.Textarea)
+    contact_phone = forms.CharField(max_length=20, required=False)
+    other_supplies_needed = forms.CharField(widget=forms.Textarea, required=False)
+    notes = forms.CharField(widget=forms.Textarea, required=False)
 
 
 class IndividualOfferForm(forms.Form):
