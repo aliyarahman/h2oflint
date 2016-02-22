@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -6,13 +6,28 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.urlresolvers import reverse
 from django.core.mail import send_mass_mail
+from django.forms.models import model_to_dict
 from django.conf import settings
 from geopy.distance import vincenty
 from geopy.geocoders import GoogleV3
 from app.models import *
-from app.forms import AddDeliveryDateForm, RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm
+from app.forms import CustomLoginForm, AddDeliveryDateForm, RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm, EditIndividualForm, EditOrganizationForm
 import calendar
 from datetime import date
+
+def login_view(request):
+    form = CustomLoginForm(request.POST or None)
+    if request.POST and form.is_valid():
+        user = form.login(request)
+        if user:
+            login(request, user)
+            return HttpResponseRedirect(reverse('index'))
+    return render(request, 'login.html', {'form': form })
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'logged_out.html')
+
 
 def index(request):
     weekday = calendar.day_name[date.today().weekday()]
@@ -145,8 +160,6 @@ def organization_offer(request):
             freshaddress, (o.latitude, o.longitude) = geolocator.geocode(address_to_code)
             
             o.save()
-            print u.email
-
             
             # Build confirmation email
             confirmation_organization_email_subject = "Thanks for signing up your organization to get or receive help"
@@ -273,3 +286,106 @@ def data(request):
 
 def faq(request):
     return render(request, "faq.html")
+
+def changes_updated(request):
+    return render(request, "changes_updated.html")
+
+
+@login_required
+def edit_individual(request):
+    u = get_object_or_404(User, id=request.user.id)
+    i = IndividualHelper.objects.filter(user = u).first()
+    if request.method == 'POST':
+        form = EditIndividualForm(request.POST)
+        if form.is_valid():
+            u.first_name = form.cleaned_data.get("first_name")
+            u.last_name = form.cleaned_data.get("last_name")
+            u.last_name = form.cleaned_data.get("email")
+            u.save()
+            i.address = form.cleaned_data.get("address")
+            i.city = form.cleaned_data.get("city")
+            i.phone = form.cleaned_data.get("phone")
+            i.state = form.cleaned_data.get("state")
+            i.zipcode = form.cleaned_data.get("zipcode")
+            i.save()
+            return HttpResponseRedirect(reverse('request_received'))
+    else:
+        userinfo = model_to_dict(u)
+        indinfo = model_to_dict(i)
+        allinfo = dict(userinfo.items() + indinfo.items())
+        form = EditIndividualForm(initial=allinfo)
+    return render(request, "edit_individual.html", {'form':form})
+
+
+@login_required
+def add_another_help_offer(request):
+    return render(request, "add_another_help_offer.html")
+
+
+@login_required
+def edit_organization(request):
+    u = get_object_or_404(User, id=request.user.id)
+    o = Organization.objects.filter(contact=u).first()
+    if request.method == 'POST':
+        form = EditOrganizationForm(request.POST)
+        if form.is_valid():
+            u.first_name = form.cleaned_data.get("contact_first_name")
+            u.last_name = form.cleaned_data.get("contact_last_name")
+            u.email = form.cleaned_data.get("contact_email")
+            u.save()
+
+            o.org_name = form.cleaned_data.get("org_name")
+            o.address = form.cleaned_data.get("address")
+            o.zipcode = form.cleaned_data.get("zipcode")
+            o.phone = form.cleaned_data.get("phone")
+            o.public_email = form.cleaned_data.get("public_email")
+            o.website = form.cleaned_data.get("website")
+            o.has_water = form.cleaned_data.get("has_water")
+            o.has_volunteers =  form.cleaned_data.get("has_volunteers")
+            o.has_vehicles_or_drivers =  form.cleaned_data.get("has_vehicles_or_drivers")
+            o.has_testers =  form.cleaned_data.get("has_testers")
+            o.has_filters =  form.cleaned_data.get("has_filters")
+            o.has_wipes =  form.cleaned_data.get("has_wipes")
+            o.has_vaseline =  form.cleaned_data.get("has_vaseline")
+            o.has_lifting_supplies =  form.cleaned_data.get("has_lifting_supplies")
+            o.has_testing_skills =  form.cleaned_data.get("has_testing_skills")
+            o.has_plumbing_skills =  form.cleaned_data.get("has_plumbing_skills")
+            o.has_other_supplies =  form.cleaned_data.get("has_other_supplies")
+            o.other_supplies_on_hand =  form.cleaned_data.get("other_supplies_on_hand")
+            o.needs_water =  form.cleaned_data.get("needs_water")
+            o.needs_volunteers =  form.cleaned_data.get("needs_volunteers")
+            o.needs_vehicles =  form.cleaned_data.get("needs_vehicles")
+            o.needs_testers =  form.cleaned_data.get("needs_testers")
+            o.needs_filters =  form.cleaned_data.get("needs_filters")
+            o.needs_wipes =  form.cleaned_data.get("needs_wipes")
+            o.needs_vaseline = form.cleaned_data.get("needs_vaseline")
+            o.needs_lifting_supplies =  form.cleaned_data.get("needs_lifting_supplies")
+            o.needs_other_supplies =  form.cleaned_data.get("needs_other_supplies")
+            o.other_supplies_needed =  form.cleaned_data.get("other_supplies_needed")
+            o.monday_dist_start =  form.cleaned_data.get("monday_dist_start")
+            o.monday_dist_end =  form.cleaned_data.get("monday_dist_end")
+            o.tuesday_dist_start =  form.cleaned_data.get("tuesday_dist_start")
+            o.tuesday_dist_end =  form.cleaned_data.get("tuesday_dist_end")
+            o.wednesday_dist_start =  form.cleaned_data.get("wednesday_dist_start")
+            o.wednesday_dist_end =  form.cleaned_data.get("wednesday_dist_end")
+            o.thursday_dist_start =  form.cleaned_data.get("thursday_dist_start")
+            o.thursday_dist_end =  form.cleaned_data.get("thursday_dist_end")
+            o.friday_dist_start =  form.cleaned_data.get("friday_dist_start")
+            o.friday_dist_end =  form.cleaned_data.get("friday_dist_end")
+            o.saturday_dist_start =  form.cleaned_data.get("saturday_dist_start")
+            o.saturday_dist_end =  form.cleaned_data.get("saturday_dist_end")
+            o.sunday_dist_start =  form.cleaned_data.get("sunday_dist_start")
+            o.sunday_dist_end =  form.cleaned_data.get("sunday_dist_end")
+            o.limits =  form.cleaned_data.get("limits")
+            o.pickup_requirements =  form.cleaned_data.get("pickup_requirements")
+            o.notes =  form.cleaned_data.get("notes")
+            o.save()
+            return HttpResponseRedirect(reverse('changes_updated'))
+        else:
+            return render(request, "edit_organization.html", {'form':form})
+    else:
+        userinfo = model_to_dict(u)
+        orginfo = model_to_dict(o)
+        allinfo = dict(userinfo.items() + orginfo.items() +{'contact_first_name':u.first_name,'contact_last_name':u.last_name, 'contact_email':u.email}.items())
+        form = EditOrganizationForm(initial=allinfo)
+        return render(request, "edit_organization.html", {'form':form})

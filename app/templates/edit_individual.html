@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+            <h1 class="form-header blue-text">Volunteer your time or donate resources</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-2">
+            <form class="form-horizontal" role="form" action='.' method='post'>
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                <div class="form-subhead">
+                    <div class="row">
+                        <div class="col-xs-12 col-xs-offset-1 col-md-12 col-md-offset-0">
+                            <h3 class="blue-text">Update your contact information</h3>
+                            <p><i>*Required field</i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>First name*</label>
+                    {% render_field form.first_name class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Last name*</label>
+                    {% render_field form.last_name class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Email address*</label>
+                    {% render_field form.email class+="form-control" type="email" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Phone*</label>
+                    {% render_field form.phone class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Street address*</label>
+                    {% render_field form.address class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>City*</label>
+                    {% render_field form.city class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>State*</label>
+                    {% render_field form.state class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Zipcode*</label>
+                    {% render_field form.zipcode class+="form-control" required="true" %}
+                </div>
+
+                <div class="col-xs-12 text-right">
+                    <div class="submit-button-wrapper">
+                        <button type="submit" value="Submit" class="btn btn-lg btn-success">Submit</button>
+                        <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">Cancel</button>
+                    </div>
+                </div>
+            </form>
+
+            <!--
+            <br><br><br>
+            <div class="form-subhead">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 class="blue-text">Or Continue to Help</h3>
+                        <p>Update your volunteer availability, add another donation, or post another park-and-serve event
+                        <br><br><button onClick='location.href="{% url 'add_another_help_offer' %}"' class="btn btn-info">Go</button></p>
+                    </div>
+                </div>
+            </div> -->
+
+
+        </div>
+
+        <div class="col-xs-12 col-md-4 col-md-offset-1">
+            <div class="photo-wrapper">
+                <img src="https://s3.amazonaws.com/h2oflint/pallettes_and_jugs_and_volunteers_portrait.jpg">
+            </div>
+            <div class="caption">
+                <p><b>Taking care of our people</b>: Several days each week, young men from the neighborhood help tirelessly with the unload, reorganization, and distribution of tons of water.</p>
+            </div>
+            <br><br>
+            <div class="photo-wrapper">
+                <img src="https://s3.amazonaws.com/h2oflint/line_to_receive_landscape.jpg">
+            </div>
+            <div class="caption">
+                <p><b>In a single weekend</b>, people from as far away as Jacksonville, Florida and Philadelphia, Pennsylvania may drive in to help deliver and distribute water. </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

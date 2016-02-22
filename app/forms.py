@@ -5,6 +5,7 @@ from django.forms.models import modelformset_factory
 from datetime import date
 from django.utils import timezone
 import calendar
+from django.contrib.auth import authenticate, login, logout
 
 
 DAYS_OF_WEEK = (
@@ -112,6 +113,23 @@ TIMES = (
     ('11:30pm', '11:30pm'),
 )
 
+class CustomLoginForm(forms.Form):
+    username = forms.CharField(required=True, max_length=75, label="Username or email")
+    password = forms.CharField(widget=forms.PasswordInput(), required=True, max_length=45, label = "Password")
+
+    def clean(self):
+        username = self.cleaned_data.get('username')[0:30]
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        if not user or not user.is_active:
+            raise forms.ValidationError("Hmm, that wasn't the right username or password.")
+        return self.cleaned_data
+
+    def login(self, request):
+        username = self.cleaned_data.get('username')[0:30]
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        return user
 
 
 class OrganizationForm(forms.Form):
@@ -167,6 +185,60 @@ class OrganizationForm(forms.Form):
     limits = forms.CharField(max_length=140, required=False)
     pickup_requirements = forms.CharField(max_length=140, required=False)
     notes = forms.CharField(widget=forms.Textarea, required=False)
+
+
+class EditOrganizationForm(forms.Form):
+    contact_first_name = forms.CharField(max_length=45)
+    contact_last_name = forms.CharField(max_length=45)
+    contact_email = forms.CharField(max_length=45)
+    org_name = forms.CharField(max_length=45)
+    address = forms.CharField(max_length=200)
+    city = forms.CharField(max_length=45)
+    state = forms.CharField(max_length=4)
+    zipcode = forms.CharField(max_length=10)
+    phone = forms.CharField(max_length=14)
+    public_email = forms.CharField(max_length=200, required=False)
+    website = forms.CharField(max_length=200, required=False)
+    monday_dist_start = forms.ChoiceField(choices = TIMES, required=False)
+    monday_dist_end = forms.ChoiceField(choices = TIMES, required=False)
+    tuesday_dist_start = forms.ChoiceField(choices = TIMES, required=False)
+    tuesday_dist_end = forms.ChoiceField(choices = TIMES, required=False)
+    wednesday_dist_start = forms.ChoiceField(choices = TIMES, required=False)
+    wednesday_dist_end = forms.ChoiceField(choices = TIMES, required=False)
+    thursday_dist_start = forms.ChoiceField(choices = TIMES, required=False)
+    thursday_dist_end = forms.ChoiceField(choices = TIMES, required=False)
+    friday_dist_start = forms.ChoiceField(choices = TIMES, required=False)
+    friday_dist_end = forms.ChoiceField(choices = TIMES, required=False)
+    saturday_dist_start = forms.ChoiceField(choices = TIMES, required=False)
+    saturday_dist_end = forms.ChoiceField(choices = TIMES, required=False)
+    sunday_dist_start = forms.ChoiceField(choices = TIMES, required=False)
+    sunday_dist_end = forms.ChoiceField(choices = TIMES, required=False)
+    has_water = forms.BooleanField(required=False, initial=False)
+    has_volunteers = forms.BooleanField(required=False, initial=False)
+    has_vehicles_or_drivers = forms.BooleanField(required=False, initial=False)
+    has_filters = forms.BooleanField(required=False, initial=False)
+    has_testers = forms.BooleanField(required=False, initial=False)
+    has_wipes = forms.BooleanField(required=False, initial=False)
+    has_vaseline = forms.BooleanField(required=False, initial=False)
+    has_lifting_supplies = forms.BooleanField(required=False, initial=False)
+    has_testing_skills = forms.BooleanField(required=False, initial=False)
+    has_plumbing_skills = forms.BooleanField(required=False, initial=False)
+    has_other_supplies = forms.BooleanField(required=False, initial=False)
+    other_supplies_on_hand = forms.CharField(widget=forms.Textarea, required=False)
+    needs_water = forms.BooleanField(required=False)
+    needs_volunteers = forms.BooleanField(required=False)
+    needs_vehicles_or_drivers = forms.BooleanField(required=False)
+    needs_filters = forms.BooleanField(required=False)
+    needs_testers = forms.BooleanField(required=False)
+    needs_wipes = forms.BooleanField(required=False)
+    needs_vaseline = forms.BooleanField(required=False)
+    needs_lifting_supplies = forms.BooleanField(required=False)
+    needs_other_supplies = forms.BooleanField(required=False)
+    other_supplies_needed = forms.CharField(widget=forms.Textarea, required=False)
+    limits = forms.CharField(max_length=140, required=False)
+    pickup_requirements = forms.CharField(max_length=140, required=False)
+    notes = forms.CharField(widget=forms.Textarea, required=False)
+
 
 
 # For special events not covered by the regular distribution schedule in organization form
@@ -311,3 +383,14 @@ class IndividualOfferForm(forms.Form):
     park_and_serve_end_time = forms.ChoiceField(choices = TIMES, required=False)
     special_instructions = forms.CharField(widget=forms.Textarea, max_length=140, required=False)
     note_for_recipient = forms.CharField(widget=forms.Textarea, max_length=1000, required=False)
+
+
+class EditIndividualForm(forms.Form):
+    first_name = forms.CharField(max_length=45)
+    last_name = forms.CharField(max_length=45)
+    email = forms.CharField(max_length=45)
+    phone = forms.CharField(max_length=14)
+    address = forms.CharField(max_length=200)
+    city = forms.CharField(max_length=45)
+    state = forms.CharField(max_length=4)
+    zipcode = forms.CharField(max_length=10)

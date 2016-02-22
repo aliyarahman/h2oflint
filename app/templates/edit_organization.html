@@ -1,0 +1,356 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+            <h1 class="form-header blue-text">Edit your organization's profile and offers/needs</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-2">
+            <form class="form-horizontal" role="form" action='.' method='post'>
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                {{ form.errors }}
+
+                <div class="form-subhead">
+                    <div class="row">
+                        <div class="col-xs-12 col-xs-offset-1 col-md-12 col-md-offset-0">
+                            <h3 class="blue-text">Your contact information</h3>
+                            <p><i>*Required field</i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Primary contact's first name*</label>
+                    {% render_field form.contact_first_name class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Primary contact's last name*</label>
+                    {% render_field form.contact_last_name class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Primary contact's email address*</label>
+                    {% render_field form.contact_email class+="form-control" required="true" %}
+                </div>
+                
+                <br><br><br>
+                <div class="form-subhead">
+                    <div class="row">
+                        <div class="col-xs-12 col-xs-offset-1">
+                            <h3 class="blue-text">Your organization's information</h3>
+                            <p><i>*Required field</i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Organization's name*</label>
+                    {% render_field form.org_name class+="form-control" required="true" %}
+                </div>
+                
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Phone*</label>
+                    {% render_field form.phone class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Street address*</label>
+                    {% render_field form.address class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>City*</label>
+                    {% render_field form.city class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>State*</label>
+                    {% render_field form.state class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Zipcode*</label>
+                    {% render_field form.zipcode class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Public email</label>
+                    {% render_field form.public_email class+="form-control" %}
+                </div>
+                
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Website</label>
+                    {% render_field form.website class+="form-control" placeholder+="http://" %}
+                </div>
+
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Your distribution schedule*</label>
+                    <div class="row schedule-select">
+                        <div class="col-xs-3">
+                            <span>Mondays</span>
+                        </div>
+                        <div class="col-xs-4">
+                            {% render_field form.monday_dist_start class+="form-control" %}
+                        </div>
+                        <div class="col-xs-1">
+                            <span>to</span>
+                        </div>
+                        <div clas
+                        <div class="col-xs-4">
+                            {% render_field form.monday_dist_end class+="form-control"%}
+                        </div>
+                    </div>
+                    <div class="row schedule-select">
+                        <div class="col-xs-3">
+                            <span>Tuesdays</span>
+                        </div>
+                        <div class="col-xs-4">
+                            {% render_field form.tuesday_dist_start class+="form-control" %}
+                        </div>
+                        <div class="col-xs-1">
+                            <span>to</span>
+                        </div>
+                        <div clas
+                        <div class="col-xs-4">
+                            {% render_field form.tuesday_dist_end class+="form-control"%}
+                        </div>
+                    </div>
+
+                    <div class="row schedule-select">
+                        <div class="col-xs-3">
+                            <span>Wednesdays</span>
+                        </div>
+                        <div class="col-xs-4">
+                            {% render_field form.wednesday_dist_start class+="form-control" %}
+                        </div>
+                        <div class="col-xs-1">
+                            <span>to</span>
+                        </div>
+                        <div clas
+                        <div class="col-xs-4">
+                            {% render_field form.wednesday_dist_end class+="form-control"%}
+                        </div>
+                    </div>
+
+                    <div class="row schedule-select">
+                        <div class="col-xs-3">
+                            <span>Thursdays</span>
+                        </div>
+                        <div class="col-xs-4">
+                            {% render_field form.thursday_dist_start class+="form-control" %}
+                        </div>
+                        <div class="col-xs-1">
+                            <span>to</span>
+                        </div>
+                        <div clas
+                        <div class="col-xs-4">
+                            {% render_field form.thursday_dist_end class+="form-control"%}
+                        </div>
+                    </div>
+                    <div class="row schedule-select">
+                        <div class="col-xs-3">
+                            <span>Fridays</span>
+                        </div>
+                        <div class="col-xs-4">
+                            {% render_field form.friday_dist_start class+="form-control" %}
+                        </div>
+                        <div class="col-xs-1">
+                            <span>to</span>
+                        </div>
+                        <div clas
+                        <div class="col-xs-4">
+                            {% render_field form.friday_dist_end class+="form-control"%}
+                        </div>
+                    </div>
+
+                    <div class="row schedule-select">
+                        <div class="col-xs-3">
+                            <span>Saturdays</span>
+                        </div>
+                        <div class="col-xs-4">
+                            {% render_field form.saturday_dist_start class+="form-control" %}
+                        </div>
+                        <div class="col-xs-1">
+                            <span>to</span>
+                        </div>
+                        <div clas
+                        <div class="col-xs-4">
+                            {% render_field form.saturday_dist_end class+="form-control"%}
+                        </div>
+                    </div>
+                    <div class="row schedule-select">
+                        <div class="col-xs-3">
+                            <span>Sundays</span>
+                        </div>
+                        <div class="col-xs-4">
+                            {% render_field form.sunday_dist_start class+="form-control" %}
+                        </div>
+                        <div class="col-xs-1">
+                            <span>to</span>
+                        </div>
+                        <div clas
+                        <div class="col-xs-4">
+                            {% render_field form.sunday_dist_end class+="form-control"%}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>What are you offering?</label>
+                        <div class="row">
+
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.has_water %}Water</label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label> {% render_field form.has_filters %}Filters</label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.has_testers %}Testing supplies</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.has_wipes %}Baby wipes</label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label> {% render_field form.has_vaseline %}Vaseline</label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label>
+                                {% render_field form.has_plumbing_skills %}Plumbing skills</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.has_testing_skills %} Water testing skills</label>
+                            </div>
+                            <div class="checkbox col-xs-6">
+                                <label>{% render_field form.has_vehicles_or_drivers %} Vehicles with drivers</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.has_lifting_supplies %}Loading supplies (e.g. back braces or dollies)</label>
+                            </div>
+                            <div class="checkbox col-xs-6">
+                                <label>
+                                {% render_field form.has_other_supplies %}Other supplies (please explain below)</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <span>Other supplies you can offer</span>
+                                {% render_field form.other_supplies_on_hand class+="form-control" %}
+                            </div>
+                        </div>
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>What do you need?</label>
+                        <div class="row">
+
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.needs_water %}Water</label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label> {% render_field form.needs_filters %}Filters</label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.needs_testers %}Testing supplies</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.needs_wipes %}Baby wipes</label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label> {% render_field form.needs_vaseline %}Vaseline</label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.needs_vehicles_or_drivers %} Vehicles with drivers</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="checkbox col-xs-4">
+                                <label>{% render_field form.needs_lifting_supplies %}Loading supplies (e.g. back braces or dollies)</label>
+                            </div>
+                            <div class="checkbox col-xs-6">
+                                <label>
+                                {% render_field form.needs_other_supplies %}Other supplies (please explain below)</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12 short-textarea">
+                                <span>Other supplies you can offer</span>
+                                {% render_field form.other_supplies_needed class+="form-control" %}
+                            </div>
+                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you place limits on water or other supplies? If so, please explain (e.g. "Two cases per person per week" or "Take what you need").
+                    {% render_field form.limits class+="form-control" %}<label>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you have any special requirements for picking up water or other supplies (e.g. "we require ID")?
+                    {% render_field form.pickup_requirements class+="form-control" %}<label>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional notes or special instructions
+                    {% render_field form.notes class+="form-control" %}<label>
+                </div>
+
+
+
+
+
+                <div class="col-xs-12 text-right">
+                    <div class="submit-button-wrapper">
+                        <button type="submit" value="Submit" class="btn btn-lg btn-success">Submit</button>
+                        <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">Cancel</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="col-xs-12 col-md-4 col-md-offset-1">
+            <div class="photo-wrapper">
+                <img src="https://s3.amazonaws.com/h2oflint/one_volunteer_distributing_supplies_indoors_portrait.jpg">
+            </div>
+            <br>
+            <div class="photo-wrapper">
+                <img src="https://s3.amazonaws.com/h2oflint/volunteers_distributing_supplies_indoors_landscape.jpg">
+            </div>
+            <div class="caption">
+                <p><b>Neighbor to neighbor</b>: Nearly 150 members of New Era Detroit prepare and distribute over 700 nutritious meals to children, seniors, and household residents in Civic Park – one of Flint’s most affected neighborhoods.</p>
+            </div>
+            <br><br>
+            <div class="photo-wrapper">
+                <img src="https://s3.amazonaws.com/h2oflint/church_outdoors_with_volunteer_lines_landscape.jpg">
+            </div>
+            <div class="caption">
+                <p><b>Mobile “Vehicle City”</b>: Residents lined up for nearly 3 blocks for Saturday water distribution at Joy Tabernacle Church.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

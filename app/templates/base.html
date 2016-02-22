@@ -75,6 +75,18 @@
                 <li><a href="{% url 'request_delivery' %}">I'm looking for help</a></li>
                 <li><a href="{% url 'individual_offer' %}">I can help</a></li>
                 <li><a href="{% url 'organization_offer' %}">My organization can help</a></li>
+                {% if user.is_authenticated %}
+                    {% if user.individualhelper_set.all|length > 0 %}
+                        <li><a href="{% url 'edit_individual' %}">Edit Your Profile</a></li>
+                    {% endif %}
+                    {% if user.organization_set.all|length > 0 %}
+                        <li><a href="{% url 'edit_organization' %}">Edit Your Organization's Profile</a></li>
+                    {% endif %}
+                <li><a href="{% url 'logout_view' %}">Sign out</a></li>
+                {% else %}
+                <li><a href="{% url 'login_view' %}">Sign in</a></li>
+                {% endif %}
+                </li>
                 <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.h2oflint.com&t=Find+Or+Offer+Help+In+Flint"><span class="share-buttons"><img src="{% static 'img/facebook.png' %}"></a></li>
                 <li>
                 <a href="http://twitter.com/share?url=http%3A%2F%2Fwww.h2oflint.com&text=H2O%20Flint%20lets%20folks%20find%20or%20share%20help%20through%20Flint%20community%20members&via=flint_h2o" target="_blank"><span class="share-buttons"><img src="{% static 'img/twitter.png' %}"></a></li>
