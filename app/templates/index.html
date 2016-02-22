@@ -137,32 +137,105 @@
 
             <div class="col-xs-12 col-md-5 map-panel">
 
-                <div class="row search-bar text-center">
-                    <div class="col-xs-12 col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Enter your address or zip code">
-                    </div>
-                    <div class="col-xs-12 col-md-2 text-center">
-                        
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="text-center search-list-button">
-                            <button type-"button" class="btn btn-lg btn-primary zoom-button">Zoom in</button>
-                            or
-                            <button onClick='location.href="{% url 'search' %}"' class="btn btn-lg info ">See locations open this week</div>
+                <div class="row search-list-button-holder">
+                    <div class="col-xs-12 col-md-5">
+                        <div class="search-list-button text-center">
+                            Enter your address to find sites distributing water near you today
                         </div>
                     </div>
+                    <div class="col-xs-12 col-md-1 search-list-button text-center">
+                        <b>or</b>
+                    </div>
+                    <div class="col-xs-12 col-md-6 search-list-button text-center">
+                        <button onClick='location.href="{% url 'search' %}"' class="btn info ">Click here to see this week's locations
+                    </div>
                     <div class="col-xs-12">
-                        <div id="map-canvas" class="img-responsive">
-                        </div>
+    <input id="pac-input" class="controls" type="text" placeholder="Address or zipcode">
+    <div id="map-canvas"></div>
+    <script>
+
+function initAutocomplete() {
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: {lat: 43.0125274, lng: -83.6874562},
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  // Add today's distribution points
+    {% for location in locations %}
+    var marker1 = new google.maps.Marker({
+        position: new google.maps.LatLng({{location.latitude}}, {{location.longitude}}),
+        map: map,
+        title: "{{location.org_name}}\n{{location.address}}\nFlint, MI{{location.zipcode}}\n {{location.phone}}"
+    });
+    {% endfor %}
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+  // [END region_getplaces]
+}
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdQa5vpC7SE5LdZAXXxGNcKJpJGmBYd6E&libraries=places&callback=initAutocomplete"
+         async defer></script>
                     </div>
                 </div>
                 <div class="row">
-
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 col-md-5">
                         <h4 class="blue-text"><b>Tweet us your real-time experiences at distribution centers to have them appear here and inform your neighbors</b></h4>
                         <a class="twitter-timeline" href="https://twitter.com/flint_h2o" data-widget-id="700715276451459072">Tweets by @flint_h2o</a>
                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -173,35 +246,5 @@
         </div>
 
     </div>
-
-
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdQa5vpC7SE5LdZAXXxGNcKJpJGmBYd6E">
-    </script>
-
-    <script type="text/javascript">
-        function initialize() {
-            var mapOptions = {
-                center: new google.maps.LatLng(43.0125274, -83.6874562),
-                zoom: 12
-            };
-            var map = new google.maps.Map(document.getElementById("map-canvas"),
-                mapOptions);
-            
-            {% for location in locations %}
-            var marker1 = new google.maps.Marker({
-                position: new google.maps.LatLng({{location.latitude}}, {{location.longitude}}),
-                map: map,
-                title: "{{location.org_name}}\n{{location.address}}\nFlint, MI{{location.zipcode}}\n {{location.phone}}"
-            });
-            {% endfor %}
-
-            }
-          google.maps.event.addDomListener(window, 'load', initialize);
-    
-            
-
-    </script>
-
 
 {% endblock %}
