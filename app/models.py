@@ -49,6 +49,7 @@ class DeliveryRequest(models.Model):
     contact_last_name = models.CharField(max_length=45, null=True, blank=True)
     contact_email = models.CharField(max_length=200, null=True, blank=True)
     contact_phone = models.CharField(max_length=20, null=True, blank=True)
+    video_url = models.CharField(max_length=200, null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
@@ -123,6 +124,7 @@ class IndividualHelpOffer(models.Model):
     park_and_serve_year = models.CharField(max_length=4, default="2016")
     park_and_serve_start_time = models.CharField(max_length=8, null=True, blank=True)
     park_and_serve_end_time = models.CharField(max_length=8, null=True, blank=True)
+    video_url = models.CharField(max_length=200, null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
@@ -183,6 +185,7 @@ class Organization(models.Model):
     limits = models.CharField(max_length=140, null=True, blank=True)
     pickup_requirements = models.CharField(max_length=140, null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
+    video_url = models.CharField(max_length=200, null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
 
     def __unicode__(self):

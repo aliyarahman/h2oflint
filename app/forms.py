@@ -185,6 +185,7 @@ class OrganizationForm(forms.Form):
     other_supplies_needed = forms.CharField(widget=forms.Textarea, required=False)
     limits = forms.CharField(max_length=140, required=False)
     pickup_requirements = forms.CharField(max_length=140, required=False)
+    video_url = forms.CharField(max_length=200, required=False)
     notes = forms.CharField(widget=forms.Textarea, required=False)
 
 
@@ -238,6 +239,7 @@ class EditOrganizationForm(forms.Form):
     other_supplies_needed = forms.CharField(widget=forms.Textarea, required=False)
     limits = forms.CharField(max_length=140, required=False)
     pickup_requirements = forms.CharField(max_length=140, required=False)
+    video_url = forms.CharField(max_length=200, required=False)
     notes = forms.CharField(widget=forms.Textarea, required=False)
 
 
@@ -325,6 +327,7 @@ class RequestDeliveryForm(forms.Form):
     contact_email = forms.CharField(max_length=200)
     contact_phone = forms.CharField(max_length=20, required=False)
     other_supplies_needed = forms.CharField(widget=forms.Textarea, required=False)
+    video_url = forms.CharField(max_length=200, required=False)
     notes = forms.CharField(widget=forms.Textarea, required=False)
 
 

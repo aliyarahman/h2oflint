@@ -19,6 +19,13 @@ border: 0;
     margin: 4em auto;
 }
 
+.indent {
+  text-indent: 3em;
+}
+
+code {
+  color: black;
+}
 
 .photo-wrapper img {
   width: 100%;

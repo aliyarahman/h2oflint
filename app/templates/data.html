@@ -15,7 +15,37 @@
 
             <p>We want to equalize access to relief resources for all Flint residents, so we're offering our up-to-date community-gathered data on people-powered distribution sites via API (application programming interface) to anyone who wants to integrate it into their website or app.</p><br>
 
-            <p>We'll post documentation for our API here by February 22nd. Please check back to register for an API key and start developing using community-gathered data.</p>
+            
+            <h3 class="blue-text">Huh? What's an "API"?</h3>
+            <p>Have you ever worked in food service - or used a drive-through window at a restaurant? If so, the idea behind an Application Programming Interface (API) won't be too new to you!</p>
+
+            <p>When someone drives up to restaurant's service window, they usually just want to ask for food, be handed exactly what they asked for, and get moving. They don't need to own all the machines in the kitchen--or make a trip the freezer to get all the raw ingredients the restaurant has--to get their meal. And the restaurant's staff wants to give customers their food, but they probably don't want to let them in the kitchen or load tons of extra ingredients and machines into their car! You can probably imagine how much it would jam up everyone's day if that was the way people got their food at a restaurant.
+
+            <p>An Application Programming Interface is like a drive-through window for people who want good, nutritious data to use on their website or app, without having to dig through or buy the whole kitchen. It lets a website or computer programmer place an order with the machine that stores all of the good knowledge about a subject - and then immediately, even automatically throughout the day, get an answer back with only the up-to-date information they asked for, in a format that computers can quickly read and use to update a website or app without needing much (or any) extra human help.</p>
+
+            <p>This is much faster on both ends than having one person email a file a few times a day so that another person can download it, open and copy things out of it, paste those things somewhere else... and on and on. It's important that getting good information is fast and simple, because sites and apps that help you find things in your area can't run without solid, fresh data - just like people can't run without nutritious (non-expired) food!</p>
+
+
+
+
+
+            <h3 class="blue-text"><br>Using the H2OFlint API</h3>
+                <p><b>To use our API, you'll need to first register for an API key.</b>
+                <br>We'll be opening the API shortly. Please check back to register for an API key and start developing using community-gathered data.</p>
+                <p><b>Sending requests</b>
+                <br>The simplest request you can send returns a JSON list of water and supply distribution locations that are open for the next 7 days, with latitude and longitude points, address information, open hours, and supplies available/needed:</p>
+
+                <p class="indent"><b><code>GET http://www.h2oflint.com/api/locations?key=your_api_key</code></b></p>
+
+                <p>The response includes all government and community locations.Some are locations for one-time events, and some are part of an organization's recurring (but frequently changing) schedule. The API reflects the most recent information that distributors have entered about where and when they will be distributing.</p>
+
+                <br>You can also ask for only water locations by adding the 'resource=water' parameter (we'll add more resource filters pending user demand):</p>
+                
+                <p class="indent"><b><code>GET http://www.h2oflint.com/api/locations?resource=water?key=your_api_key</code></b></p>
+
+                <br>And you can add for just today's locations by adding the when=today parameter:</p>
+                
+                <p class="indent"><b><code>GET http://www.h2oflint.com/api/locations?when=today?key=your_api_key</code></b></p>
         </div>
 
             
