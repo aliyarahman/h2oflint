@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
-            <h1 class="form-header blue-text">Volunteer your time or donate resources</h1>
+            <h1 class="form-header blue-text">Add another offer to help</h1>
         </div>
     </div>
     <div class="row">
@@ -16,71 +16,11 @@
                 {% csrf_token %}
                 {{ form.non_field_errors }}
 
-                <div class="form-subhead">
-                    <div class="row">
-                        <div class="col-xs-12 col-xs-offset-1 col-md-12 col-md-offset-0">
-                            <h3 class="blue-text">Your contact information</h3>
-                            <p><i>*Required field</i></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>First name*</label>
-                    {% render_field form.first_name class+="form-control" required="true" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Last name*</label>
-                    {% render_field form.last_name class+="form-control" required="true" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Email address*</label>
-                    {% render_field form.email class+="form-control" type="email" required="true" placeholder="name@example.com" %}
-                    <p class="form-note"><i>We'll send all correspondence about your account to this email address, and it will also be the username you use to log in to the site.</i></p>
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Phone*</label>
-                    {% render_field form.phone class+="form-control" required="true" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Street address*</label>
-                    {% render_field form.address class+="form-control" required="true" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>City*</label>
-                    {% render_field form.city class+="form-control" required="true" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>State*</label>
-                    {% render_field form.state class+="form-control" required="true" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Zipcode*</label>
-                    {% render_field form.zipcode class+="form-control" required="true" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Password*</label>
-                    {% render_field form.password class+="form-control" required="true" placeholder="Passwords should have at least 8 digits" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Retype Password*</label>
-                    {% render_field form.retype_password class+="form-control" required="true" %}
-                </div>
                 
-                <br><br><br>
                 <div class="form-subhead">
                     <div class="row">
                         <div class="col-xs-12 col-xs-offset-1 col-md-12 col-md-offset-0">
-                            <h3 class="blue-text">How You'd Like to Help</h3>
+                            <h3 class="blue-text">How Would You Like to Help?</h3>
                             <p><i>*Required field</i></p>
                         </div>
                     </div>

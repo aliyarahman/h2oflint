@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
-            <h1 class="form-header blue-text">Volunteer your time or donate resources</h1>
+            <h1 class="form-header blue-text">Update Your Info or Offer More Help</h1>
         </div>
     </div>
     <div class="row">
@@ -73,17 +73,24 @@
                 </div>
             </form>
 
-            <!--
+
             <br><br><br>
             <div class="form-subhead">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="blue-text">Or Continue to Help</h3>
-                        <p>Update your volunteer availability, add another donation, or post another park-and-serve event
+                        <h3 class="blue-text">Add Another Offer to Help</h3>
+                        {% for helper in user.individualhelper_set.all %}
+                        <p>We received offers of help from you on:
+                            <ul>{% for offer in helper.individualhelpoffer_set.all %}
+                            <li>{{offer.date_created}} Eastern Time</li>
+                            {% endfor %}
+                            </ul>
+                        {% endfor %}
+                        <p>Click Go to update your volunteer availability, add another donation, or post another park-and-serve event
                         <br><br><button onClick='location.href="{% url 'add_another_help_offer' %}"' class="btn btn-info">Go</button></p>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
 
         </div>

@@ -285,6 +285,19 @@ video {
   margin-top: 1em;
 }
 
+
+/* Individual Help Offer form style */
+
+.volunteer-questions { 
+  display: none;}
+
+.donation-questions { 
+  display: none;}
+
+.parkandserve-questions { 
+  display: none;}
+
+
 /* Bootstrap navbar overrides */
 
 .navbar-default {

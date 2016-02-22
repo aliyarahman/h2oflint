@@ -11,7 +11,7 @@ from django.conf import settings
 from geopy.distance import vincenty
 from geopy.geocoders import GoogleV3
 from app.models import *
-from app.forms import CustomLoginForm, AddDeliveryDateForm, RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm, EditIndividualForm, EditOrganizationForm
+from app.forms import CustomLoginForm, AddDeliveryDateForm, RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm, EditIndividualForm, EditOrganizationForm, AddAnotherHelpOfferForm
 import calendar
 from datetime import date
 
@@ -212,7 +212,7 @@ def individual_offer(request):
             i.save()
             i = IndividualHelper.objects.filter(user = u).first()
 
-            h = IndividualHelpOffer()
+            h = IndividualHelpOffer(individual_helper =i)
             h.wants_to_volunteer =  form.cleaned_data.get("wants_to_volunteer")
             h.group_size = form.cleaned_data.get("group_size")
             h.will_unload = form.cleaned_data.get("will_unload")
@@ -319,7 +319,70 @@ def edit_individual(request):
 
 @login_required
 def add_another_help_offer(request):
-    return render(request, "add_another_help_offer.html")
+    if request.method == "POST":
+        form = AddAnotherHelpOfferForm(request.POST)
+        if form.is_valid():
+            u = get_object_or_404(User, id = request.user.id)
+            i = IndividualHelper.objects.filter(user = u).first()
+            h = IndividualHelpOffer(individual_helper =i)
+            h.wants_to_volunteer =  form.cleaned_data.get("wants_to_volunteer")
+            h.group_size = form.cleaned_data.get("group_size")
+            h.will_unload = form.cleaned_data.get("will_unload")
+            h.will_deliver_with_vehicle = form.cleaned_data.get("will_deliver_with_vehicle")
+            h.will_do_admin = form.cleaned_data.get("will_do_admin")
+            h.will_do_plumbing = form.cleaned_data.get("will_do_plumbing")
+            h.will_do_testing = form.cleaned_data.get("will_do_testing")
+            h.mon_availability_start_time = form.cleaned_data.get("mon_availability_start_time")
+            h.mon_availability_end_time = form.cleaned_data.get("mon_availability_end_time")
+            h.tue_availability_start_time = form.cleaned_data.get("tue_availability_start_time") 
+            h.tue_availability_end_time = form.cleaned_data.get("tue_availability_end_time")
+            h.wed_availability_start_time = form.cleaned_data.get("wed_availability_start_time") 
+            h.wed_availability_end_time = form.cleaned_data.get("wed_availability_end_time")
+            h.thu_availability_start_time = form.cleaned_data.get("thu_availability_start_time") 
+            h.thu_availability_end_time = form.cleaned_data.get("thu_availability_end_time")
+            h.fri_availability_start_time = form.cleaned_data.get("fri_availability_start_time") 
+            h.fri_availability_end_time = form.cleaned_data.get("thu_availability_end_time")
+            h.sat_availability_start_time = form.cleaned_data.get("fri_availability_start_time")
+            h.sat_availability_end_time = form.cleaned_data.get("fri_availability_end_time")
+            h.sun_availability_start_time = form.cleaned_data.get("sun_availability_start_time") 
+            h.sun_availability_end_time = form.cleaned_data.get("sat_availability_end_time")
+            h.availability_start_date = form.cleaned_data.get("availability_start_date")
+            h.availability_end_date = form.cleaned_data.get("availability_end_date")
+            h.availability_start_month = form.cleaned_data.get("availability_start_month")
+            h.availability_end_month = form.cleaned_data.get("availability_end_month")
+            h.doing_park_and_serve = form.cleaned_data.get("doing_park_and_serve")
+            h.park_and_serve_address = form.cleaned_data.get("park_and_serve_address")
+            h.park_and_serve_zipcode = form.cleaned_data.get("park_and_serve_zipcode")
+            h.park_and_serve_month = form.cleaned_data.get("park_and_serve_month")
+            h.park_and_serve_weekday = form.cleaned_data.get("park_and_serve_weekday")
+            h.park_and_serve_date = form.cleaned_data.get("park_and_serve_date")
+            h.park_and_serve_month = form.cleaned_data.get("park_and_serve_month")
+            h.park_and_serve_items = form.cleaned_data.get("park_and_serve_items")
+            h.park_and_serve_start_time = form.cleaned_data.get("park_and_serve_start_time")
+            h.park_and_serve_end_time = form.cleaned_data.get("park_and_serve_end_time")
+            h.notes = form.cleaned_data.get("special_instructions")
+            h.save()
+            
+            # Build confirmation email
+            confirmation_individual_email_subject = "We've received another help offer."
+            confirmation_individual_email_body = "Thanks for adding another help offer "+u.first_name
+            confirmation_individual_email = (confirmation_individual_email_subject, confirmation_individual_email_body, settings.EMAIL_HOST_USER, [u.email])
+    
+            # Build admin notification email
+            admin_individual_email_subject = "We've received an individual signup from "+u.first_name
+            admin_individual_email_body = "We just received an individual registration for "+u.first_name+" "+u.last_name
+            admin_individual_email = (admin_individual_email_subject, admin_individual_email_body, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER])
+    
+            # Send Them
+            try:
+                send_mass_mail((admin_individual_email, confirmation_individual_email), fail_silently=False)
+            except:
+                pass
+            # Still need to check for saving of skills they have here
+            return HttpResponseRedirect(reverse('request_received'))
+    else:
+        form = AddAnotherHelpOfferForm()
+    return render(request, "add_another_help_offer.html", {'form':form})
 
 
 @login_required
