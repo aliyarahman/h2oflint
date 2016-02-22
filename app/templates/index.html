@@ -223,6 +223,7 @@ function initAutocomplete() {
         bounds.extend(place.geometry.location);
       }
     });
+    map.fitBounds(bounds);
     map.setCenter(markers[0].position);
     map.setZoom(13);
   });
