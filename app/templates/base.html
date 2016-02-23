@@ -76,12 +76,13 @@
                     <li><a class="navbar-brand" href="{% url 'data' %}">Use our data/API</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'request_delivery' %}">I'm looking for help</a></li>
-                <li><a href="{% url 'individual_offer' %}">I can help</a></li>
-                <li><a href="{% url 'organization_offer' %}">My organization can help</a></li>
+
                 {% if user.is_authenticated %}
+                    {% if user.deliveryrequest_set.all|length > 0 %}
+                        <li><a href="{% url 'edit_request_delivery' %}">Edit My Profile</a></li>
+                    {% endif %}
                     {% if user.individualhelper_set.all|length > 0 %}
-                        <li><a href="{% url 'edit_individual' %}">Edit Your Profile</a></li>
+                        <li><a href="{% url 'edit_individual' %}">Edit My Profile</a></li>
                         <li><a href="{% url 'add_another_help_offer' %}">Add Another Offer to Help</a></li>
                     {% endif %}
                     {% if user.organization_set.all|length > 0 %}
@@ -89,6 +90,9 @@
                     {% endif %}
                 <li><a href="{% url 'logout_view' %}">Sign out</a></li>
                 {% else %}
+                <li><a href="{% url 'request_delivery' %}">I'm looking for help</a></li>
+                <li><a href="{% url 'individual_offer' %}">I can help</a></li>
+                <li><a href="{% url 'organization_offer' %}">My organization can help</a></li>
                 <li><a href="{% url 'login_view' %}">Sign in</a></li>
                 {% endif %}
                 </li>

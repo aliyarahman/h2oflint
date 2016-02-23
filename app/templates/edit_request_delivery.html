@@ -7,8 +7,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
-            <h1 class="form-header blue-text">Request a Home Delivery</h1>
-            
+            <h1 class="form-header blue-text">Update Your Home Delivery Request Info</h1>
         </div>
     </div>
     <div class="row">
@@ -23,7 +22,8 @@
                         <div class="col-xs-12 col-xs-offset-1 col-md-12 col-md-offset-0">
                             <h3 class="blue-text">Your information</h3>
                             <p><i>*Required field</i></p>
-                            <p>We strive to make as many deliveries as possible based on our volunteer capacity. Once we've reviewed your request, we'll contact you to schedule a delivery date or to let you know if we do not have enough volunteers to fill your request at this time. You may also apply for a friend or loved one in need. Be sure to tell us why the service is needed.</p>
+                            <p>We strive to make as many deliveries as possible based on our volunteer capacity. Once we've reviewed your request, we'll contact you to schedule a delivery date or to let you know if we do not have enough volunteers to fill your request at this time. You may also apply for a friend or loved one in need. Be sure to tell us why the service is needed.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -44,22 +44,6 @@
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Contact email address*</label>
-                    <p>If you are completing this form for someone else, please enter an address where you can receive a confirmation email for this delivery request.</p>
-                    {% render_field form.contact_email class+="form-control" placeholder="name@example.com" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Password*</label>
-                    {% render_field form.password class+="form-control" required="true" placeholder="Passwords should have at least 8 digits" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Retype Password*</label>
-                    {% render_field form.retype_password class+="form-control" required="true" %}
-                </div>
-
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>Delivery address in Flint, MI*</label>
                     {% render_field form.recipient_address class+="form-control" required="true" %}
                 </div>
@@ -73,6 +57,12 @@
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>Recipient's phone*</label>
                     {% render_field form.recipient_phone class+="form-control" required="true" %}
+                </div>
+
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <label>Contact email address*</label>
+                    <p>If you are completing this form for someone else, please enter an address where you can receive a confirmation email for this delivery request.</p>
+                    {% render_field form.contact_email class+="form-control" placeholder="name@example.com" %}
                 </div>
                 
                 <div class="form-group">

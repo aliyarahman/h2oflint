@@ -35,9 +35,8 @@ class H2OFlintDeliveryDate(models.Model):
 
 
 class DeliveryRequest(models.Model):
+    user = models.ForeignKey(User, null=True, blank=True)
     delivery_date = models.ForeignKey(H2OFlintDeliveryDate, null=True, blank=True)
-    recipient_first = models.CharField(max_length=45, null=True, blank=True)
-    recipient_last = models.CharField(max_length=45, null=True, blank=True)
     recipient_address = models.CharField(max_length=200, null=True, blank=True)
     longitude = models.FloatField(default = -83.6874562)
     latitude = models.FloatField(default = 43.0125274)
@@ -48,9 +47,9 @@ class DeliveryRequest(models.Model):
     reason = models.TextField(null=True, blank=True)
     contact_first_name = models.CharField(max_length=45, null=True, blank=True)
     contact_last_name = models.CharField(max_length=45, null=True, blank=True)
-    contact_email = models.CharField(max_length=200, null=True, blank=True)
     contact_phone = models.CharField(max_length=20, null=True, blank=True)
     video_url = models.CharField(max_length=200, null=True, blank=True)
+    other_supplies_needed = models.TextField(null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 

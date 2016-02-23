@@ -324,6 +324,33 @@ class RequestDeliveryForm(forms.Form):
     delivery_date = forms.ModelChoiceField(required = False, queryset= H2OFlintDeliveryDate.objects.all())
     recipient_first = forms.CharField(max_length=45)
     recipient_last = forms.CharField(max_length=45)
+    password = forms.CharField(widget=forms.PasswordInput())
+    retype_password = forms.CharField(widget=forms.PasswordInput())
+    recipient_address = forms.CharField(max_length=200)
+    recipient_phone = forms.CharField(max_length=20)
+    zipcode = forms.CharField(max_length=10)
+    persons_in_household = forms.IntegerField(min_value=0)
+    cases_requested = forms.IntegerField(min_value=0)
+    reason = forms.CharField(widget=forms.Textarea)
+    contact_first_name = forms.CharField(max_length=45, required=False)
+    contact_last_name = forms.CharField(max_length=45, required=False)
+    contact_email = forms.CharField(max_length=200)
+    contact_phone = forms.CharField(max_length=20, required=False)
+    other_supplies_needed = forms.CharField(widget=forms.Textarea, required=False)
+    video_url = forms.CharField(max_length=200, required=False)
+    notes = forms.CharField(widget=forms.Textarea, required=False)
+
+    def clean_email(self):
+        data = self.cleaned_data['contact_email']
+        if User.objects.filter(email=data).exists():
+            raise forms.ValidationError("There is already an account with this email address")
+        return data
+
+
+class EditRequestDeliveryForm(forms.Form):
+    delivery_date = forms.ModelChoiceField(required = False, queryset= H2OFlintDeliveryDate.objects.all())
+    recipient_first = forms.CharField(max_length=45)
+    recipient_last = forms.CharField(max_length=45)
     recipient_address = forms.CharField(max_length=200)
     recipient_phone = forms.CharField(max_length=20)
     zipcode = forms.CharField(max_length=10)

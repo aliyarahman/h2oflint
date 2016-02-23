@@ -11,6 +11,8 @@ Here are the details of your request:
 
 After we've reviewed your request, a volunteer will contact you.
 
+You can log back into the site any time to update your information by using {contact_email} as your username and the password you created when you submitted this request.
+
 If you have questions, please email help@h2oflint.com.
 
 Thank you!
@@ -53,7 +55,7 @@ Organization: {org_name}
 Address: {address}, {city}, {state} {zipcode}
 Phone: {phone}
 Website: {website}
-Public email {public_email}
+Public email: {public_email}
 
 Your distribution schedule:
 Monday: {monday_dist_start} - {monday_dist_end}

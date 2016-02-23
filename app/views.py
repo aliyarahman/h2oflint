@@ -11,7 +11,7 @@ from django.conf import settings
 from geopy.distance import vincenty
 from geopy.geocoders import GoogleV3
 from app.models import *
-from app.forms import CustomLoginForm, AddDeliveryDateForm, RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm, EditIndividualForm, EditOrganizationForm, AddAnotherHelpOfferForm
+from app.forms import CustomLoginForm, AddDeliveryDateForm, RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm, EditIndividualForm, EditOrganizationForm, AddAnotherHelpOfferForm, EditRequestDeliveryForm
 import calendar
 from datetime import date
 
@@ -52,7 +52,17 @@ def request_delivery(request):
     if request.method == "POST":
         form = RequestDeliveryForm(request.POST)
         if form.is_valid():
-            r = DeliveryRequest()
+            email = form.cleaned_data.get("contact_email")
+            password = form.cleaned_data.get("password")
+            u = User.objects.create_user(email, email, password)
+            u.first_name = form.cleaned_data.get("recipient_first")
+            u.last_name = form.cleaned_data.get("recipient_last")
+            u.save()
+            user = authenticate(username=email, password=password)
+            login(request, user)
+            u = User.objects.filter(email = email).first()
+
+            r = DeliveryRequest(user = u)
             r.reason = form.cleaned_data.get("reason")
             r.recipient_first = form.cleaned_data.get("recipient_first")
             r.recipient_last = form.cleaned_data.get("recipient_last")
@@ -67,7 +77,7 @@ def request_delivery(request):
             r.contact_first_name = form.cleaned_data.get("contact_first_name")
             r.contact_last_name = form.cleaned_data.get("contact_last_name")
             r.contact_phone = form.cleaned_data.get("contact_phone")
-            r.notes = form.cleaned_data.get("other_supplies_needed")
+            r.other_supplies_needed = form.cleaned_data.get("other_supplies_needed")
             r.notes = form.cleaned_data.get("notes")
             r.save()
             
@@ -77,7 +87,8 @@ def request_delivery(request):
                 first_name = r.recipient_first,
                 last_name = r.recipient_last,
                 address = r.recipient_address,
-                reason = r.reason)
+                reason = r.reason,
+                contact_email = r.contact_email)
             confirmation_request_email = (confirmation_request_email_subject, confirmation_request_email_body, settings.EMAIL_HOST_USER, [r.contact_email])
     
             # Build admin notification email
@@ -102,6 +113,42 @@ def request_delivery(request):
     else:
         form = RequestDeliveryForm()
     return render(request, "request_delivery.html", {'form' : form})
+
+
+
+def edit_request_delivery(request):
+    u = get_object_or_404(User, id=request.user.id)
+    r = DeliveryRequest.objects.filter(user=u).first()
+    if request.method == "POST":
+        form = EditRequestDeliveryForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get("contact_email")
+            u.first_name = form.cleaned_data.get("recipient_first")
+            u.last_name = form.cleaned_data.get("recipient_last")
+            u.email = email
+            u.username = email
+            u.save()
+            r.reason = form.cleaned_data.get("reason")
+            r.recipient_address = form.cleaned_data.get("recipient_address")
+            r.recipient_phone = form.cleaned_data.get("recipient_phone")
+            r.zipcode = form.cleaned_data.get("zipcode")
+            r.persons_in_household = form.cleaned_data.get("persons_in_household")
+            r.cases_requested = form.cleaned_data.get("cases_requested")
+            r.reason = form.cleaned_data.get("reason")
+            r.on_behalf = form.cleaned_data.get("on_behalf")
+            r.contact_first_name = form.cleaned_data.get("contact_first_name")
+            r.contact_last_name = form.cleaned_data.get("contact_last_name")
+            r.contact_phone = form.cleaned_data.get("contact_phone")
+            r.notes = form.cleaned_data.get("notes")
+            r.other_supplies_needed = form.cleaned_data.get("other_supplies_needed")
+            r.save()
+            return HttpResponseRedirect(reverse('changes_updated'))
+    else:
+        userinfo = model_to_dict(u)
+        requestinfo = model_to_dict(r)
+        allinfo = dict(userinfo.items() + requestinfo.items() +{'recipient_first':u.first_name,'recipient_last':u.last_name, 'contact_email':u.email}.items())
+        form = EditRequestDeliveryForm(initial=allinfo)
+    return render(request, "edit_request_delivery.html", {'form' : form})
 
 
 def request_received(request):
@@ -454,7 +501,8 @@ def edit_individual(request):
         if form.is_valid():
             u.first_name = form.cleaned_data.get("first_name")
             u.last_name = form.cleaned_data.get("last_name")
-            u.last_name = form.cleaned_data.get("email")
+            u.email = form.cleaned_data.get("email")
+            u.username = form.cleaned_data.get("email")
             u.save()
             i.address = form.cleaned_data.get("address")
             i.city = form.cleaned_data.get("city")
@@ -566,6 +614,7 @@ def edit_organization(request):
             u.first_name = form.cleaned_data.get("contact_first_name")
             u.last_name = form.cleaned_data.get("contact_last_name")
             u.contact_email = form.cleaned_data.get("contact_email")
+            u.username = form.cleaned_data.get("contact_email")
             u.save()
 
             o.org_name = form.cleaned_data.get("org_name")
