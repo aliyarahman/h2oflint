@@ -8,6 +8,8 @@
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
             <h1 class="form-header blue-text">Request a Home Delivery</h1>
+            <p>We strive to make as many deliveries as possible based on our volunteer capacity. Once we've reviewed your request, we'll contact you to schedule a delivery date or to let you know if we do not have enough volunteers to fill your request at this time. You may also apply for a friend or loved one in need. Be sure to tell us why the service is needed.
+            </p>
         </div>
     </div>
     <div class="row">
@@ -30,12 +32,6 @@
                     <label>
                     {% render_field form.on_behalf %}I am completing this form on behalf of someone else</label>
                 </div> -->
-
-                <div class="form-group">
-                    <label>Delivery date*</label>
-                    <p>To make the most of our volunteers' time, we schedule deliveries on set dates. If this is an emergency, please contact emergency services.</p>
-                    {% render_field form.delivery_date class+="form-control" required="true"  %}
-                </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
                     <label>Recipient's first name*</label>
@@ -78,7 +74,12 @@
                     <label>How many cases of water are you requesting?*
                     {% render_field form.cases_requested class+="form-control" required="true"  %}</label>
                 </div>
-            
+                
+                <div class="form-group">
+                    <label>Why are you requesting a water delivery?*</label>
+                    {% render_field form.reason class+="form-control" required="true"  %}
+                </div>
+
                 <hr>
 
                 <div class="row">

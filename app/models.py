@@ -35,7 +35,7 @@ class H2OFlintDeliveryDate(models.Model):
 
 
 class DeliveryRequest(models.Model):
-    delivery_date = models.ForeignKey(H2OFlintDeliveryDate)
+    delivery_date = models.ForeignKey(H2OFlintDeliveryDate, null=True, blank=True)
     recipient_first = models.CharField(max_length=45, null=True, blank=True)
     recipient_last = models.CharField(max_length=45, null=True, blank=True)
     recipient_address = models.CharField(max_length=200, null=True, blank=True)
@@ -45,6 +45,7 @@ class DeliveryRequest(models.Model):
     zipcode = models.CharField(max_length=10, null=True, blank=True)
     persons_in_household = models.IntegerField(null=True, blank=True)
     cases_requested = models.IntegerField(null=True, blank=True)
+    reason = models.TextField(null=True, blank=True)
     contact_first_name = models.CharField(max_length=45, null=True, blank=True)
     contact_last_name = models.CharField(max_length=45, null=True, blank=True)
     contact_email = models.CharField(max_length=200, null=True, blank=True)
@@ -83,6 +84,7 @@ class IndividualHelpOffer(models.Model):
     will_do_admin = models.BooleanField(default=False)
     will_do_testing = models.BooleanField(default=False)
     will_do_plumbing = models.BooleanField(default=False)
+    other_help = models.TextField(null=True, blank=True)
     mon_availability_start_time = models.CharField(max_length=8, null=True, blank=True)
     mon_availability_end_time = models.CharField(max_length=8, null=True, blank=True)
     tue_availability_start_time = models.CharField(max_length=8, null=True, blank=True)

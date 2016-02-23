@@ -3,7 +3,6 @@
 {% block content %}
 {% load staticfiles %}
 
-
     <div class="row">
         <div class="col-xs-12">
             <video autoplay loop poster="{% static 'img/banner_poster.jpg' %}">
@@ -88,34 +87,28 @@
                         </div>
                         <div clas="row">
                             <div class="col-xs-6 result-details">
-                                Distribution hours:
                                 <ul>
 
-                                    {% if location.monday_dist_start %}
-                                    <li><b>Monday:</b> {{location.monday_dist_start}}-{{location.monday_dist_end}}</li>
-                                    {% endif %}
+                                    {% if weekday == 'Monday' %}
+                                    <li><b>Open today:</b> {{location.monday_dist_start}}-{{location.monday_dist_end}}</li>
 
-                                    {% if location.tuesday_dist_start %}
-                                    <li><b>Tuesday:</b> {{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}</li>
-                                    {% endif %}
+                                    {% elif weekday == 'Tuesday' %}
+                                    <li><b>Open today:</b> {{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}</li>
 
-                                    {% if location.wednesday_dist_start %}
-                                    <li><b>Wednesday:</b> {{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}</li>
-                                    {% endif %}
+                                    {% elif weekday == 'Wednesday' %}
+                                    <li><b>Open today:</b> {{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}</li>
 
-                                    {% if location.thursday_dist_start %}
-                                    <li><b>Thursday:</b> {{location.thursday_dist_start}}-{{location.thursday_dist_end}}</li>{% endif %}
+                                    {% elif weekday == 'Thursday' %}
+                                    <li><b>Open today:</b> {{location.thursday_dist_start}}-{{location.thursday_dist_end}}</li>
 
-                                    {% if location.friday_dist_start %}
-                                    <li><b>Friday:</b> {{location.friday_dist_start}}-{{location.friday_dist_end}}</li>
-                                    {% endif %}
+                                    {% elif weekday == 'Friday' %}
+                                    <li><b>Open today:</b> {{location.friday_dist_start}}-{{location.friday_dist_end}}</li>
 
-                                    {% if location.saturday_dist_start %}
-                                    <li><b>Saturday:</b> {{location.saturday_dist_start}}-{{location.saturday_dist_end}}</li>
-                                    {% endif %}
+                                    {% elif weekday == 'Saturday' %}
+                                    <li><b>Open today:</b> {{location.saturday_dist_start}}-{{location.saturday_dist_end}}</li>
 
-                                    {% if location.sunday_dist_start %}
-                                    <li><b>Sunday:</b> {{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>
+                                    {% elif weekday == 'Sunday' %}
+                                    <li><b>Open today:</b> {{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>
                                     {% endif %}
                                 </ul>
                             </div>
@@ -168,6 +161,7 @@ function initAutocomplete() {
         map: map,
         title: "{{location.org_name}}\n{{location.address}}\nFlint, MI{{location.zipcode}}\n {{location.phone}}"
     });
+    marker1.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
     {% endfor %}
 
   // Create the search box and link it to the UI element.
@@ -215,6 +209,7 @@ function initAutocomplete() {
         title: place.name,
         position: place.geometry.location
       }));
+      markers[0].setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.

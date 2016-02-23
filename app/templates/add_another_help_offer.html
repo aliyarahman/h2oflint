@@ -15,7 +15,7 @@
             <form class="form-horizontal" role="form" action='.' method='post'>
                 {% csrf_token %}
                 {{ form.non_field_errors }}
-
+                {{ form.errors }}
                 
                 <div class="form-subhead">
                     <div class="row">
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Are you interested in volunteering?* (If no, you can skip to the donation or park-and-serve sections)</label>
+                    <label>Are you interested in volunteering?*</label>
                     {% render_field form.wants_to_volunteer class+="form-control" required="true" %}
                 </div>
                 <div class="volunteer-questions">
@@ -58,6 +58,12 @@
                             </div>
                             <div class="checkbox col-xs-12">
                                 <label>{% render_field form.will_do_testing %}Installing or fixing plumbing?</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>Other skills, resources, or supplies you can offer</label>
+                                {% render_field form.other_help class+="form-control" %}
                             </div>
                         </div>
                     </div>

@@ -45,7 +45,7 @@ def index(request):
         locations = Organization.objects.exclude(saturday_dist_start='')
     elif weekday=='Sunday':
         locations = Organization.objects.exclude(sunday_dist_start='')
-    return render(request, "index.html", {'locations' : locations})
+    return render(request, "index.html", {'locations' : locations, 'weekday': weekday})
 
 
 def request_delivery(request):
@@ -53,7 +53,7 @@ def request_delivery(request):
         form = RequestDeliveryForm(request.POST)
         if form.is_valid():
             r = DeliveryRequest()
-            r.delivery_date = form.cleaned_data.get("delivery_date")
+            r.reason = form.cleaned_data.get("reason")
             r.recipient_first = form.cleaned_data.get("recipient_first")
             r.recipient_last = form.cleaned_data.get("recipient_last")
             r.recipient_address = form.cleaned_data.get("recipient_address")
@@ -62,6 +62,7 @@ def request_delivery(request):
             r.zipcode = form.cleaned_data.get("zipcode")
             r.persons_in_household = form.cleaned_data.get("persons_in_household")
             r.cases_requested = form.cleaned_data.get("cases_requested")
+            r.reason = form.cleaned_data.get("reason")
             r.on_behalf = form.cleaned_data.get("on_behalf")
             r.contact_first_name = form.cleaned_data.get("contact_first_name")
             r.contact_last_name = form.cleaned_data.get("contact_last_name")
@@ -71,13 +72,24 @@ def request_delivery(request):
             r.save()
             
             # Build confirmation email
-            confirmation_request_email_subject = "We've received your water delivery request"
-            confirmation_request_email_body = "Thanks for submitting a delivery request at H2OFlint. We see that you've asked for "+str(r.cases_requested)+" cases of water to be delivered to "+r.recipient_first+" "+r.recipient_last+" at "+r.recipient_address+" on "+unicode(r.delivery_date)
+            from emails import confirmation_request_email_subject, confirmation_request_email_body
+            confirmation_request_email_body.format(cases_requested = str(r.cases_requested),
+                first_name = r.recipient_first,
+                last_name = r.recipient_last,
+                address = r.recipient_address,
+                reason = r.reason)
             confirmation_request_email = (confirmation_request_email_subject, confirmation_request_email_body, settings.EMAIL_HOST_USER, [r.contact_email])
     
             # Build admin notification email
-            admin_request_email_subject = "Water delivery request for "+r.recipient_first+" "+r.recipient_last
-            admin_request_email_body = "We just received a request for "+str(r.cases_requested)+" cases of water to be delivered to "+r.recipient_first+" "+r.recipient_last+" at "+r.recipient_address+" on "+unicode(r.delivery_date)
+            from emails import admin_request_email_subject, admin_request_email_body
+            admin_request_email_subject.format(cases_requested = str(r.cases_requested),
+                first_name = r.recipient_first,
+                last_name = r.recipient_last)
+            admin_request_email_body.format(cases_requested = str(r.cases_requested),
+                first_name = r.recipient_first,
+                last_name = r.recipient_last,
+                address = r.recipient_address,
+                reason = r.reason)
             admin_request_email = (admin_request_email_subject, admin_request_email_body, settings.EMAIL_HOST_USER, settings.EMAIL_HOST_USER)
     
             # Send Them
@@ -101,10 +113,13 @@ def organization_offer(request):
         form = OrganizationForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get("contact_email")
-            u = User.objects.create_user(email, email, form.cleaned_data.get("password"))
+            password = form.cleaned_data.get("password")
+            u = User.objects.create_user(email, email, password)
             u.first_name = form.cleaned_data.get("contact_first_name")
             u.last_name = form.cleaned_data.get("contact_last_name")
             u.save()
+            user = authenticate(username=email, password=password)
+            login(request, user)
             u = User.objects.filter(email = email).first()
 
             o = Organization(contact = u)
@@ -151,6 +166,7 @@ def organization_offer(request):
             o.sunday_dist_start =  form.cleaned_data.get("sunday_dist_start")
             o.sunday_dist_end =  form.cleaned_data.get("sunday_dist_end")
             o.limits =  form.cleaned_data.get("limits")
+            o.video_url =  form.cleaned_data.get("video_url")
             o.pickup_requirements =  form.cleaned_data.get("pickup_requirements")
             o.notes =  form.cleaned_data.get("notes")
 
@@ -162,13 +178,131 @@ def organization_offer(request):
             o.save()
             
             # Build confirmation email
-            confirmation_organization_email_subject = "Thanks for signing up your organization to get or receive help"
-            confirmation_organization_email_body = "Thanks for registering "+o.org_name+" at "+o.address
-            confirmation_organization_email = (confirmation_organization_email_subject, confirmation_organization_email_body, settings.EMAIL_HOST_USER, [u.email])
+            from emails import confirmation_organization_email_subject, confirmation_organization_email_body
+
+            needs = " "
+            offering = " "
+            if o.has_water == True:
+                needs += "water, "
+            if o.has_volunteers == True:
+                needs += "volunteers, "
+            if o.has_vehicles_or_drivers == True:
+                needs += "water, "
+            if o.has_testers == True:
+                needs += "water, "
+            if o.has_filters == True:
+                needs += "water, "
+            if o.has_wipes == True:
+                needs += "water, "
+            if o.has_vaseline == True:
+                needs += "water, "
+            if o.has_lifting_supplies == True:
+                needs += "water, "
+            if o.has_testing_skills == True:
+                needs += "water, "
+            if o.has_plumbing_skills == True:
+                needs += "water, "
+            if len(o.other_supplies_on_hand) > 1:
+                needs += o.other_supplies_on_hand
+            needs = needs.strip(", ").strip(" ")
+
+            if o.needs_water == True:
+                offering += "water, "
+            if o.needs_volunteers == True:
+                offering += "volunteers, "
+            if o.needs_vehicles_or_drivers == True:
+                offering += "water, "
+            if o.needs_testers == True:
+                offering += "water, "
+            if o.needs_filters == True:
+                offering += "water, "
+            if o.needs_wipes == True:
+                offering += "water, "
+            if o.needs_vaseline == True:
+                offering += "water, "
+            if o.needs_lifting_supplies == True:
+                offering += "water, "
+            if len(o.other_supplies_needed) > 1:
+                offering += o.other_supplies_needed
+            offering = offering.strip(", ").strip(" ")
+
+            
+            confirmation_organization_email_body = confirmation_organization_email_body.format(
+                contact_first_name = u.first_name,
+                contact_last_name = u.last_name,
+                contact_email = email,
+                org_name = o.org_name,
+                website = o.website,
+                address = o.address,
+                city = o.city,
+                state = o.state,
+                zipcode = o.zipcode,
+                public_email = o.public_email,
+                phone = o.phone,
+                monday_dist_start = o.monday_dist_start,
+                monday_dist_end = o.monday_dist_end,
+                tuesday_dist_start = o.tuesday_dist_start,
+                tuesday_dist_end = o.tuesday_dist_end,
+                wednesday_dist_start = o.wednesday_dist_start,
+                wednesday_dist_end = o.wednesday_dist_end,
+                thursday_dist_start = o.thursday_dist_start,
+                thursday_dist_end = o.thursday_dist_end,
+                friday_dist_start = o.friday_dist_start,
+                friday_dist_end = o.friday_dist_end,
+                saturday_dist_start = o.saturday_dist_start,
+                saturday_dist_end = o.saturday_dist_end,
+                sunday_dist_start = o.sunday_dist_start,
+                sunday_dist_end = o.sunday_dist_end,
+                limits = o.limits,
+                pickup_requirements = o.pickup_requirements,
+                notes = o.notes,
+                needs = needs,
+                offering = offering
+                )
+
+            confirmation_organization_email = (confirmation_organization_email_subject, confirmation_organization_email_body, settings.EMAIL_HOST_USER, [email])
+
+
+
 
             # Build admin notification email
-            admin_organization_email_subject = "We've received an organization signup from "+o.org_name
-            admin_organization_email_body = "We just received an organization registration for "+o.org_name+" at "+o.address
+            from emails import admin_organization_email_subject, admin_organization_email_body
+            admin_organization_email_subject = admin_organization_email_subject.format(
+                first_name = u.first_name,
+                last_name = u.last_name,
+                org_name = o.org_name)
+            admin_organization_email_body = admin_organization_email_body.format(
+                contact_first_name = u.first_name,
+                contact_last_name = u.last_name,
+                contact_email = email,
+                org_name = o.org_name,
+                address = o.address,
+                city = o.city,
+                state = o.state,
+                zipcode = o.zipcode,
+                website = o.website,
+                public_email = o.public_email,
+                phone = o.phone,
+                monday_dist_start = o.monday_dist_start,
+                monday_dist_end = o.monday_dist_end,
+                tuesday_dist_start = o.tuesday_dist_start,
+                tuesday_dist_end = o.tuesday_dist_end,
+                wednesday_dist_start = o.wednesday_dist_start,
+                wednesday_dist_end = o.wednesday_dist_end,
+                thursday_dist_start = o.thursday_dist_start,
+                thursday_dist_end = o.thursday_dist_end,
+                friday_dist_start = o.friday_dist_start,
+                friday_dist_end = o.friday_dist_end,
+                saturday_dist_start = o.saturday_dist_start,
+                saturday_dist_end = o.saturday_dist_end,
+                sunday_dist_start = o.sunday_dist_start,
+                sunday_dist_end = o.sunday_dist_end,
+                limits = o.limits,
+                pickup_requirements = o.pickup_requirements,
+                notes = o.notes,
+                needs = needs,
+                offering = offering
+                )
             admin_organization_email = (admin_organization_email_subject, admin_organization_email_body, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER])
 
             # Send Them
@@ -188,10 +322,13 @@ def individual_offer(request):
         form = IndividualOfferForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get("email")
-            u = User.objects.create_user(email, email, form.cleaned_data.get("password"))
+            password = form.cleaned_data.get("password")
+            u = User.objects.create_user(email, email, password)
             u.first_name = form.cleaned_data.get("first_name")
             u.last_name = form.cleaned_data.get("last_name")
             u.save()
+            user = authenticate(username=email, password=password)
+            login(request, user)
             u = User.objects.filter(email = email).first()
 
             i = IndividualHelper()
@@ -220,6 +357,7 @@ def individual_offer(request):
             h.will_do_admin = form.cleaned_data.get("will_do_admin")
             h.will_do_plumbing = form.cleaned_data.get("will_do_plumbing")
             h.will_do_testing = form.cleaned_data.get("will_do_testing")
+            h.other_help = form.cleaned_data.get("other_help")
             h.mon_availability_start_time = form.cleaned_data.get("mon_availability_start_time")
             h.mon_availability_end_time = form.cleaned_data.get("mon_availability_end_time")
             h.tue_availability_start_time = form.cleaned_data.get("tue_availability_start_time") 
@@ -248,17 +386,33 @@ def individual_offer(request):
             h.park_and_serve_items = form.cleaned_data.get("park_and_serve_items")
             h.park_and_serve_start_time = form.cleaned_data.get("park_and_serve_start_time")
             h.park_and_serve_end_time = form.cleaned_data.get("park_and_serve_end_time")
+            h.video_url =  form.cleaned_data.get("video_url")
             h.notes = form.cleaned_data.get("special_instructions")
             h.save()
             
             # Build confirmation email
-            confirmation_individual_email_subject = "Thanks for signing up to help"
-            confirmation_individual_email_body = "Thanks for registering "+u.first_name
+            from emails import confirmation_individual_email_subject, confirmation_individual_email_body
+            confirmation_individual_email_body = confirmation_individual_email_body.format(
+                first_name = u.first_name,
+                email = email)
             confirmation_individual_email = (confirmation_individual_email_subject, confirmation_individual_email_body, settings.EMAIL_HOST_USER, [email])
     
             # Build admin notification email
-            admin_individual_email_subject = "We've received an individual signup from "+u.first_name
-            admin_individual_email_body = "We just received an individual registration for "+u.first_name+" "+u.last_name
+            from emails import admin_individual_email_subject, admin_individual_email_body
+            admin_individual_email_subject = admin_individual_email_subject.format(
+                first_name = u.first_name,
+                last_name = u.last_name)
+            admin_individual_email_body = admin_individual_email_body.format(
+                first_name = u.first_name,
+                last_name = u.last_name,
+                email = email,
+                address = i.address,
+                city = i.city,
+                zipcode = i.zipcode,
+                phone = i.phone,
+                wants_to_volunteer = h.wants_to_volunteer,
+                donated = form.cleaned_data.get("making_donation"),
+                wants_to_parkandserve = form.cleaned_data.get("doing_park_and_serve"))
             admin_individual_email = (admin_individual_email_subject, admin_individual_email_body, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER])
     
             # Send Them
@@ -266,7 +420,7 @@ def individual_offer(request):
                 send_mass_mail((admin_individual_email, confirmation_individual_email), fail_silently=False)
             except:
                 pass
-            # Still need to check for saving of skills they have here
+
             return HttpResponseRedirect(reverse('request_received'))
     else:
         form = IndividualOfferForm()
@@ -332,6 +486,7 @@ def add_another_help_offer(request):
             h.will_do_admin = form.cleaned_data.get("will_do_admin")
             h.will_do_plumbing = form.cleaned_data.get("will_do_plumbing")
             h.will_do_testing = form.cleaned_data.get("will_do_testing")
+            h.other_help = form.cleaned_data.get("other_help")
             h.mon_availability_start_time = form.cleaned_data.get("mon_availability_start_time")
             h.mon_availability_end_time = form.cleaned_data.get("mon_availability_end_time")
             h.tue_availability_start_time = form.cleaned_data.get("tue_availability_start_time") 
@@ -360,18 +515,34 @@ def add_another_help_offer(request):
             h.park_and_serve_items = form.cleaned_data.get("park_and_serve_items")
             h.park_and_serve_start_time = form.cleaned_data.get("park_and_serve_start_time")
             h.park_and_serve_end_time = form.cleaned_data.get("park_and_serve_end_time")
+            h.video_url =  form.cleaned_data.get("video_url")
             h.notes = form.cleaned_data.get("special_instructions")
             h.save()
             
             # Build confirmation email
-            confirmation_individual_email_subject = "We've received another help offer."
-            confirmation_individual_email_body = "Thanks for adding another help offer "+u.first_name
-            confirmation_individual_email = (confirmation_individual_email_subject, confirmation_individual_email_body, settings.EMAIL_HOST_USER, [u.email])
-    
+            from emails import confirmation_add_help_email_subject, confirmation_add_help_email_body
+            confirmation_add_help_email_body = confirmation_add_help_email_body.format(
+                first_name = u.first_name,
+                email = u.email)
+            confirmation_add_help_email = (confirmation_add_help_email_subject, confirmation_add_help_email_body, settings.EMAIL_HOST_USER, [u.email])
+
             # Build admin notification email
-            admin_individual_email_subject = "We've received an individual signup from "+u.first_name
-            admin_individual_email_body = "We just received an individual registration for "+u.first_name+" "+u.last_name
-            admin_individual_email = (admin_individual_email_subject, admin_individual_email_body, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER])
+            from emails import admin_add_help_email_subject, admin_add_help_email_body
+            admin_add_help_email_subject = admin_add_help_email_subject.format(
+                first_name = u.first_name,
+                last_name = u.last_name)
+            admin_add_help_email_body = admin_add_help_email_body.format(
+                first_name = u.first_name,
+                last_name = u.last_name,
+                email = u.email,
+                address = i.address,
+                city = i.city,
+                zipcode = i.zipcode,
+                phone = i.phone,
+                wants_to_volunteer = h.wants_to_volunteer,
+                donated = form.cleaned_data.get("making_donation"),
+                wants_to_parkandserve = form.cleaned_data.get("doing_park_and_serve"))
+            admin_add_help_email = (admin_add_help_email_subject, admin_add_help_email_body, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER])
     
             # Send Them
             try:
@@ -394,7 +565,7 @@ def edit_organization(request):
         if form.is_valid():
             u.first_name = form.cleaned_data.get("contact_first_name")
             u.last_name = form.cleaned_data.get("contact_last_name")
-            u.email = form.cleaned_data.get("contact_email")
+            u.contact_email = form.cleaned_data.get("contact_email")
             u.save()
 
             o.org_name = form.cleaned_data.get("org_name")
@@ -440,6 +611,7 @@ def edit_organization(request):
             o.sunday_dist_start =  form.cleaned_data.get("sunday_dist_start")
             o.sunday_dist_end =  form.cleaned_data.get("sunday_dist_end")
             o.limits =  form.cleaned_data.get("limits")
+            o.video_url =  form.cleaned_data.get("video_url")
             o.pickup_requirements =  form.cleaned_data.get("pickup_requirements")
             o.notes =  form.cleaned_data.get("notes")
             o.save()

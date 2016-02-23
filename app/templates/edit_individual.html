@@ -15,6 +15,7 @@
             <form class="form-horizontal" role="form" action='.' method='post'>
                 {% csrf_token %}
                 {{ form.non_field_errors }}
+                {{ form.errors }}
 
                 <div class="form-subhead">
                     <div class="row">
