@@ -29,6 +29,30 @@ def logout_view(request):
     return render(request, 'logged_out.html')
 
 
+def search(request):
+    locations = Organization.objects.all()
+    return render(request, "search.html", {'locations' : locations})
+
+def about(request):
+    return render(request, "about.html")
+
+def data(request):
+    return render(request, "data.html")
+
+def faq(request):
+    return render(request, "faq.html")
+
+def changes_updated(request):
+    return render(request, "changes_updated.html")
+
+def request_received(request):
+    return render(request, "request_received.html")
+
+def register(request):
+    return render(request, "register.html")
+
+
+
 def index(request):
     weekday = calendar.day_name[date.today().weekday()]
     if weekday=='Monday':
@@ -150,9 +174,6 @@ def edit_request_delivery(request):
         form = EditRequestDeliveryForm(initial=allinfo)
     return render(request, "edit_request_delivery.html", {'form' : form})
 
-
-def request_received(request):
-    return render(request, "request_received.html")
 
 
 def organization_offer(request):
@@ -473,23 +494,6 @@ def individual_offer(request):
         form = IndividualOfferForm()
     return render(request, "individual_offer.html", {'form' : form})
 
-
-def search(request):
-    locations = Organization.objects.all()
-    return render(request, "search.html", {'locations' : locations})
-
-
-def about(request):
-    return render(request, "about.html")
-
-def data(request):
-    return render(request, "data.html")
-
-def faq(request):
-    return render(request, "faq.html")
-
-def changes_updated(request):
-    return render(request, "changes_updated.html")
 
 
 @login_required
