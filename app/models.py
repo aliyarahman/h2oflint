@@ -54,7 +54,7 @@ class DeliveryRequest(models.Model):
     date_created = models.DateTimeField(default = timezone.now)
 
     def __unicode__(self):
-        return self.recipient_first+" "+self.recipient_last + ", "+self.recipient_address+" for "+unicode(self.delivery_date)
+        return self.user.recipient_first+" "+self.user.recipient_last + ", "+self.recipient_address
 
 
 class IndividualHelper(models.Model):
