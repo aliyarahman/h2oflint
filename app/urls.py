@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^faq/$', views.faq, name='faq'),
     url(r'^data/$', views.data, name='data'),
     url(r'^register/$', views.register, name='register'),
+    url(r'^privacy/$', views.privacy, name='privacy'),
+    url(r'^terms/$', views.terms, name='terms'),
 ]

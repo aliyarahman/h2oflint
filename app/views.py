@@ -51,6 +51,12 @@ def request_received(request):
 def register(request):
     return render(request, "register.html")
 
+def privacy(request):
+    return render(request, "privacy.html")
+
+def terms(request):
+    return render(request, "terms.html")
+
 
 
 def index(request):
