@@ -53,8 +53,8 @@ class DeliveryRequest(models.Model):
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
-    #def __unicode__(self):
-    #    return (self.user.first_name+" "+self.user.last_name + ", "+self.recipient_address) or self.date_created
+    def __unicode__(self):
+        return self.user.first_name+" "+self.user.last_name + ", "+self.recipient_address
 
 
 class IndividualHelper(models.Model):
