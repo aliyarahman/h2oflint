@@ -86,7 +86,7 @@ def staff_dashboard(request):
     helpoffers = IndividualHelpOffer.objects.all()
     organizations = Organization.objects.all()
     delivery_requests = DeliveryRequest.objects.all()
-    return render(request, "staff_dashboard.html", {'helpoffers' : helpoffers, 'delivery_requests': delivery_requests})
+    return render(request, "staff_dashboard.html", {'helpoffers' : helpoffers, 'delivery_requests': delivery_requests, 'organizations':organizations})
 
 
 def call_time_notes(request, record_id, record_type):

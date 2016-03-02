@@ -11,6 +11,8 @@
             <table class="table table-striped table-hover table-responsive locations-table">
             <thead>
                 <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Location</th>
                     <th class="text-center">Resolved</th>
                     <th class="text-center">Left<br>message</th>
                     <th class="text-center">Action<br>needed</th>
@@ -25,6 +27,7 @@
                     <td>
                         <div class="blue-text"><b>{{ h.individual_helper.user.first_name }} {{ h.individual_helper.user.last_name }}</b></div>
                     </td>
+                    <td>{{ h.individual_helper.city }}, {{ h.individual_helper.state }}</td>
                     <td>{% if h.resolved == True %}&#x2714;{% endif %}</td>
                     <td>{% if h.left_message == True %}&#x2714;{% endif %}</td>
                     <td>{% if h.action_needed == True %}&#x2714;{% endif %}</td>
@@ -45,6 +48,7 @@
             <table class="table table-striped table-hover table-responsive locations-table">
             <thead>
                 <tr>
+                    <th class="text-center">Name</th>
                     <th class="text-center">Resolved</th>
                     <th class="text-center">Left<br>message</th>
                     <th class="text-center">Action<br>needed</th>
@@ -79,6 +83,7 @@
             <table class="table table-striped table-hover table-responsive locations-table">
             <thead>
                 <tr>
+                    <th class="text-center">Name</th>
                     <th class="text-center">Resolved</th>
                     <th class="text-center">Left<br>message</th>
                     <th class="text-center">Action<br>needed</th>
@@ -91,14 +96,14 @@
             {% for o in organizations %}
                 <tr class="text-center">
                     <td>
-                        <div class="blue-text"><b>{{ o.user.first_name }} {{ o.user.last_name }}</b></div>
+                        <div class="blue-text"><b>{{ o.org_name }}</b></div>
                     </td>
                     <td>{% if o.resolved == True %}&#x2714;{% endif %}</td>
                     <td>{% if o.left_message == True %}&#x2714;{% endif %}</td>
                     <td>{% if o.action_needed == True %}&#x2714;{% endif %}</td>
                     <td>{% if o.no_contact == True %}&#x2714;{% endif %}</td>
                     <td>{{ o.calltime_notes }}</td>
-                    <td><a href="{% url 'call_time_notes' r.id 3 %}">Make notes &gt;&gt;</a></td>
+                    <td><a href="{% url 'call_time_notes' o.id 3 %}">Make notes &gt;&gt;</a></td>
                 </tr>
             {% endfor %}
             </tbody>
