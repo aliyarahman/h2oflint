@@ -187,6 +187,8 @@ class OrganizationForm(forms.Form):
     pickup_requirements = forms.CharField(max_length=140, required=False)
     video_url = forms.CharField(max_length=200, required=False)
     notes = forms.CharField(widget=forms.Textarea, required=False)
+    contractor = forms.BooleanField(required=False)
+    contractor_notes = forms.CharField(widget=forms.Textarea, required=False)
 
 
     def clean_contact_email(self):
@@ -494,3 +496,12 @@ class AddAnotherHelpOfferForm(forms.Form):
     video_url = forms.CharField(max_length=200, required=False)
     special_instructions = forms.CharField(widget=forms.Textarea, max_length=140, required=False)
     note_for_recipient = forms.CharField(widget=forms.Textarea, max_length=1000, required=False)
+
+
+class CallTimeForm(forms.Form):
+    resolved = forms.BooleanField(initial= False, required=False)
+    left_message = forms.BooleanField(initial = False, required=False)
+    action_needed = forms.BooleanField(initial = False, required=False)
+    no_contact = forms.BooleanField(initial = True, required=False)
+    calltime_notes = forms.CharField(widget=forms.Textarea, max_length=1000, required=False)
+

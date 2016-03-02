@@ -327,10 +327,19 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Are you a local Flint minority contractor interested in the work of rebuilding or repairing?<br>
+                    {% render_field form.contractor %}<label>
+                </div>
+
+                <div class="form-group">
+                    <label>If so, what kind of contracting work could you do?
+                    {% render_field form.contractor_notes class+="form-control" %}<label>
+                </div>
+                
+                <div class="form-group">
                     <label>Additional notes or special instructions
                     {% render_field form.notes class+="form-control" %}<label>
                 </div>
-
 
 
 

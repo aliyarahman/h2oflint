@@ -51,6 +51,11 @@ class DeliveryRequest(models.Model):
     video_url = models.CharField(max_length=200, null=True, blank=True)
     other_supplies_needed = models.TextField(null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
+    resolved = models.BooleanField(default = False)
+    left_message = models.BooleanField(default = False)
+    action_needed = models.BooleanField(default = False)
+    no_contact = models.BooleanField(default = True)
+    calltime_notes = models.TextField(default="", null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
     def __unicode__(self):
@@ -68,6 +73,7 @@ class IndividualHelper(models.Model):
     phone = models.CharField(max_length=20, null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
     latitude = models.FloatField(null=True, blank=True)
+
     date_created = models.DateTimeField(default = timezone.now)
 
     def __unicode__(self):
@@ -127,6 +133,11 @@ class IndividualHelpOffer(models.Model):
     park_and_serve_end_time = models.CharField(max_length=8, null=True, blank=True)
     video_url = models.CharField(max_length=200, null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
+    resolved = models.BooleanField(default = False)
+    left_message = models.BooleanField(default = False)
+    action_needed = models.BooleanField(default = False)
+    no_contact = models.BooleanField(default = True)
+    calltime_notes = models.TextField(default="", null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 
 
@@ -226,6 +237,12 @@ class DistributionEvent(models.Model):
     other_supplies_distributed = models.TextField(null=True, blank=True)
     water_case_limit = models.CharField(max_length=200, null=True, blank=True)
     requirements_for_pickup = models.CharField(max_length=200, null=True, blank=True)
+    resolved = models.BooleanField(default = False)
+    left_message = models.BooleanField(default = False)
+    action_needed = models.BooleanField(default = False)
+    no_contact = models.BooleanField(default = True)
+    calltime_notes = models.TextField(default="", null=True, blank=True)
+    date_created = models.DateTimeField(default = timezone.now)
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
 

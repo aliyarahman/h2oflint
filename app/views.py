@@ -11,9 +11,10 @@ from django.conf import settings
 from geopy.distance import vincenty
 from geopy.geocoders import GoogleV3
 from app.models import *
-from app.forms import CustomLoginForm, AddDeliveryDateForm, RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm, EditIndividualForm, EditOrganizationForm, AddAnotherHelpOfferForm, EditRequestDeliveryForm
+from app.forms import CustomLoginForm, AddDeliveryDateForm, RequestDeliveryForm, IndividualOfferForm, OrganizationForm, DistributionEventForm, EditIndividualForm, EditOrganizationForm, AddAnotherHelpOfferForm, EditRequestDeliveryForm, CallTimeForm
 import calendar
 from datetime import date
+from django.core import serializers
 
 def login_view(request):
     form = CustomLoginForm(request.POST or None)
@@ -21,7 +22,10 @@ def login_view(request):
         user = form.login(request)
         if user:
             login(request, user)
-            return HttpResponseRedirect(reverse('index'))
+            if user.is_staff:
+                return HttpResponseRedirect(reverse('staff_dashboard'))
+            else:
+                return HttpResponseRedirect(reverse('index'))
     return render(request, 'login.html', {'form': form })
 
 def logout_view(request):
@@ -76,6 +80,31 @@ def index(request):
     elif weekday=='Sunday':
         locations = Organization.objects.exclude(sunday_dist_start='')
     return render(request, "index.html", {'locations' : locations, 'weekday': weekday})
+
+
+def staff_dashboard(request):
+    helpoffers = IndividualHelpOffer.objects.all()
+    organizations = Organization.objects.all()
+    delivery_requests = DeliveryRequest.objects.all()
+    return render(request, "staff_dashboard.html", {'helpoffers' : helpoffers, 'delivery_requests': delivery_requests})
+
+
+def call_time_notes(request, offer_id):
+    offer = IndividualHelpOffer.objects.get(id=offer_id)
+    data = model_to_dict(offer)
+    if request.method == "POST":
+        form = CallTimeForm(request.POST)
+        if form.is_valid():
+            offer.resolved = form.cleaned_data.get("resolved")
+            offer.left_message = form.cleaned_data.get("left_message")
+            offer.action_needed = form.cleaned_data.get("action_needed")
+            offer.no_contact = form.cleaned_data.get("no_contact")
+            offer.calltime_notes = form.cleaned_data.get("calltime_notes")
+            offer.save()
+            return HttpResponseRedirect(reverse('staff_dashboard'))
+    else:
+        form = CallTimeForm(initial=model_to_dict(offer))
+    return render(request, "call_time_notes.html", {'offer' : offer, 'form':form, 'data':data})
 
 
 def request_delivery(request):
@@ -243,6 +272,8 @@ def organization_offer(request):
             o.video_url =  form.cleaned_data.get("video_url")
             o.pickup_requirements =  form.cleaned_data.get("pickup_requirements")
             o.notes =  form.cleaned_data.get("notes")
+            o.contractor =  form.cleaned_data.get("contractor")
+            o.contractor_notes =  form.cleaned_data.get("contractor_notes")
 
             # Geocode the address
             address_to_code = o.address + ", " + "Flint, MI" + " "+ o.zipcode
@@ -330,6 +361,8 @@ def organization_offer(request):
                 limits = o.limits,
                 pickup_requirements = o.pickup_requirements,
                 notes = o.notes,
+                contractor = o.contractor,
+                contractor_notes = o.contractor_notes,
                 needs = needs,
                 offering = offering
                 )
@@ -482,11 +515,13 @@ def individual_offer(request):
                 email = email,
                 address = i.address,
                 city = i.city,
+                state = i.state,
                 zipcode = i.zipcode,
                 phone = i.phone,
                 wants_to_volunteer = h.wants_to_volunteer,
                 donated = form.cleaned_data.get("making_donation"),
-                wants_to_parkandserve = form.cleaned_data.get("doing_park_and_serve"))
+                wants_to_parkandserve = form.cleaned_data.get("doing_park_and_serve"),
+                )
             admin_individual_email = (admin_individual_email_subject, admin_individual_email_body, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER])
     
             # Send Them
@@ -595,6 +630,7 @@ def add_another_help_offer(request):
                 email = u.email,
                 address = i.address,
                 city = i.city,
+                state = i.state,
                 zipcode = i.zipcode,
                 phone = i.phone,
                 wants_to_volunteer = h.wants_to_volunteer,
@@ -672,6 +708,8 @@ def edit_organization(request):
             o.limits =  form.cleaned_data.get("limits")
             o.video_url =  form.cleaned_data.get("video_url")
             o.pickup_requirements =  form.cleaned_data.get("pickup_requirements")
+            o.contractor =  form.cleaned_data.get("contractor")
+            o.contractor_notes =  form.cleaned_data.get("contractor_notes")
             o.notes =  form.cleaned_data.get("notes")
             o.save()
             return HttpResponseRedirect(reverse('changes_updated'))

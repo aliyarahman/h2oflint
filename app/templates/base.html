@@ -88,6 +88,9 @@
                     {% if user.organization_set.all|length > 0 %}
                         <li><a href="{% url 'edit_organization' %}">Edit My Organization's Profile</a></li>
                     {% endif %}
+                    {% if user.is_staff %}
+                        <li><a href="{% url 'staff_dashboard' %}">Calltime Dashboard</a></li>
+                    {% endif %}
                 <li><a href="{% url 'logout_view' %}">Sign out</a></li>
                 {% else %}
                 <li><a href="{% url 'request_delivery' %}">I'm looking for help</a></li>

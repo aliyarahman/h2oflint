@@ -483,3 +483,7 @@ footer {
   font-size: 13px;
   font-weight: 300;
 }
+
+.call_time_status input {
+  display: inline-block;
+}

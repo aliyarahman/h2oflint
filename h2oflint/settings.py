@@ -23,9 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q2u*0g-^o-da_5!a@jaz)a@8_)dq=afe!xq9h_gptukpb4n@2d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'h2oflint.com',
+    '.compute-1.amazonaws.com',
+    ]
 
 
 # Application definition
