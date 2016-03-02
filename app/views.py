@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -61,8 +62,6 @@ def privacy(request):
 def terms(request):
     return render(request, "terms.html")
 
-
-
 def index(request):
     weekday = calendar.day_name[date.today().weekday()]
     if weekday=='Monday':
@@ -82,13 +81,14 @@ def index(request):
     return render(request, "index.html", {'locations' : locations, 'weekday': weekday})
 
 
+@login_required
 def staff_dashboard(request):
     helpoffers = IndividualHelpOffer.objects.all()
     organizations = Organization.objects.all()
     delivery_requests = DeliveryRequest.objects.all()
     return render(request, "staff_dashboard.html", {'helpoffers' : helpoffers, 'delivery_requests': delivery_requests, 'organizations':organizations})
 
-
+@login_required
 def call_time_notes(request, record_id, record_type):
     if record_type == '2':
         record = IndividualHelpOffer.objects.get(id=record_id)
