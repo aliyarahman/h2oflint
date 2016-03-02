@@ -99,7 +99,7 @@ def call_time_notes(request, record_id, record_type):
     data = model_to_dict(record)
     if request.method == "POST":
         form = CallTimeForm(request.POST)
-        if form.is_valid():
+        if form.is_valid(): 
             record.resolved = form.cleaned_data.get("resolved")
             record.left_message = form.cleaned_data.get("left_message")
             record.action_needed = form.cleaned_data.get("action_needed")
