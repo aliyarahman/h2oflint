@@ -89,22 +89,27 @@ def staff_dashboard(request):
     return render(request, "staff_dashboard.html", {'helpoffers' : helpoffers, 'delivery_requests': delivery_requests})
 
 
-def call_time_notes(request, offer_id):
-    offer = IndividualHelpOffer.objects.get(id=offer_id)
-    data = model_to_dict(offer)
+def call_time_notes(request, record_id, record_type):
+    if record_type == '2':
+        record = IndividualHelpOffer.objects.get(id=record_id)
+    elif record_type == '1':
+        record = DeliveryRequest.objects.get(id=record_id)
+    else:
+        record = Organization.objects.get(id=record_id)        
+    data = model_to_dict(record)
     if request.method == "POST":
         form = CallTimeForm(request.POST)
         if form.is_valid():
-            offer.resolved = form.cleaned_data.get("resolved")
-            offer.left_message = form.cleaned_data.get("left_message")
-            offer.action_needed = form.cleaned_data.get("action_needed")
-            offer.no_contact = form.cleaned_data.get("no_contact")
-            offer.calltime_notes = form.cleaned_data.get("calltime_notes")
-            offer.save()
+            record.resolved = form.cleaned_data.get("resolved")
+            record.left_message = form.cleaned_data.get("left_message")
+            record.action_needed = form.cleaned_data.get("action_needed")
+            record.no_contact = form.cleaned_data.get("no_contact")
+            record.calltime_notes = form.cleaned_data.get("calltime_notes")
+            record.save()
             return HttpResponseRedirect(reverse('staff_dashboard'))
     else:
-        form = CallTimeForm(initial=model_to_dict(offer))
-    return render(request, "call_time_notes.html", {'offer' : offer, 'form':form, 'data':data})
+        form = CallTimeForm(initial=model_to_dict(record))
+    return render(request, "call_time_notes.html", {'offer' : record, 'form':form, 'data':data})
 
 
 def request_delivery(request):

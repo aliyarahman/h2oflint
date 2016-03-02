@@ -30,7 +30,7 @@
                     <td>{% if h.action_needed == True %}&#x2714;{% endif %}</td>
                     <td>{% if h.no_contact == True %}&#x2714;{% endif %}</td>
                     <td>{{ h.calltime_notes }}</td>
-                    <td><a href="{% url 'call_time_notes' h.id %}">Make notes &gt;&gt;</a></td>
+                    <td><a href="{% url 'call_time_notes' h.id 2 %}">Make notes &gt;&gt;</a></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -64,7 +64,7 @@
                     <td>{% if r.action_needed == True %}&#x2714;{% endif %}</td>
                     <td>{% if r.no_contact == True %}&#x2714;{% endif %}</td>
                     <td>{{ r.calltime_notes }}</td>
-                    <td><a href="{% url 'call_time_notes' r.id %}">Make notes &gt;&gt;</a></td>
+                    <td><a href="{% url 'call_time_notes' r.id 1 %}">Make notes &gt;&gt;</a></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -98,7 +98,7 @@
                     <td>{% if o.action_needed == True %}&#x2714;{% endif %}</td>
                     <td>{% if o.no_contact == True %}&#x2714;{% endif %}</td>
                     <td>{{ o.calltime_notes }}</td>
-                    <td><a href="{% url 'call_time_notes' r.id %}">Make notes &gt;&gt;</a></td>
+                    <td><a href="{% url 'call_time_notes' r.id 3 %}">Make notes &gt;&gt;</a></td>
                 </tr>
             {% endfor %}
             </tbody>

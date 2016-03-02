@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^privacy/$', views.privacy, name='privacy'),
     url(r'^terms/$', views.terms, name='terms'),
     url(r'^staff_dashboard/$', views.staff_dashboard, name='staff_dashboard'),
-    url(r'^call_time_notes/(?P<offer_id>\d+)/$', views.call_time_notes, name='call_time_notes'),
+    url(r'^call_time_notes/(?P<record_id>\d+)/(?P<record_type>(\d+))/$', views.call_time_notes, name='call_time_notes'),
 ]

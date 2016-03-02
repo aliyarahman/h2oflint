@@ -32,6 +32,41 @@
             </table>
         </div>
     </div>
+        <div class="row">
+        <div class="col-xs-11 col-xs-offset-1">
+            <h3>Their Info</h3>
+        </div>
+        <div class="col-xs-4 col-sm-3 col-sm-offset-1">
+            <p>Volunteering?{{ offer.wants_to_volunteer }}</p>
+            <p>Group size:{{ offer.group_size }}</p>
+            <p>Will unload:{{ offer.will_unload }}</p>
+            <p>Will drive:{{ offer.will_deliver_with_vehicle }}</p>
+            <p>Will do office work:{{ offer.will_do_admin }}</p>
+            <p>Has plumbing skills: {{ offer.will_do_plumbing }}</p>
+            <p>Has testing skills: {{ offer.will_do_testing }}</p>
+            <p>Has other skills:{{ offer.other_help }}</p>
+        </div>
+        <div class="col-xs-4 col-sm-3">
+            <p>Monday availability:  {{ offer.mon_availability_start_time }} - {{ offer.mon_availability_end_time }}</p>
+            <p>Tuesday availability: {{ offer.tue_availability_start_time }} - {{ offer.tue_availability_end_time }}</p>
+            <p>Wednesday availability: {{ offer.wed_availability_start_time }} - {{ offer.wed_availability_end_time }}</p>
+            <p>Thursday availability: {{ offer.thu_availability_start_time }} - {{ offer.thu_availability_end_time }}</p>
+            <p>Friday availability: {{ offer.fri_availability_start_time }} - {{ offer.fri_availability_end_time }}</p>
+            <p>Saturday {{ offer.sat_availability_start_time }} - {{ offer.sat_availability_end_time }}</p>
+            <p>Sunday availability: {{ offer.sun_availability_start_time }} - {{ offer.sun_availability_end_time }} </p>
+            <p>Available dates: {{ offer.availability_start_date }}/{{ offer.availability_end_date }} - {{ offer.availability_start_month }}/{{ offer.availability_end_month }}/</p>
+        </div>
+        <div class="col-xs-4 col-sm-3">
+            <p>Doing park and serve?: {{ offer.doing_park_and_serve }}</p>
+            <p>Park and serve address: {{ offer.park_and_serve_address }}, {{ offer.park_and_serve_zipcode }}</p>
+            <p>Park and serve date and time: {{ offer.park_and_serve_weekday }}, {{ offer.park_and_serve_month }}/{{ offer.park_and_serve_date }}, {{ offer.park_and_serve_start_time }} - {{ offer.park_and_serve_end_time }}</p></p>
+            <p>Items distributing at park and serve: {{ offer.park_and_serve_items }}</p>
+
+            <p>Video: {{ offer.video_url }}</p>
+            <p>Notes: {{ offer.notes}}
+        </div>
+        </div>
+    </div>
 
    <form class="form-horizontal" role="form" action='.' method='post'>
         {% csrf_token %}
@@ -75,36 +110,7 @@
         </div>
     </form>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-            <h3>Offer Info</h3>
-            <p>Volunteering?{{ offer.wants_to_volunteer }}</p>
-            <p>Group size:{{ offer.group_size }}</p>
-            <p>Will unload:{{ offer.will_unload }}</p>
-            <p>Will drive:{{ offer.will_deliver_with_vehicle }}</p>
-            <p>Will do office work:{{ offer.will_do_admin }}</p>
-            <p>Has plumbing skills: {{ offer.will_do_plumbing }}</p>
-            <p>Has testing skills: {{ offer.will_do_testing }}</p>
-            <p>Has other skills:{{ offer.other_help }}</p>
 
-            <p>Monday availability:  {{ offer.mon_availability_start_time }} - {{ offer.mon_availability_end_time }}</p>
-            <p>Tuesday availability: {{ offer.tue_availability_start_time }} - {{ offer.tue_availability_end_time }}</p>
-            <p>Wednesday availability: {{ offer.wed_availability_start_time }} - {{ offer.wed_availability_end_time }}</p>
-            <p>Thursday availability: {{ offer.thu_availability_start_time }} - {{ offer.thu_availability_end_time }}</p>
-            <p>Friday availability: {{ offer.fri_availability_start_time }} - {{ offer.fri_availability_end_time }}</p>
-            <p>Saturday {{ offer.sat_availability_start_time }} - {{ offer.sat_availability_end_time }}</p>
-            <p>Sunday availability: {{ offer.sun_availability_start_time }} - {{ offer.sun_availability_end_time }} </p>
-            <p>Available dates: {{ offer.availability_start_date }}/{{ offer.availability_end_date }} - {{ offer.availability_start_month }}/{{ offer.availability_end_month }}/</p>
-
-            <p>Doing park and serve?: {{ offer.doing_park_and_serve }}</p>
-            <p>Park and serve address: {{ offer.park_and_serve_address }}, {{ offer.park_and_serve_zipcode }}</p>
-            <p>Park and serve date and time: {{ offer.park_and_serve_weekday }}, {{ offer.park_and_serve_month }}/{{ offer.park_and_serve_date }}, {{ offer.park_and_serve_start_time }} - {{ offer.park_and_serve_end_time }}</p></p>
-            <p>Items distributing at park and serve: {{ offer.park_and_serve_items }}</p>
-
-            <p>Video: {{ offer.video_url }}</p>
-            <p>Notes: {{ offer.notes}}
-        </div>
-    </div>
 </div>
 
 
