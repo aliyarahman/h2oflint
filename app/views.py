@@ -109,7 +109,7 @@ def call_time_notes(request, record_id, record_type):
             return HttpResponseRedirect(reverse('staff_dashboard'))
     else:
         form = CallTimeForm(initial=model_to_dict(record))
-    return render(request, "call_time_notes.html", {'offer' : record, 'form':form, 'data':data})
+    return render(request, "call_time_notes.html", {'record' : record, 'form':form, 'data':data, 'record_type': record_type})
 
 
 def request_delivery(request):

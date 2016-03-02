@@ -3,70 +3,198 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 
-
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-12">
-            <h1 class='blue-text'><br><b>Call time notes for {{offer.individual_helper.user.first_name}} {{offer.individual_helper.user.last_name}}'s help offer</b></h1>
-            <p><a href="{% url 'staff_dashboard' %}">&lt;&lt; Back</a></p>
-        <table class="table table-striped table-hover table-responsive locations-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
 
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="blue-text"><b>{{ offer.individual_helper.user.first_name }} {{ offer.individual_helper.user.last_name }}</b></div>
-                        </td>
-                        <td>{{ offer.individual_helper.phone }}</td>
-                        <td>{{ offer.individual_helper.address }}, {{ offer.individual_helper.city }}, {{ offer.individual_helper.state }} {{ offer.individual_helper.zipcode }}</td>
-                        <td>{{ offer.notes }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    {% if record_type == '2' %}
         <div class="row">
-        <div class="col-xs-11 col-xs-offset-1">
-            <h3>Their Info</h3>
+            <div class="col-xs-12">
+                <h1 class='blue-text'><br><b>Call time notes for {{record.individual_helper.user.first_name}} {{record.individual_helper.user.last_name}}'s help offer</b></h1>
+                <p><a href="{% url 'staff_dashboard' %}">&lt;&lt; Back</a></p>
+            <table class="table table-striped table-hover table-responsive locations-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Date submitted</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="blue-text"><b>{{ record.individual_helper.user.first_name }} {{ record.individual_helper.user.last_name }}</b></div>
+                            </td>
+                            <td>{{ record.individual_helper.phone }}</td>
+                            <td>{{ record.individual_helper.address }}, {{ record.individual_helper.city }}, {{ record.individual_helper.state }} {{ record.individual_helper.zipcode }}</td>
+                            <td>{{ record.user.email }}</td>
+                            <td>{{ record.date_created }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col-xs-4 col-sm-3 col-sm-offset-1">
-            <p>Volunteering?{{ offer.wants_to_volunteer }}</p>
-            <p>Group size:{{ offer.group_size }}</p>
-            <p>Will unload:{{ offer.will_unload }}</p>
-            <p>Will drive:{{ offer.will_deliver_with_vehicle }}</p>
-            <p>Will do office work:{{ offer.will_do_admin }}</p>
-            <p>Has plumbing skills: {{ offer.will_do_plumbing }}</p>
-            <p>Has testing skills: {{ offer.will_do_testing }}</p>
-            <p>Has other skills:{{ offer.other_help }}</p>
-        </div>
-        <div class="col-xs-4 col-sm-3">
-            <p>Monday availability:  {{ offer.mon_availability_start_time }} - {{ offer.mon_availability_end_time }}</p>
-            <p>Tuesday availability: {{ offer.tue_availability_start_time }} - {{ offer.tue_availability_end_time }}</p>
-            <p>Wednesday availability: {{ offer.wed_availability_start_time }} - {{ offer.wed_availability_end_time }}</p>
-            <p>Thursday availability: {{ offer.thu_availability_start_time }} - {{ offer.thu_availability_end_time }}</p>
-            <p>Friday availability: {{ offer.fri_availability_start_time }} - {{ offer.fri_availability_end_time }}</p>
-            <p>Saturday {{ offer.sat_availability_start_time }} - {{ offer.sat_availability_end_time }}</p>
-            <p>Sunday availability: {{ offer.sun_availability_start_time }} - {{ offer.sun_availability_end_time }} </p>
-            <p>Available dates: {{ offer.availability_start_date }}/{{ offer.availability_end_date }} - {{ offer.availability_start_month }}/{{ offer.availability_end_month }}/</p>
-        </div>
-        <div class="col-xs-4 col-sm-3">
-            <p>Doing park and serve?: {{ offer.doing_park_and_serve }}</p>
-            <p>Park and serve address: {{ offer.park_and_serve_address }}, {{ offer.park_and_serve_zipcode }}</p>
-            <p>Park and serve date and time: {{ offer.park_and_serve_weekday }}, {{ offer.park_and_serve_month }}/{{ offer.park_and_serve_date }}, {{ offer.park_and_serve_start_time }} - {{ offer.park_and_serve_end_time }}</p></p>
-            <p>Items distributing at park and serve: {{ offer.park_and_serve_items }}</p>
+        <div class="row">
+            <div class="col-xs-11 col-xs-offset-1">
+                <h3>Their Info</h3>
+            </div>
+            <div class="col-xs-4 col-sm-3 col-sm-offset-1">
+                <p>Volunteering?{{ record.wants_to_volunteer }}</p>
+                <p>Group size:{{ record.group_size }}</p>
+                <p>Will unload:{{ record.will_unload }}</p>
+                <p>Will drive:{{ record.will_deliver_with_vehicle }}</p>
+                <p>Will do office work:{{ record.will_do_admin }}</p>
+                <p>Has plumbing skills: {{ record.will_do_plumbing }}</p>
+                <p>Has testing skills: {{ record.will_do_testing }}</p>
+                <p>Has other skills:{{ record.other_help }}</p>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <p>Monday availability:  {{ record.mon_availability_start_time }} - {{ record.mon_availability_end_time }}</p>
+                <p>Tuesday availability: {{ record.tuesday_availability_start_time }} - {{ record.tuesday_availability_end_time }}</p>
+                <p>Wednesday availability: {{ record.wed_availability_start_time }} - {{ record.wed_availability_end_time }}</p>
+                <p>Thursday availability: {{ record.thu_availability_start_time }} - {{ record.thu_availability_end_time }}</p>
+                <p>Friday availability: {{ record.fri_availability_start_time }} - {{ record.fri_availability_end_time }}</p>
+                <p>Saturday {{ record.sat_availability_start_time }} - {{ record.sat_availability_end_time }}</p>
+                <p>Sunday availability: {{ record.sun_availability_start_time }} - {{ record.sun_availability_end_time }} </p>
+                <p>Available dates: {{ record.availability_start_date }}/{{ record.availability_end_date }} - {{ record.availability_start_month }}/{{ record.availability_end_month }}/</p>
+            </div>
+            <div class="col-xs-4 col-sm-3">
+                <p>Doing park and serve?: {{ record.doing_park_and_serve }}</p>
+                <p>Park and serve address: {{ record.park_and_serve_address }}, {{ record.park_and_serve_zipcode }}</p>
+                <p>Park and serve date and time: {{ record.park_and_serve_weekday }}, {{ record.park_and_serve_month }}/{{ record.park_and_serve_date }}, {{ record.park_and_serve_start_time }} - {{ record.park_and_serve_end_time }}</p></p>
+                <p>Items distributing at park and serve: {{ record.park_and_serve_items }}</p>
 
-            <p>Video: {{ offer.video_url }}</p>
-            <p>Notes: {{ offer.notes}}
+                <p>Video: {{ record.video_url }}</p>
+                <p>Notes: {{ record.notes}}
+            </div>
+            </div>
         </div>
+    {% endif %}
+
+
+    {% if record_type == '1' %}
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class='blue-text'><br><b>Call time notes for {{record..user.first_name}} {{record.user.last_name}}'s water delivery request</b></h1>
+                <p><a href="{% url 'staff_dashboard' %}">&lt;&lt; Back</a></p>
+            <table class="table table-striped table-hover table-responsive locations-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Date submitted</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="blue-text"><b>{{ record.user.first_name }} {{ record.user.last_name }}</b></div>
+                            </td>
+                            <td>{{ record.recipient_phone }}</td>
+                            <td>{{ record.recipient_address }}, Flint, MI {{ record.zipcode }}</td>
+                            <td>{{ record.user.email }}</td>
+                            <td>{{ record.date_created }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-xs-11 col-xs-offset-1">
+                <h3>Their Info</h3>
+            </div>
+            <div class="col-xs-6 col-sm-5 col-sm-offset-1">
+                <p>Persons in household: {{ record.persons_in_household }}</p>
+                <p>Cases requested: {{ record.cases_requested }}</p>
+                <p>Reason:{{ record.reason }}</p>
+                <p>Other supplies needed:{{ record.other_supplies_needed }}</p>
+                <p>Video URL:{{ record.video_url }}</p>
+                <p>Notes:{{ record.notes }}</p>
+            </div>
+            <div class="col-xs-6 col-sm-5">
+                <p>Contact name:{{ record.contact_first_name }} {{ record.contact_last_name }}</p>
+                <p>Contact phone:{{ record.contact_phone }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+
+    {% if record_type == '3' %}
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class='blue-text'><br><b>Call time notes for {{ record.org_name }}</b></h1>
+                <p><a href="{% url 'staff_dashboard' %}">&lt;&lt; Back</a></p>
+            <table class="table table-striped table-hover table-responsive locations-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Private Email</th>
+                            <th>Sign-up date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="blue-text"><b>{{ record.org_name }}</b></div>
+                            </td>
+                            <td>{{ record.phone }}</td>
+                            <td>{{ record.address }}, {{ record.city }}, {{ record.state }} {{ record.zipcode }}</td>
+                            <td>{{ record.user.email }}</td>
+                            <td>{{ record.date_created }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-xs-4 col-sm-3 col-sm-offset-1">
+                    <h3>Supplies and services offered</h3>
+                    {% if record.has_water == True %}<p><span class="blue-text">Water</span>{% endif %}</p>
+                    {% if record.has_volunteers == True %}<p><span class="blue-text">Volunteers</span></p>{% endif %}
+                    {% if record.has_vehicles_or_drivers == True %}<p><span class="blue-text">Vehicles/drivers</span></p>{% endif %}
+                    {% if record.has_testers == True %}<p><span class="blue-text">Testing kits</span></p>{% endif %}
+                    {% if record.has_filters == True %}<p><span class="blue-text">Filters</span></p>{% endif %}
+                    {% if record.has_testing_skills == True %}<p><span class="blue-text">Testing skills</span></p>{% endif %}
+                    {% if record.has_plumbing_skills == True %}<p><span class="blue-text">Plumbing skills</span></p>{% endif %}
+                    {% if record.has_wipes == True %}<p><span class="blue-text">Baby wipes</span></p>{% endif %}
+                    {% if record.has_vaseline == True %}<p><span class="blue-text">Vaseline</span></p>{% endif %}
+                    {% if record.has_lifting_supplies == True %}<p><span class="blue-text">Lifting supplies</span></p>{% endif %}
+                    {% if record.has_other_supplies == True %}<p><span class="blue-text">Other supplies:</span> {{record.other_supplies_on_hand}}</p>{% endif %}
+                    <br>
+                    <h3>Other details</h3>
+                    <p><span class="blue-text">Water limits: </span>{{ record.limits }}</p>
+                    <p><span class="blue-text">Pickup requirements: </span>{{ record.pickup_requirements }}</p>
+                    <p><span class="blue-text">Video URL requirements: </span>{{ record.video_url }}</p>
+                    <p><span class="blue-text">Notes: </span>{{ record.notes }}</p>
+                </div>
+                <div class="col-xs-4 col-sm-3 col-sm-offset-1">
+                    <h3>Supplies and services needed</h3>
+                    {% if record.needs_water == True %}<p><span class="blue-text">Water</span>{% endif %}</p>
+                    {% if record.needs_volunteers == True %}<p><span class="blue-text">Volunteers</span></p>{% endif %}
+                    {% if record.needs_vehicles_or_drivers == True %}<p><span class="blue-text">Vehicles/drivers</span></p>{% endif %}
+                    {% if record.needs_testers == True %}<p><span class="blue-text">Testing kits</span></p>{% endif %}
+                    {% if record.needs_filters == True %}<p><span class="blue-text">Filters</span></p>{% endif %}
+                    {% if record.needs_wipes == True %}<p><span class="blue-text">Baby wipes</span></p>{% endif %}
+                    {% if record.needs_vaseline == True %}<p><span class="blue-text">Vaseline</span></p>{% endif %}
+                    {% if record.needs_lifting_supplies == True %}<p><span class="blue-text">Lifting supplies</span></p>{% endif %}
+                    {% if record.needs_other_supplies == True %}<p><span class="blue-text">Other supplies:</span> {{record.other_supplies_needed}}</p>{% endif %}
+                </div>
+                <div class="col-xs-4 col-sm-3">
+                    <h3>Distribution schedule</h3>
+                        {% if record.monday_dist_start %}<p><span class="blue-text">Monday: </span>  {{ record.monday_dist_start }} - {{ record.monday_dist_end }}{% endif %}</p>
+                        {% if record.tuesday_dist_start %}<p><span class="blue-text">Tuesday: </span> {{ record.tuesday_dist_start }} - {{ record.tuesday_dist_end }}{% endif %}</p>
+                        {% if record.wednesday_dist_start %}<p><span class="blue-text">Wednesday: </span> {{ record.wednesday_dist_start }} - {{ record.wednesday_dist_end }}{% endif %}</p>
+                        {% if record.thursday_dist_start %}<p><span class="blue-text">Thursday: </span> {{ record.thursday_dist_start }} - {{ record.thursday_dist_end }}{% endif %}</p>
+                        {% if record.friday_dist_start %}<p><span class="blue-text">Friday: </span> {{ record.friday_dist_start }} - {{ record.friday_dist_end }}{% endif %}</p>
+                        {% if record.saturday_dist_start %}<p><span class="blue-text">Saturday: {{ record.saturday_dist_start }} - {{ record.saturday_dist_end }}{% endif %}</p>
+                        {% if record.sunday_dist_start %}<p><span class="blue-text">Sunday: </span> {{ record.sunday_dist_start }} - {{ record.sunday_dist_end }}{% endif %}</p>
+                </div>
+        </div>
+    {% endif %}
 
    <form class="form-horizontal" role="form" action='.' method='post'>
         {% csrf_token %}

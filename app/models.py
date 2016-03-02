@@ -198,6 +198,11 @@ class Organization(models.Model):
     pickup_requirements = models.CharField(max_length=140, null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
     video_url = models.CharField(max_length=200, null=True, blank=True)
+    resolved = models.BooleanField(default = False)
+    left_message = models.BooleanField(default = False)
+    action_needed = models.BooleanField(default = False)
+    no_contact = models.BooleanField(default = True)
+    calltime_notes = models.TextField(default="", null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
@@ -237,11 +242,6 @@ class DistributionEvent(models.Model):
     other_supplies_distributed = models.TextField(null=True, blank=True)
     water_case_limit = models.CharField(max_length=200, null=True, blank=True)
     requirements_for_pickup = models.CharField(max_length=200, null=True, blank=True)
-    resolved = models.BooleanField(default = False)
-    left_message = models.BooleanField(default = False)
-    action_needed = models.BooleanField(default = False)
-    no_contact = models.BooleanField(default = True)
-    calltime_notes = models.TextField(default="", null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
     notes = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)

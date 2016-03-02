@@ -18,6 +18,7 @@
                     <th class="text-center">Action<br>needed</th>
                     <th class="text-center">No<br>contact</th>
                     <th class="text-center">Call notes</th>
+                    <th class="text-center">Date submitted</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +34,8 @@
                     <td>{% if h.action_needed == True %}&#x2714;{% endif %}</td>
                     <td>{% if h.no_contact == True %}&#x2714;{% endif %}</td>
                     <td>{{ h.calltime_notes }}</td>
-                    <td><a href="{% url 'call_time_notes' h.id 2 %}">Make notes &gt;&gt;</a></td>
+                    <td>{{ h.date_created }}</td>
+                    <td><a href="{% url 'call_time_notes' h.id '2' %}">Make notes &gt;&gt;</a></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -49,11 +51,14 @@
             <thead>
                 <tr>
                     <th class="text-center">Name</th>
+                    <th class="text-center">Phone</th>
+                    <th class="text-center">Address</th>
                     <th class="text-center">Resolved</th>
                     <th class="text-center">Left<br>message</th>
                     <th class="text-center">Action<br>needed</th>
                     <th class="text-center">No<br>contact</th>
                     <th class="text-center">Call notes</th>
+                    <th class="text-center">Date submitted</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,11 +68,14 @@
                     <td>
                         <div class="blue-text"><b>{{ r.user.first_name }} {{ r.user.last_name }}</b></div>
                     </td>
+                    <td>{{ r.recipient_phone }}</td>
+                    <td>{{ r.recipient_address }}, Flint, MI, {{r.zipcode}}</td>
                     <td>{% if r.resolved == True %}&#x2714;{% endif %}</td>
                     <td>{% if r.left_message == True %}&#x2714;{% endif %}</td>
                     <td>{% if r.action_needed == True %}&#x2714;{% endif %}</td>
                     <td>{% if r.no_contact == True %}&#x2714;{% endif %}</td>
                     <td>{{ r.calltime_notes }}</td>
+                    <td>{{ r.date_created }}</td>
                     <td><a href="{% url 'call_time_notes' r.id 1 %}">Make notes &gt;&gt;</a></td>
                 </tr>
             {% endfor %}
@@ -89,6 +97,7 @@
                     <th class="text-center">Action<br>needed</th>
                     <th class="text-center">No<br>contact</th>
                     <th class="text-center">Call notes</th>
+                    <th class="text-center">Signup date</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,6 +112,7 @@
                     <td>{% if o.action_needed == True %}&#x2714;{% endif %}</td>
                     <td>{% if o.no_contact == True %}&#x2714;{% endif %}</td>
                     <td>{{ o.calltime_notes }}</td>
+                    <td>{{ o.date_created }}</td>
                     <td><a href="{% url 'call_time_notes' o.id 3 %}">Make notes &gt;&gt;</a></td>
                 </tr>
             {% endfor %}
