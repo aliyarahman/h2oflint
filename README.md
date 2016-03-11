@@ -12,3 +12,7 @@ First add this to your server config in /etc/apache2/sites-available/000-default
 Then run this symlink command:
     sudo ln -s /home/ubuntu/h2oflint/venv/lib/python2.7/site-packages/django/contrib/admin/static/admin /home/ubuntu/h2oflint/app/static
 
+
+2. Create a Postgres database called h2oflint, with user flint and password 'waterisahumanright'
+
+
