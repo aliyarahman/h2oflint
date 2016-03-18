@@ -23,12 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q2u*0g-^o-da_5!a@jaz)a@8_)dq=afe!xq9h_gptukpb4n@2d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [
-    'h2oflint.com',
-    '.compute-1.amazonaws.com',
-    ]
+ALLOWED_HOSTS = [  ]
 
 
 # Application definition
@@ -70,10 +67,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.i18n',
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'h2oflint.wsgi.application'
 
@@ -118,10 +117,15 @@ TIME_ZONE = 'US/Eastern'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
-USE_TZ = True
+USE_TZ = False
 
+ugettext = lambda s: s
+LANGUAGES = (
+	('en', u'English'),
+	('es', u'Spanish'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
