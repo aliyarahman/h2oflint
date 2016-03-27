@@ -2,6 +2,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load staticfiles %}
+{% load i18n %}
 
     <div class="row">
         <div class="col-xs-12">
@@ -15,8 +16,8 @@
     <div class="row">
         <div class="container-fluid">
             <div class="col-xs-12 search-head-wrapper">
-                <h1 class="search-headline text-center"><b>FIND OR OFFER HELP</b></h1>
-                <h2 class="search-subheadline text-center"><b>Through grassroots community members</b>
+                <h1 class="search-headline text-center"><b>{% trans "FIND OR OFFER HELP" %}</b></h1>
+                <h2 class="search-subheadline text-center"><b>{% trans "Through grassroots community members" %}</b>
             </div>
         </div>
     </div>
@@ -30,12 +31,12 @@
                         <div class="col-xs-12 col-md-4 col-md-offset-4 user-button-holder text-center">
                             <div class="row">
                                 <div class="col-xs-12 user-button-holder text-center">                                
-                                    <h3 class="blue-text"><b>I'm Looking for Help</b></h3>
+                                    <h3 class="blue-text"><b>{% trans "I'm Looking for Help" %}</b></h3>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 user-button-holder text-center">
-                                    <div onClick='location.href="{% url 'edit_request_delivery' %}"' class="user-button text-center dk-purple-bg white-text">Update My Info</div>
+                                    <div onClick='location.href="{% url 'edit_request_delivery' %}"' class="user-button text-center dk-purple-bg white-text">{% trans "Update My Info" %}</div>
                                 </div>
                             </div>
                         </div>
@@ -47,16 +48,16 @@
                             <div class="col-xs-12 col-md-6 col-md-offset-3  user-button-holder text-center">
                                 <div class="row">
                                     <div class="col-xs-12 user-button-holder text-center">    
-                                        <h3 class="blue-text"><b>I Can Help</b></h3>
+                                        <h3 class="blue-text"><b>{% trans "I Can Help" %}</b></h3>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-xs-6 user-button-holder text-center">
-                                        <div onClick='location.href="{% url 'edit_individual' %}"' class="user-button text-center dk-purple-bg white-text">Update My Info</div>
+                                        <div onClick='location.href="{% url 'edit_individual' %}"' class="user-button text-center dk-purple-bg white-text">{% trans "Update My Info" %}</div>
                                     </div>
                                     <div class="col-xs-6 user-button-holder text-center">
-                                        <div onClick='location.href="{% url 'add_another_help_offer' %}"' class="user-button text-center dk-purple-bg white-text">Add Another Offer to Help</div>
+                                        <div onClick='location.href="{% url 'add_another_help_offer' %}"' class="user-button text-center dk-purple-bg white-text">{% trans "Add Another Offer to Help" %}</div>
                                     </div> 
                                 </div>
                             </div>
@@ -68,11 +69,11 @@
                             <div class="col-xs-12 col-md-4 col-md-offset-4  user-button-holder text-center">
                                 <div class="row">
                                     <div class="col-xs-12 user-button-holder text-center">    
-                                        <h3 class="blue-text"><b>My organization needs or can offer help</b></h3>
+                                        <h3 class="blue-text"><b>{% trans "My organization needs or can offer help" %}</b></h3>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div onClick='location.href="{% url 'edit_organization' %}"' class="user-button text-center dk-purple-bg white-text">Update My Organization's Info</div>
+                                    <div onClick='location.href="{% url 'edit_organization' %}"' class="user-button text-center dk-purple-bg white-text">{% trans "Update My Organization's Info" %}</div>
                                 </div>
                             </div>
                         </div>
@@ -82,30 +83,30 @@
 
                     <div class="col-xs-12 col-md-4 user-button-holder text-center">
                         <div class="row">
-                            <h3 class="blue-text"><b>I'm a Flint resident looking for assistance</b></h3>
+                            <h3 class="blue-text"><b>{% trans "I'm a Flint resident looking for assistance" %}</b></h3>
                         </div>
                         <div class="row">
-                            <div onClick='location.href="{% url 'request_delivery' %}"' class="user-button text-center lt-green-bg black-text">I need water or supplies delivered to my home</div>
+                            <div onClick='location.href="{% url 'request_delivery' %}"' class="user-button text-center lt-green-bg black-text">{% trans "I need water or supplies delivered to my home" %}</div>
                         </div>
                     </div>
                         
                     <div class="col-xs-12 col-md-4 user-button-holder text-center">
                         <div class="row">
-                            <h3 class="blue-text"><b>I'm an individual who wants to help</b></h3>
+                            <h3 class="blue-text"><b>{% trans "I'm an individual who wants to help" %}</b></h3>
                         </div>
                         <div class="row">
-                            <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center salmon-bg black-text">I want to volunteer</div>
-                            <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center yellow-bg black-text">I want to donate water, supplies, or money</div>
+                            <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center salmon-bg black-text">{% trans "I want to volunteer" %}</div>
+                            <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center yellow-bg black-text">{% trans "I want to donate water, supplies, or money" %}</div>
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-md-4 user-button-holder text-center">
                         <div class="row">
-                            <h3 class="blue-text"><b>My organization needs or can offer help</b></h3>
+                            <h3 class="blue-text"><b>{% trans "My organization needs or can offer help" %}</b></h3>
                         </div>
                         <div class="row">
-                            <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center dk-purple-bg white-text">We can distribute water or other supplies</div>
-                            <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center lt-blue-bg black-text">We need volunteers or help distributing</div>
+                            <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center dk-purple-bg white-text">{% trans "We can distribute water or other supplies" %}</div>
+                            <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center lt-blue-bg black-text">{% trans "We need volunteers or help distributing" %}</div>
                         </div>
                     </div>
 
@@ -118,12 +119,12 @@
 
         <div class="row">
             <div class="col-xs-12 col-md-6 col-md-offset-1 todays-locations">
-                <h3 class="blue-text">Community Distribution Centers Open Today</h3>
+                <h3 class="blue-text">{% trans "Community Distribution Centers Open Today" %}</h3>
 
                 <div class="results-legend">
-                    <span class="results-legend-item"><span class="glyphicon glyphicon-tint blue-text"></span> = Has water</span>
-                    <span class="results-legend-item"><span class="glyphicon glyphicon-filter blue-text"></span> = Has filters</span>
-                    <span class="results-legend-item"><span class="glyphicon glyphicon-bold blue-text"></span> = Has baby supplies</span>
+                    <span class="results-legend-item"><span class="glyphicon glyphicon-tint blue-text"></span>{% trans "= Has water" %}</span>
+                    <span class="results-legend-item"><span class="glyphicon glyphicon-filter blue-text"></span>{% trans "= Has filters" %}</span>
+                    <span class="results-legend-item"><span class="glyphicon glyphicon-bold blue-text"></span>{% trans "= Has baby supplies" %}</span>
                 </div>
 
 
@@ -150,32 +151,32 @@
                                 <ul>
 
                                     {% if weekday == 'Monday' %}
-                                    <li><b>Open today:</b> {{location.monday_dist_start}}-{{location.monday_dist_end}}</li>
+                                    <li><b>{% trans "Open today:" %}</b> {{location.monday_dist_start}}-{{location.monday_dist_end}}</li>
 
                                     {% elif weekday == 'Tuesday' %}
-                                    <li><b>Open today:</b> {{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}</li>
+                                    <li><b>{% trans "Open today:" %}</b> {{location.tuesday_dist_start}}-{{location.tuesday_dist_end}}</li>
 
                                     {% elif weekday == 'Wednesday' %}
-                                    <li><b>Open today:</b> {{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}</li>
+                                    <li><b>{% trans "Open today:" %}</b> {{location.wednesday_dist_start}}-{{location.wednesday_dist_end}}</li>
 
                                     {% elif weekday == 'Thursday' %}
-                                    <li><b>Open today:</b> {{location.thursday_dist_start}}-{{location.thursday_dist_end}}</li>
+                                    <li><b>{% trans "Open today:" %}</b> {{location.thursday_dist_start}}-{{location.thursday_dist_end}}</li>
 
                                     {% elif weekday == 'Friday' %}
-                                    <li><b>Open today:</b> {{location.friday_dist_start}}-{{location.friday_dist_end}}</li>
+                                    <li><b>{% trans "Open today:" %}</b> {{location.friday_dist_start}}-{{location.friday_dist_end}}</li>
 
                                     {% elif weekday == 'Saturday' %}
-                                    <li><b>Open today:</b> {{location.saturday_dist_start}}-{{location.saturday_dist_end}}</li>
+                                    <li><b>{% trans "Open today:" %}</b> {{location.saturday_dist_start}}-{{location.saturday_dist_end}}</li>
 
                                     {% elif weekday == 'Sunday' %}
-                                    <li><b>Open today:</b> {{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>
+                                    <li><b>{% trans "Open today:" %}</b> {{location.sunday_dist_start}}-{{location.sunday_dist_end}}</li>
                                     {% endif %}
                                 </ul>
                             </div>
                             <div class="col-xs-6">
-                                {% if location.phone != '' %}<br><b>Phone</b>: {{location.phone}}{% endif %}
-                                {% if location.website != '' %}<br><b>Website</b>: <a href="{{location.website}}">{{location.website}}</a>{% endif %}
-                                {% if location.email|length > 1 %}<br><b>Email</b>: {{location.email}}{% endif %}
+                                {% if location.phone != '' %}<br><b>{% trans "Phone" %}</b>: {{location.phone}}{% endif %}
+                                {% if location.website != '' %}<br><b>{% trans "Website" %}</b>: <a href="{{location.website}}">{{location.website}}</a>{% endif %}
+                                {% if location.email|length > 1 %}<br><b>{% trans "Email" %}</b>: {{location.email}}{% endif %}
                             </div>
                             
 
@@ -193,17 +194,17 @@
                 <div class="row search-list-button-holder">
                     <div class="col-xs-12 col-md-5">
                         <div class="search-list-button text-center">
-                            Enter your address to find sites distributing water near you today
+                            {% trans "Enter your address to find sites distributing water near you today" %}
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-1 search-list-button text-center">
-                        <b>or</b>
+                        <b>{% trans "or" %}</b>
                     </div>
                     <div class="col-xs-12 col-md-6 search-list-button text-center">
-                        <button onClick='location.href="{% url 'search' %}"' class="btn info ">Click here to see this week's locations
+                        <button onClick='location.href="{% url 'search' %}"' class="btn info ">{% trans "Click here to see this week's locations" %}</button>
                     </div>
                     <div class="col-xs-12">
-    <input id="pac-input" class="controls" type="text" placeholder="Address or zipcode">
+    <input id="pac-input" class="controls" type="text" placeholder="{% trans "Address or zipcode" %}">
     <div id="map-canvas"></div>
     <script>
 
@@ -293,7 +294,7 @@ function initAutocomplete() {
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <h4 class="blue-text"><b>Tweet us your real-time experiences at distribution centers to have them appear here and inform your neighbors</b></h4>
+                        <h4 class="blue-text"><b>{% trans "Tweet us your real-time experiences at distribution centers to have them appear here and inform your neighbors" %}</b></h4>
                         <a class="twitter-timeline" href="https://twitter.com/flint_h2o" data-widget-id="700715276451459072">Tweets by @flint_h2o</a>
                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     </div>

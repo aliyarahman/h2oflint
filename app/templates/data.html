@@ -1,51 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load staticfiles %}
-
+{% load i18n %}
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-2">
-            <h1 class="about-header blue-text">Use our data to power your site or app</h1>
+            <h1 class="about-header blue-text">{% trans "Use our data to power your site or app" %}</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-md-4 col-md-offset-2">
-            <p>We've seen first-hand that one of the biggest barriers to solving the Flint water crisis has been a lack of coordination between relief efforts and resources. This means that on-the-ground organizations don't always have enough information to do their jobs, and new online tools are released every week that rely on limited government data about a small number of official distribution sites. The result is that resources never make it to some of the most under-resourced folks in this community we call home.</p><br>
+            <p>{% trans "We've seen first-hand that one of the biggest barriers to solving the Flint water crisis has been a lack of coordination between relief efforts and resources. This means that on-the-ground organizations don't always have enough information to do their jobs, and new online tools are released every week that rely on limited government data about a small number of official distribution sites. The result is that resources never make it to some of the most under-resourced folks in this community we call home." %}</p><br>
 
-            <p>We want to equalize access to relief resources for all Flint residents, so we're offering our up-to-date community-gathered data on people-powered distribution sites via API (application programming interface) to anyone who wants to integrate it into their website or app.</p><br>
+            <p>{% trans "We want to equalize access to relief resources for all Flint residents, so we're offering our up-to-date community-gathered data on people-powered distribution sites via API (application programming interface) to anyone who wants to integrate it into their website or app." %}</p><br>
 
             
-            <h3 class="blue-text">Huh? What's an "API"?</h3>
-            <p>Have you ever worked in food service - or used a drive-through window at a restaurant? If so, the idea behind an Application Programming Interface (API) won't be too new to you!</p>
+            <h3 class="blue-text">{% trans 'Huh? What\'s an "API"?' %}</h3>
+            <p>{% trans "Have you ever worked in food service - or used a drive-through window at a restaurant? If so, the idea behind an Application Programming Interface (API) won't be too new to you!" %}</p>
 
-            <p>When someone drives up to restaurant's service window, they usually just want to ask for food, be handed exactly what they asked for, and get moving. They don't need to own all the machines in the kitchen--or make a trip the freezer to get all the raw ingredients the restaurant has--to get their meal. And the restaurant's staff wants to give customers their food, but they probably don't want to let them in the kitchen or load tons of extra ingredients and machines into their car! You can probably imagine how much it would jam up everyone's day if that was the way people got their food at a restaurant.
+            <p>{% trans "When someone drives up to restaurant's service window, they usually just want to ask for food, be handed exactly what they asked for, and get moving. They don't need to own all the machines in the kitchen--or make a trip the freezer to get all the raw ingredients the restaurant has--to get their meal. And the restaurant's staff wants to give customers their food, but they probably don't want to let them in the kitchen or load tons of extra ingredients and machines into their car! You can probably imagine how much it would jam up everyone's day if that was the way people got their food at a restaurant." %}</p>
 
-            <p>An Application Programming Interface is like a drive-through window for people who want good, nutritious data to use on their website or app, without having to dig through or buy the whole kitchen. It lets a website or computer programmer place an order with the machine that stores all of the good knowledge about a subject - and then immediately, even automatically throughout the day, get an answer back with only the up-to-date information they asked for, in a format that computers can quickly read and use to update a website or app without needing much (or any) extra human help.</p>
+            <p>{% trans "An Application Programming Interface is like a drive-through window for people who want good, nutritious data to use on their website or app, without having to dig through or buy the whole kitchen. It lets a website or computer programmer place an order with the machine that stores all of the good knowledge about a subject - and then immediately, even automatically throughout the day, get an answer back with only the up-to-date information they asked for, in a format that computers can quickly read and use to update a website or app without needing much (or any) extra human help." %}</p>
 
-            <p>This is much faster on both ends than having one person email a file a few times a day so that another person can download it, open and copy things out of it, paste those things somewhere else... and on and on. It's important that getting good information is fast and simple, because sites and apps that help you find things in your area can't run without solid, fresh data - just like people can't run without nutritious (non-expired) food!</p>
-
-
+            <p>{% trans "This is much faster on both ends than having one person email a file a few times a day so that another person can download it, open and copy things out of it, paste those things somewhere else... and on and on. It's important that getting good information is fast and simple, because sites and apps that help you find things in your area can't run without solid, fresh data - just like people can't run without nutritious (non-expired) food!" %}</p>
 
 
 
-            <h3 class="blue-text"><br>Using the H2OFlint API</h3>
-                <p><b>To use our API, you'll need to first register for an API key.</b>
-                <br>We'll be opening the API shortly. Please check back to register for an API key and start developing using community-gathered data.</p>
-                <p><b>Sending requests</b>
-                <br>The simplest request you can send returns a JSON list of water and supply distribution locations that are open for the next 7 days, with latitude and longitude points, address information, open hours, and supplies available/needed:</p>
 
-                <p class="indent"><b><code>GET http://www.h2oflint.com/api/locations?key=your_api_key</code></b></p>
 
-                <p>The response includes all government and community locations.Some are locations for one-time events, and some are part of an organization's recurring (but frequently changing) schedule. The API reflects the most recent information that distributors have entered about where and when they will be distributing.</p>
+            <h3 class="blue-text"><br>{% trans "Using the H2OFlint API" %}</h3>
+                <p><b>{% trans "To use our API, you'll need to first register for an API key." %}</b>
+                <br>{% trans "We'll be opening the API shortly. Please check back to register for an API key and start developing using community-gathered data." %}</p>
+                <p><b>{% trans "Sending requests" %}</b>
+                <br>{% trans "The simplest request you can send returns a JSON list of water and supply distribution locations that are open for the next 7 days, with latitude and longitude points, address information, open hours, and supplies available/needed:" %}</p>
 
-                <br>You can also ask for only water locations by adding the 'resource=water' parameter (we'll add more resource filters pending user demand):</p>
+                <p class="indent"><b><code>{% trans "GET" %} http://www.h2oflint.com/api/locations?key=your_api_key</code></b></p>
+
+                <p>{% trans "The response includes all government and community locations.Some are locations for one-time events, and some are part of an organization's recurring (but frequently changing) schedule. The API reflects the most recent information that distributors have entered about where and when they will be distributing." %}</p>
+
+                <br>{% trans "You can also ask for only water locations by adding the 'resource=water' parameter (we'll add more resource filters pending user demand):" %}</p>
                 
-                <p class="indent"><b><code>GET http://www.h2oflint.com/api/locations?resource=water?key=your_api_key</code></b></p>
+                <p class="indent"><b><code>{% trans "GET" %} http://www.h2oflint.com/api/locations?resource=water?key=your_api_key</code></b></p>
 
-                <br>And you can add for just today's locations by adding the when=today parameter:</p>
+                <br>{% trans "And you can add for just today's locations by adding the when=today parameter:" %}</p>
                 
-                <p class="indent"><b><code>GET http://www.h2oflint.com/api/locations?when=today?key=your_api_key</code></b></p>
+                <p class="indent"><b><code>{% trans "GET" %} http://www.h2oflint.com/api/locations?when=today?key=your_api_key</code></b></p>
         </div>
 
             
@@ -55,7 +55,7 @@
                 <img src="https://s3.amazonaws.com/h2oflint/wheelbarrow_water.jpg">
             </div>
             <div class="caption">
-                <p><b>Home-grown data</b>: Young people from the neighborhood volunteer to unload, cart, and carry tons of water each week using makeshift equipment, a humanitarian spirit of goodwill, and muscle-power made of sheer necessity. We get our data the same way.</p>
+                <p>{% trans "<b>Home-grown data</b>: Young people from the neighborhood volunteer to unload, cart, and carry tons of water each week using makeshift equipment, a humanitarian spirit of goodwill, and muscle-power made of sheer necessity. We get our data the same way." %}</p>
             </div>
         </div>
     </div>

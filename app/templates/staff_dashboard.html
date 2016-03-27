@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load staticfiles %}
-
+{% load i18n %}
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
-            <h1 class='blue-text'><br><b>Volunteers who need to be contacted</b></h1>
+            <h1 class='blue-text'><br><b>{% trans "Volunteers who need to be contacted" %}</b></h1>
 
             <table class="table table-striped table-hover table-responsive locations-table">
             <thead>
                 <tr>
-                    <th class="text-center">Name</th>
-                    <th class="text-center">Location</th>
-                    <th class="text-center">Resolved</th>
-                    <th class="text-center">Left<br>message</th>
-                    <th class="text-center">Action<br>needed</th>
-                    <th class="text-center">No<br>contact</th>
-                    <th class="text-center">Call notes</th>
-                    <th class="text-center">Date submitted</th>
+                    <th class="text-center">{% trans "Name" %}</th>
+                    <th class="text-center">{% trans "Location" %}</th>
+                    <th class="text-center">{% trans "Resolved" %}</th>
+                    <th class="text-center">{% trans "Left<br>message" %}</th>
+                    <th class="text-center">{% trans "Action<br>needed" %}</th>
+                    <th class="text-center">{% trans "No<br>contact" %}</th>
+                    <th class="text-center">{% trans "Call notes" %}</th>
+                    <th class="text-center">{% trans "Date submitted" %}</th>
                 </tr>
             </thead>
             <tbody>

@@ -2,12 +2,12 @@
 {% block content %}
 {% load widget_tweaks %}
 {% load staticfiles %}
-
+{% load i18n %}
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
-            <h1 class="form-header blue-text">Request a Home Delivery</h1>
+            <h1 class="form-header blue-text">{% trans "Request a Home Delivery" %}</h1>
             
         </div>
     </div>
@@ -21,9 +21,9 @@
                 <div class="form-subhead">
                     <div class="row">
                         <div class="col-xs-12 col-xs-offset-1 col-md-12 col-md-offset-0">
-                            <h3 class="blue-text">Your information</h3>
-                            <p><i>*Required field</i></p>
-                            <p>We strive to make as many deliveries as possible based on our volunteer capacity. Once we've reviewed your request, we'll contact you to schedule a delivery date or to let you know if we do not have enough volunteers to fill your request at this time. You may also apply for a friend or loved one in need. Be sure to tell us why the service is needed.</p>
+                            <h3 class="blue-text">{% trans "Your information" %}</h3>
+                            <p><i>*{% trans "Required field" %}</i></p>
+                            <p>{% trans "We strive to make as many deliveries as possible based on our volunteer capacity. Once we've reviewed your request, we'll contact you to schedule a delivery date or to let you know if we do not have enough volunteers to fill your request at this time. You may also apply for a friend or loved one in need. Be sure to tell us why the service is needed." %}</p>
                         </div>
                     </div>
                 </div>
@@ -34,59 +34,59 @@
                 </div> -->
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Recipient's first name*</label>
+                    <label>{% trans "Recipient's first name" %}*</label>
                     {% render_field form.recipient_first class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Recipient's last name*</label>
+                    <label>{% trans "Recipient's last name" %}*</label>
                     {% render_field form.recipient_last class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Contact email address*</label>
+                    <label>{% trans "Contact email address" %}*</label>
                     <p>If you are completing this form for someone else, please enter an address where you can receive a confirmation email for this delivery request.</p>
                     {% render_field form.contact_email class+="form-control" placeholder="name@example.com" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Password*</label>
+                    <label>{% trans "Password" %}*</label>
                     {% render_field form.password class+="form-control" required="true" placeholder="Passwords should have at least 8 digits" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Retype Password*</label>
+                    <label>{% trans "Retype Password" %}*</label>
                     {% render_field form.retype_password class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Delivery address in Flint, MI*</label>
+                    <label>{% trans "Delivery address in "%} Flint, MI*</label>
                     {% render_field form.recipient_address class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Delivery zipcode*</label>
+                    <label>{% trans "Delivery zipcode" %}*</label>
                     <p>Please note that at this time, we only schedule delivery runs within Flint.</p>
                     {% render_field form.zipcode class+="form-control" required="true" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Recipient's phone*</label>
+                    <label>{% trans "Recipient's phone" %}*</label>
                     {% render_field form.recipient_phone class+="form-control" required="true" %}
                 </div>
                 
                 <div class="form-group">
-                    <label>How many people are in this household?*
+                    <label>{% trans "How many people are in this household?" %}*</label>
                     {% render_field form.persons_in_household class+="form-control" required="true"  %}</label>
                 </div>
 
                 <div class="form-group">
-                    <label>How many cases of water are you requesting?*
+                    <label>{% trans "How many cases of water are you requesting?" %}*</label>
                     {% render_field form.cases_requested class+="form-control" required="true"  %}</label>
                 </div>
                 
                 <div class="form-group">
-                    <label>Why are you requesting a water delivery?*</label>
+                    <label>{% trans "Why are you requesting a water delivery?" %}*</label>
                     {% render_field form.reason class+="form-control" required="true"  %}
                 </div>
 
@@ -94,46 +94,46 @@
 
                 <div class="row">
 
-                        <h3 class="blue-text">If you completed this form for someone else</h3>
+                        <h3 class="blue-text">{% trans "If you completed this form for someone else" %}</h3>
                 </div>
                 <br>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>First name of the person completing this form</label>
+                    <label>{% trans "First name of the person completing this form" %}</label>
                     {% render_field form.contact_first_name class+="form-control" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Last name of the person completing this form</label>
+                    <label>{% trans "Last name of the person completing this form" %}</label>
                     {% render_field form.contact_last_name class+="form-control" %}
                 </div>
 
                 <div class="form-group{% if field.errors %} has-error{% endif %}">
-                    <label>Phone number for person completing this form</label>
+                    <label>{% trans "Phone number for person completing this form" %}</label>
                     {% render_field form.contact_phone class+="form-control" %}
                 </div>
 
                 <div class="form-group">
-                    <label>If you need other supplies, please note them here.</label>
-                    <p>We cannot fill all requests, but we will deliver any supplies we have available.</p>
+                    <label>{% trans "If you need other supplies, please note them here." %}</label>
+                    <p>{% trans "We cannot fill all requests, but we will deliver any supplies we have available." %}</p>
                     {% render_field form.other_supplies_needed class+="form-control" %}
                 </div>
 
                 <div class="form-group">
-                    <label>Do you have a video on Youtube or Vimeo about your experience in the Flint water crisis? If you'd like to offer it to our site visitors, paste its shareable URL here (e.g. "http://www.youtube.com/myvideo").
+                    <label>{% trans 'Do you have a video on Youtube or Vimeo about your experience in the Flint water crisis? If you\'d like to offer it to our site visitors, paste its shareable URL here (e.g. "http://www.youtube.com/myvideo").' %}
                     {% render_field form.video_url class+="form-control" %}</label>
                 </div>
 
                 <div class="form-group">
-                    <label>Additional notes or special instructions for us
+                    <label>{% trans "Additional notes or special instructions for us" %}
                     {% render_field form.notes class+="form-control" %}</label>
                 </div>
 
 
                 <div class="col-xs-12 text-right">
                     <div class="submit-button-wrapper">
-                        <button type="submit" value="Submit" class="btn btn-lg btn-success">Send this request</button>
-                        <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">Cancel</button>
+                        <button type="submit" value="Submit" class="btn btn-lg btn-success">{% trans "Send this request" %}</button>
+                        <button onClick='location.href="{% url 'index' %}"' class="btn btn-lg btn-default">{% trans "Cancel" %}</button>
                     </div>
                 </div>
             </form>
@@ -145,14 +145,14 @@
                 <img src="https://s3.amazonaws.com/h2oflint/pallettes_and_volunteers.jpg">
             </div>
             <div class="caption">
-                <p><b>Uncertain times call for empowered people</b>: Volunteers join forces with local residents to distribute 50 pallets of fresh drinking water at a North Flint mobile drive-through distribution site. A typical day in the city with bad pipes.</p>
+                <p>{% trans "<b>Uncertain times call for empowered people</b>: Volunteers join forces with local residents to distribute 50 pallets of fresh drinking water at a North Flint mobile drive-through distribution site. A typical day in the city with bad pipes." %}</p>
             </div>
             <br><br>
             <div class="photo-wrapper">
                 <img src="https://s3.amazonaws.com/h2oflint/convoy.jpg">
             </div>
             <div class="caption">
-                <p><b>Delivering relief:</b>Convoy of Hope and the University of Michigan School of Social work helping to support the water distribution efforts at Joy Tabernacle Church.</p>
+                <p>{% trans "<b>Delivering relief:</b>Convoy of Hope and the University of Michigan School of Social work helping to support the water distribution efforts at Joy Tabernacle Church." %}</p>
             </div>
         </div>
     </div>

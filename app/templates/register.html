@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load staticfiles %}
-
+{% load i18n %}
 
     <div class="container-fluid">
 
@@ -9,7 +9,7 @@
         <div class="row">
             <br><br><br><br>
             <div class="col-xs-12 col-md-10 col-md-offset-1">
-                <h2 class=""><b>Sign Up: What brought you here?</b></h2>
+                <h2 class=""><b>{% trans "Sign Up: What brought you here?" %}</b></h2>
             </div>
         </div>
 
@@ -19,30 +19,30 @@
             <div class="row">
                 <div class="col-xs-12 col-md-4 user-button-holder text-center">
                     <div class="row">
-                        <h3 class="blue-text"><b>I'm a Flint resident looking for assistance</b></h3>
+                        <h3 class="blue-text"><b>{% trans "I'm a Flint resident looking for assistance" %}</b></h3>
                     </div>
                     <div class="row">
-                        <div onClick='location.href="{% url 'request_delivery' %}"' class="user-button text-center lt-green-bg black-text">I need water or supplies delivered to my home</div>
+                        <div onClick='location.href="{% url 'request_delivery' %}"' class="user-button text-center lt-green-bg black-text">{% trans "I need water or supplies delivered to my home" %}</div>
                     </div>
                 </div>
                     
                 <div class="col-xs-12 col-md-4 user-button-holder text-center">
                     <div class="row">
-                        <h3 class="blue-text"><b>I'm an individual who wants to help</b></h3>
+                        <h3 class="blue-text"><b>{% trans "I'm an individual who wants to help" %}</b></h3>
                     </div>
                     <div class="row">
-                        <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center salmon-bg black-text">I want to volunteer</div>
-                        <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center yellow-bg black-text">I want to donate water, supplies, or money</div>
+                        <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center salmon-bg black-text">{% trans "I want to volunteer" %}</div>
+                        <div onClick='location.href="{% url 'individual_offer' %}"' class="user-button text-center yellow-bg black-text">{% trans "I want to donate water, supplies, or money" %}</div>
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-md-4 user-button-holder text-center">
                     <div class="row">
-                        <h3 class="blue-text"><b>My organization needs or can offer help</b></h3>
+                        <h3 class="blue-text"><b>{% trans "My organization needs or can offer help" %}</b></h3>
                     </div>
                     <div class="row">
-                        <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center dk-purple-bg white-text">We can distribute water or other supplies</div>
-                        <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center lt-blue-bg black-text">We need volunteers or help distributing</div>
+                        <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center dk-purple-bg white-text">{% trans "We can distribute water or other supplies" %}</div>
+                        <div onClick='location.href="{% url 'organization_offer' %}"' class="user-button text-center lt-blue-bg black-text">{% trans "We need volunteers or help distributing" %}</div>
                     </div>
                 </div>
             </div>
